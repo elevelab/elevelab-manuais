@@ -577,8 +577,11 @@
 
         .equipment-main-img {
             width: 100%;
-            height: 400px;
-            object-fit: cover;
+            height: auto;
+            min-height: 300px;
+            max-height: 500px;
+            object-fit: contain;
+            background: #f0f0f0;
             cursor: zoom-in;
             transition: transform 0.3s ease;
         }
@@ -980,7 +983,24 @@
             border: none;
         }
         </style>
-</head>
+
+        /* DEBUG TEMPORÁRIO - REMOVER APÓS CONFIRMAR */
+        img {
+            border: 1px solid #ddd !important;
+            min-width: 50px;
+            min-height: 50px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%23f0f0f0"/><text x="50%" y="50%" font-family="Arial" font-size="12" fill="%23999" text-anchor="middle" dominant-baseline="middle">Carregando...</text></svg>') center/cover;
+        }
+        
+        img[src*="equipment"] {
+            min-height: 200px !important;
+        }
+        
+        img[src*="interface"] {
+            min-height: 100px !important;
+        }
+    </style>
+    </head>
 
 <body class="loading">
     <!-- Header -->
@@ -1051,7 +1071,7 @@
                     <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Determinador de Gordura SOX406</h2>
                     <div class="equipment-gallery">
                         <div class="main-image">
-                            <img src="images/equipment/equipment-6.jpg" 
+                            <img src="images/equipment/equipment-6.jpg" style="display: block; width: 100%; height: auto;" 
                                  alt="Determinador de Gordura SOX406" 
                                  class="equipment-main-img"
                                  loading="eager"
@@ -1060,7 +1080,7 @@
                         </div>
                         <div class="thumbnail-gallery">
                             
-                            <img src="images/equipment/equipment-6.jpg" 
+                            <img src="images/equipment/equipment-6.jpg" style="display: block; width: 100%; height: auto;" 
                                  alt="Vista do SOX406" 
                                  class="thumbnail"
                                  onclick="document.querySelector('.equipment-main-img').src='images/equipment/equipment-6.jpg'" loading="lazy" onerror="this.style.display='none'; console.error('Imagem não encontrada:', this.src);">
@@ -1462,7 +1482,7 @@
                 <div class="components-detailed">
                     <div class="component-showcase">
                         <div class="component-main">
-                            <img src="images/equipment/equipment-6.jpg" 
+                            <img src="images/equipment/equipment-6.jpg" style="display: block; width: 100%; height: auto;" 
                                  alt="Vista dos componentes SOX406" 
                                  class="exploded-view"
                                  loading="lazy" onerror="this.style.display='none'; console.error('Imagem não encontrada:', this.src);">
