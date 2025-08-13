@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Biorreator | EleveLab</title>
+    <meta name="description" content="Manual interativo do Biorreator Autoclavável de Bancada - EleveLab Equipamentos Científicos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+
+<body class="loading">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circles">
+                        <div class="circle-row">
+                            <div class="circle large"></div>
+                        </div>
+                        <div class="circle-row">
+                            <div class="circle medium"></div>
+                            <div class="circle small"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-text">EleveLab</div>
+                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="../../index.html" class="btn btn-secondary">← Voltar ao Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="nav">
+        <div class="container">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </button>
+            <div class="nav-content" id="navContent">
+                <span class="nav-item active" onclick="showSection('overview', this)">Visão Geral</span>
+                <span class="nav-item" onclick="showSection('specifications', this)">Especificações</span>
+                <span class="nav-item" onclick="showSection('components', this)">Componentes</span>
+                <span class="nav-item" onclick="showSection('installation', this)">Instalação</span>
+                <span class="nav-item" onclick="showSection('operation', this)">Operação</span>
+                <span class="nav-item" onclick="showSection('samples', this)">Cultivos</span>
+                <span class="nav-item" onclick="showSection('maintenance', this)">Manutenção</span>
+                <span class="nav-item" onclick="showSection('troubleshooting', this)">Solução de Problemas</span>
+                <span class="nav-item" onclick="showSection('warranty', this)">Garantia</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Seção: Visão Geral -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">Biorreator Autoclavável de Bancada</h1>
+                    <p class="section-subtitle">Manual do Usuário - Sistema de cultivo celular e fermentação com controle automático de parâmetros</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">🔬</div>
+                    <div class="warning-content">
+                        <strong>EQUIPAMENTO ESTERILIZÁVEL:</strong> Todo o sistema pode ser autoclavado a 121°C para garantir condições assépticas.
+                    </div>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Biorreator de Bancada</h2>
+                    <div class="equipment-image">
+                        Sistema de Biorreator Autoclavável 1-10L
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">Biorreator EleveLab</h2>
+                    <p class="highlight-content">Sistema completo de cultivo celular com controle automático de pH, temperatura, oxigênio dissolvido, agitação e aeração. Ideal para pesquisa, desenvolvimento e produção em pequena escala.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎯 Aplicações Principais</h2>
+                        <div class="card-content">
+                            <p>O Biorreator é utilizado para:</p>
+                            <ul>
+                                <li><strong>Biotecnologia:</strong> Cultivo de bactérias e leveduras</li>
+                                <li><strong>Farmacêutica:</strong> Produção de metabólitos</li>
+                                <li><strong>Alimentar:</strong> Fermentação de probióticos</li>
+                                <li><strong>Pesquisa:</strong> Estudos de bioprocessos</li>
+                                <li><strong>Educação:</strong> Treinamento em bioengenharia</li>
+                                <li><strong>Desenvolvimento:</strong> Scale-up de processos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚗️ Princípio de Funcionamento</h2>
+                        <div class="card-content">
+                            <p>O biorreator mantém <strong>condições controladas</strong> para crescimento microbiano otimizado.</p>
+                            <p style="margin-top: 15px;">Controla pH, temperatura, agitação, aeração e oxigênio dissolvido em tempo real, com adição automática de reagentes conforme necessário.</p>
+                            <p style="margin-top: 15px;"><strong>Sistema fechado:</strong> Operação asséptica com filtros estéreis para ar e saídas de gases.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Especificações -->
+            <section id="specifications" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Características técnicas e de desempenho do Biorreator</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Especificação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Volume útil</td><td>1L, 3L, 5L, 10L (configurável)</td></tr>
+                            <tr><td>Controle de pH</td><td>4,0 - 12,0 ±0,05</td></tr>
+                            <tr><td>Controle de temperatura</td><td>15°C - 80°C ±0,5°C</td></tr>
+                            <tr><td>Controle de OD</td><td>0 - 150% saturação ±2%</td></tr>
+                            <tr><td>Agitação</td><td>50 - 1200 rpm ±5 rpm</td></tr>
+                            <tr><td>Aeração</td><td>0,1 - 5,0 vvm</td></tr>
+                            <tr><td>Pressão máxima</td><td>2,0 bar (teste)</td></tr>
+                            <tr><td>Esterilização</td><td>121°C por 20 min</td></tr>
+                            <tr><td>Interface</td><td>Touchscreen 10" colorido</td></tr>
+                            <tr><td>Comunicação</td><td>Ethernet, USB, RS485</td></tr>
+                            <tr><td>Potência total</td><td>2,5 KW</td></tr>
+                            <tr><td>Peso</td><td>80 kg (modelo 10L)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎛️ Características Avançadas</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Controle PID</strong> para todos os parâmetros</li>
+                                <li><strong>Bombas peristálticas</strong> para adição de reagentes</li>
+                                <li><strong>Sensores calibráveis</strong> pH, OD, temperatura</li>
+                                <li><strong>Sistema de espuma</strong> com sensor e controle</li>
+                                <li><strong>Aquisição de dados</strong> contínua em tempo real</li>
+                                <li><strong>Receitas programáveis</strong> com até 50 fases</li>
+                                <li><strong>Alarmes configuráveis</strong> para todos parâmetros</li>
+                                <li><strong>Backup automático</strong> de dados e configurações</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🏭 Condições de Trabalho</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Tensão:</strong> 220V monofásico com terra</li>
+                                <li><strong>Ar comprimido:</strong> Filtrado, seco, 2-6 bar</li>
+                                <li><strong>Água:</strong> Destilada/deionizada para refrigeração</li>
+                                <li><strong>Ambiente:</strong> Temperatura 20°C-28°C</li>
+                                <li><strong>Espaço:</strong> Bancada 1,2m x 0,8m mínimo</li>
+                                <li><strong>Ventilação:</strong> Para dissipação de calor</li>
+                                <li><strong>Segurança:</strong> Proteção elétrica classe I</li>
+                                <li><strong>Reagentes:</strong> Reservatórios estéreis inclusos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demais seções seguem o padrão estabelecido... -->
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/navigation.js"></script>
+</body>
+</html>

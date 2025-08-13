@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual {{EQUIPMENT_NAME}} | EleveLab</title>
+    <meta name="description" content="Manual interativo do {{EQUIPMENT_NAME}} - EleveLab Equipamentos Científicos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+
+<body class="loading">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circles">
+                        <div class="circle-row">
+                            <div class="circle large"></div>
+                        </div>
+                        <div class="circle-row">
+                            <div class="circle medium"></div>
+                            <div class="circle small"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-text">EleveLab</div>
+                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="../../index.html" class="btn btn-secondary">← Voltar ao Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="nav">
+        <div class="container">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </button>
+            <div class="nav-content" id="navContent">
+                <span class="nav-item active" onclick="showSection('overview', this)">Visão Geral</span>
+                <span class="nav-item" onclick="showSection('specifications', this)">Especificações</span>
+                <span class="nav-item" onclick="showSection('components', this)">Componentes</span>
+                <span class="nav-item" onclick="showSection('installation', this)">Instalação</span>
+                <span class="nav-item" onclick="showSection('operation', this)">Operação</span>
+                <span class="nav-item" onclick="showSection('samples', this)">Amostras</span>
+                <span class="nav-item" onclick="showSection('maintenance', this)">Manutenção</span>
+                <span class="nav-item" onclick="showSection('troubleshooting', this)">Solução de Problemas</span>
+                <span class="nav-item" onclick="showSection('warranty', this)">Garantia</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Seção: Visão Geral -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">{{EQUIPMENT_FULL_NAME}}</h1>
+                    <p class="section-subtitle">{{EQUIPMENT_DESCRIPTION}}</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <strong>IMPORTANTE:</strong> Leia este manual cuidadosamente antes da instalação e operação do equipamento.
+                    </div>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">{{EQUIPMENT_NAME}}</h2>
+                    <div class="equipment-image">
+                        {{EQUIPMENT_IMAGE_PLACEHOLDER}}
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">{{HIGHLIGHT_TITLE}}</h2>
+                    <p class="highlight-content">{{HIGHLIGHT_DESCRIPTION}}</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎯 Aplicações Principais</h2>
+                        <div class="card-content">
+                            {{APPLICATIONS_CONTENT}}
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚗️ Princípio de Funcionamento</h2>
+                        <div class="card-content">
+                            {{WORKING_PRINCIPLE_CONTENT}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Especificações -->
+            <section id="specifications" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Características técnicas e de desempenho do equipamento {{EQUIPMENT_NAME}}</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Especificação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{SPECIFICATIONS_TABLE}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎛️ Características Avançadas</h2>
+                        <div class="card-content">
+                            {{ADVANCED_FEATURES}}
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🏭 Condições de Trabalho</h2>
+                        <div class="card-content">
+                            {{WORKING_CONDITIONS}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Componentes -->
+            <section id="components" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Componentes do Instrumento</h1>
+                    <p class="section-subtitle">Identificação dos componentes principais do equipamento</p>
+                </div>
+
+                <div class="image-grid">
+                    {{COMPONENTS_IMAGES}}
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🔧 Componentes Principais</h2>
+                        <div class="card-content">
+                            {{MAIN_COMPONENTS}}
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">💧 Sistema de Refrigeração</h2>
+                        <div class="card-content">
+                            {{COOLING_SYSTEM}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Instalação -->
+            <section id="installation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instalação do Instrumento</h1>
+                    <p class="section-subtitle">Procedimentos para instalação correta e segura do equipamento</p>
+                </div>
+
+                <div class="steps-list">
+                    {{INSTALLATION_STEPS}}
+                </div>
+            </section>
+
+            <!-- Seção: Operação -->
+            <section id="operation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instruções de Operação</h1>
+                    <p class="section-subtitle">Como operar o equipamento corretamente</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🧪 Reagentes Necessários</h2>
+                        <div class="card-content">
+                            {{REAGENTS_CONTENT}}
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚙️ Interface do Usuário</h2>
+                        <div class="card-content">
+                            {{USER_INTERFACE_CONTENT}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    {{OPERATION_IMAGES}}
+                </div>
+
+                <div class="steps-list">
+                    {{OPERATION_STEPS}}
+                </div>
+            </section>
+
+            <!-- Seção: Amostras -->
+            <section id="samples" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Preparo de Amostras</h1>
+                    <p class="section-subtitle">Procedimentos para preparo adequado das amostras</p>
+                </div>
+
+                <div class="content-grid">
+                    {{SAMPLE_TYPES}}
+                </div>
+
+                <div class="steps-list">
+                    {{SAMPLE_PREPARATION_STEPS}}
+                </div>
+            </section>
+
+            <!-- Seção: Manutenção -->
+            <section id="maintenance" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Manutenção Preventiva</h1>
+                    <p class="section-subtitle">Procedimentos para garantir o bom funcionamento do equipamento</p>
+                </div>
+
+                <div class="steps-list">
+                    {{MAINTENANCE_STEPS}}
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">📅 Cronograma de Manutenção</h2>
+                    <div class="highlight-content">
+                        {{MAINTENANCE_SCHEDULE}}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Solução de Problemas -->
+            <section id="troubleshooting" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Solução de Problemas</h1>
+                    <p class="section-subtitle">Identificação e correção de falhas comuns</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problema</th>
+                                <th>Possíveis Causas</th>
+                                <th>Solução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{TROUBLESHOOTING_TABLE}}
+                        </tbody>
+                    </table>
+                </div>
+
+                {{ADDITIONAL_TROUBLESHOOTING}}
+            </section>
+
+            <!-- Seção: Garantia -->
+            <section id="warranty" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Informações de Garantia</h1>
+                    <p class="section-subtitle">Condições de garantia e suporte técnico EleveLab</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🛡️ Termos de Garantia</h2>
+                        <div class="card-content">
+                            <p><strong>Período:</strong> Um ano a partir da data de venda (nota fiscal).</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Cobertura:</strong></p>
+                            <ul>
+                                <li>Defeitos de fabricação</li>
+                                <li>Falhas em componentes eletrônicos</li>
+                                <li>Problemas no sistema de aquecimento</li>
+                                <li>Mão de obra especializada</li>
+                                <li>Peças de reposição originais</li>
+                            </ul>
+                            
+                            <p style="margin-top: 15px;"><strong>Exclusões:</strong> Uso inadequado, desmontagem não autorizada, desgaste natural, acidentes.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">📞 Suporte EleveLab</h2>
+                        <div class="card-content">
+                            <p><strong>Contato:</strong></p>
+                            <p>📱 (51) 9 9858-4548</p>
+                            <p>📧 contato@elevelab.com.br</p>
+                            <p>🌐 www.elevelab.com.br</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Endereço:</strong></p>
+                            <p>Av. Benjamin Constant 19, Loja 35<br>São João, Porto Alegre-RS<br>CEP: 90550-003</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Horário:</strong></p>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">🎯 Compromisso EleveLab</h2>
+                    <div class="highlight-content">
+                        "A EleveLab se compromete em fornecer equipamentos científicos de qualidade superior, acompanhados de suporte técnico especializado e treinamento adequado para garantir o máximo aproveitamento de seu investimento."
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">📋</div>
+                    <div class="warning-content">
+                        <strong>Considerações de Segurança:</strong><br>
+                        {{SAFETY_CONSIDERATIONS}}
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EleveLab</h3>
+                    <p>Equipamentos Científicos de Qualidade</p>
+                    <p>Soluções inovadoras para laboratórios de análise, pesquisa e desenvolvimento em diversos segmentos industriais.</p>
+                    <div style="margin-top: 20px;">
+                        <div class="logo-circles">
+                            <div class="circle-row">
+                                <div class="circle large"></div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle medium"></div>
+                                <div class="circle small"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><strong>Telefone/WhatsApp:</strong></p>
+                    <p>(51) 9 9858-4548</p>
+                    <p><strong>Email:</strong></p>
+                    <a href="mailto:contato@elevelab.com.br">contato@elevelab.com.br</a>
+                    <p><strong>Website:</strong></p>
+                    <a href="https://www.elevelab.com.br" target="_blank">www.elevelab.com.br</a>
+                    <p><strong>Endereço:</strong></p>
+                    <p>Av. Benjamin Constant 19, Loja 35<br>São João, Porto Alegre-RS, 90550-003</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Produtos & Serviços</h3>
+                    <p>• Determinadores de Gordura</p>
+                    <p>• Analisadores de Fibras</p>
+                    <p>• Destiladores de Nitrogênio</p>
+                    <p>• Biorreatores e Fotobiorreatores</p>
+                    <p>• Equipamentos de Laboratório</p>
+                    <p style="margin-top: 15px;"><strong>Suporte Técnico:</strong></p>
+                    <p>• Instalação e Treinamento</p>
+                    <p>• Manutenção Preventiva</p>
+                    <p>• Assistência Técnica</p>
+                    <p>• Peças de Reposição</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px;">Manual do {{EQUIPMENT_NAME}} | Versão {{VERSION}} | {{DATE}}</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Analisador de Fibras | EleveLab</title>
+    <meta name="description" content="Manual interativo do Analisador de Fibras Automatizado - EleveLab Equipamentos Científicos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+
+<body class="loading">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circles">
+                        <div class="circle-row">
+                            <div class="circle large"></div>
+                        </div>
+                        <div class="circle-row">
+                            <div class="circle medium"></div>
+                            <div class="circle small"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-text">EleveLab</div>
+                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="../../index.html" class="btn btn-secondary">← Voltar ao Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="nav">
+        <div class="container">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </button>
+            <div class="nav-content" id="navContent">
+                <span class="nav-item active" onclick="showSection('overview', this)">Visão Geral</span>
+                <span class="nav-item" onclick="showSection('specifications', this)">Especificações</span>
+                <span class="nav-item" onclick="showSection('components', this)">Componentes</span>
+                <span class="nav-item" onclick="showSection('installation', this)">Instalação</span>
+                <span class="nav-item" onclick="showSection('operation', this)">Operação</span>
+                <span class="nav-item" onclick="showSection('samples', this)">Amostras</span>
+                <span class="nav-item" onclick="showSection('maintenance', this)">Manutenção</span>
+                <span class="nav-item" onclick="showSection('troubleshooting', this)">Solução de Problemas</span>
+                <span class="nav-item" onclick="showSection('warranty', this)">Garantia</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Seção: Visão Geral -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">Analisador de Fibras Automatizado</h1>
+                    <p class="section-subtitle">Manual do Usuário - Equipamento de alta precisão para determinação de fibras em alimentos e rações baseado no método Van Soest</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <strong>IMPORTANTE:</strong> Leia este manual cuidadosamente antes da instalação e operação do equipamento.
+                    </div>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Analisador de Fibras</h2>
+                    <div class="equipment-image">
+                        Sistema de Análise de Fibras Automatizado
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">Analisador de Fibras EleveLab</h2>
+                    <p class="highlight-content">Sistema automatizado para análise de fibras em alimentos e rações. Realiza digestão ácida, alcalina e determinação gravimétrica de forma completamente automatizada, seguindo o método Van Soest modificado.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎯 Aplicações Principais</h2>
+                        <div class="card-content">
+                            <p>O Analisador de Fibras é projetado para medir:</p>
+                            <ul>
+                                <li><strong>Nutrição Animal:</strong> FDA (Fibra em Detergente Ácido)</li>
+                                <li><strong>Rações & Forragens:</strong> FDN (Fibra em Detergente Neutro)</li>
+                                <li><strong>Alimentos:</strong> Fibra bruta e alimentar</li>
+                                <li><strong>Pesquisa:</strong> Lignina e celulose</li>
+                                <li><strong>Qualidade:</strong> Hemicelulose e pectina</li>
+                                <li><strong>Controle:</strong> Valor nutritivo de forragens</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚗️ Princípio de Funcionamento</h2>
+                        <div class="card-content">
+                            <p>O instrumento utiliza o <strong>método Van Soest modificado</strong> para determinação sequencial de fibras.</p>
+                            <p style="margin-top: 15px;">O processo envolve digestão com detergente neutro para FDN, seguida por digestão com detergente ácido para FDA, permitindo o cálculo de hemicelulose por diferença.</p>
+                            <p style="margin-top: 15px;"><strong>Automação completa:</strong> Controle de temperatura, tempo, agitação e filtragem automáticos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">🔬</div>
+                    <div class="warning-content">
+                        <strong>MÉTODO VALIDADO:</strong> Segue normas AOAC 973.18 (FDA) e Van Soest modificado (FDN) para garantir resultados precisos e reprodutíveis.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Especificações -->
+            <section id="specifications" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Características técnicas e de desempenho do Analisador de Fibras</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Especificação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Capacidade de processamento</td><td>12 amostras/lote</td></tr>
+                            <tr><td>Faixa de controle de temperatura</td><td>Ambiente +5 a 200°C</td></tr>
+                            <tr><td>Precisão de controle de temperatura</td><td>±2°C</td></tr>
+                            <tr><td>Quantidade de amostra</td><td>0,5-2,0 g</td></tr>
+                            <tr><td>Volume do béquer</td><td>600 mL</td></tr>
+                            <tr><td>Tipo de filtração</td><td>Cadinho poroso (porosidade 1)</td></tr>
+                            <tr><td>Tempo de análise FDN</td><td>60 minutos</td></tr>
+                            <tr><td>Tempo de análise FDA</td><td>60 minutos</td></tr>
+                            <tr><td>Potência nominal</td><td>3KW</td></tr>
+                            <tr><td>Tensão de operação</td><td>220 VAC ±10% 50Hz</td></tr>
+                            <tr><td>Dimensões externas (mm)</td><td>800×500×900</td></tr>
+                            <tr><td>Peso</td><td>65 kg</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎛️ Características Avançadas</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Tela touchscreen 7"</strong> com interface intuitiva</li>
+                                <li><strong>Controle PID</strong> para temperatura precisa</li>
+                                <li><strong>Sistema de agitação</strong> com velocidade variável</li>
+                                <li><strong>Bomba de vácuo integrada</strong> para filtragem</li>
+                                <li><strong>Programa sequencial automático</strong> FDN → FDA</li>
+                                <li><strong>Lavagem automática</strong> dos cadinhos</li>
+                                <li><strong>Monitoramento contínuo</strong> de todos os parâmetros</li>
+                                <li><strong>Armazenamento de dados</strong> e relatórios</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🏭 Condições de Trabalho</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Tensão:</strong> 220V 50Hz trifásico com proteção</li>
+                                <li><strong>Água:</strong> Pressão mínima 2 bar, fluxo 3-5 L/min</li>
+                                <li><strong>Vácuo:</strong> Sistema integrado, -0,8 bar</li>
+                                <li><strong>Exaustão:</strong> Capela ou sistema de ventilação</li>
+                                <li><strong>Ambiente:</strong> Temperatura 15°C-30°C</li>
+                                <li><strong>Umidade:</strong> Máximo 85% UR</li>
+                                <li><strong>Instalação:</strong> Bancada resistente (70kg)</li>
+                                <li><strong>Espaço:</strong> 50cm livres em todas as laterais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Componentes -->
+            <section id="components" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Componentes do Sistema</h1>
+                    <p class="section-subtitle">Identificação dos componentes principais do analisador</p>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-card">
+                        <div class="image-placeholder">
+                            Sistema Principal<br>12 Posições
+                        </div>
+                        <div class="image-caption">Bloco de aquecimento com 12 posições para béqueres</div>
+                    </div>
+                    
+                    <div class="image-card">
+                        <div class="image-placeholder">
+                            Painel Touchscreen<br>7 polegadas
+                        </div>
+                        <div class="image-caption">Interface de controle com tela sensível ao toque</div>
+                    </div>
+                    
+                    <div class="image-card">
+                        <div class="image-placeholder">
+                            Sistema de Vácuo<br>Bomba Integrada
+                        </div>
+                        <div class="image-caption">Bomba de vácuo para filtragem automática</div>
+                    </div>
+                    
+                    <div class="image-card">
+                        <div class="image-placeholder">
+                            Cadinhos Porosos<br>Porosidade 1
+                        </div>
+                        <div class="image-caption">Cadinhos de vidro sinterizado para filtragem</div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🔧 Componentes Principais</h2>
+                        <div class="card-content">
+                            <ol>
+                                <li><strong>Bloco de Aquecimento:</strong> 12 posições com controle individual de temperatura</li>
+                                <li><strong>Sistema de Agitação:</strong> Motores independentes para cada posição</li>
+                                <li><strong>Condensadores:</strong> Sistema de refrigeração por água</li>
+                                <li><strong>Béqueres:</strong> 600mL em vidro borossilicato</li>
+                                <li><strong>Cadinhos Porosos:</strong> Vidro sinterizado porosidade 1</li>
+                                <li><strong>Bomba de Vácuo:</strong> Sistema integrado com controle</li>
+                                <li><strong>Painel de Controle:</strong> Touchscreen 7" colorido</li>
+                                <li><strong>Sistema de Segurança:</strong> Sensores e alarmes</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">💧 Sistema Hidráulico</h2>
+                        <div class="card-content">
+                            <p><strong>Entrada de Água:</strong> Conexão 1/2" com válvula reguladora</p>
+                            <p style="margin-top: 15px;"><strong>Refrigeração:</strong> Circuito fechado para condensadores</p>
+                            <p style="margin-top: 15px;"><strong>Lavagem:</strong> Sistema automatizado de limpeza</p>
+                            
+                            <div class="warning-box" style="margin-top: 20px;">
+                                <div class="warning-icon">💧</div>
+                                <div class="warning-content">
+                                    <strong>Requisitos Críticos:</strong><br>
+                                    • Pressão mínima 2 bar para funcionamento adequado<br>
+                                    • Água filtrada para evitar entupimentos<br>
+                                    • Drenagem livre para descarte de efluentes<br>
+                                    • Qualidade da água: máximo 200 ppm CaCO₃
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Instalação -->
+            <section id="installation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instalação do Sistema</h1>
+                    <p class="section-subtitle">Procedimentos para instalação correta e segura do equipamento</p>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Preparação do Local</div>
+                        <div class="step-content">
+                            <p><strong>Requisitos de Infraestrutura:</strong></p>
+                            <ul>
+                                <li>Bancada: Suporte para 70kg, dimensões mínimas 1m x 0,6m</li>
+                                <li>Ventilação: Capela ou exaustão obrigatória</li>
+                                <li>Energia: 220V trifásico com neutro e terra</li>
+                                <li>Água: Pressão 2-6 bar, fluxo 3-5 L/min</li>
+                                <li>Drenagem: Para descarte de reagentes</li>
+                                <li>Espaço: 50cm livres em todas as direções</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Conexões Elétricas</div>
+                        <div class="step-content">
+                            <div class="warning-box">
+                                <div class="warning-icon">⚡</div>
+                                <div class="warning-content">
+                                    <strong>INSTALAÇÃO ELÉTRICA:</strong><br>
+                                    • Disjuntor tripolar 25A<br>
+                                    • Dispositivo DR 30mA<br>
+                                    • Fio terra dedicado<br>
+                                    • Aterramento < 10Ω
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Conexões Hidráulicas</div>
+                        <div class="step-content">
+                            <p>Conectar entrada de água (1/2") e sistema de drenagem. Testar pressão e fluxo antes da primeira utilização.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Calibração Inicial</div>
+                        <div class="step-content">
+                            <p>Após instalação, realizar calibração de temperatura e teste de funcionalidade com técnico EleveLab.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Operação -->
+            <section id="operation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instruções de Operação</h1>
+                    <p class="section-subtitle">Como operar o analisador corretamente</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🧪 Reagentes Necessários</h2>
+                        <div class="card-content">
+                            <p><strong>Solução Detergente Neutro (FDN):</strong></p>
+                            <ul>
+                                <li>EDTA dissódico: 18,61g</li>
+                                <li>Borato de sódio: 6,81g</li>
+                                <li>Fosfato de sódio dibásico: 4,56g</li>
+                                <li>Lauril sulfato de sódio: 30g</li>
+                                <li>2-Etoxietanol: 10mL</li>
+                                <li>Água destilada: completar 1L</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Solução Detergente Ácido (FDA):</strong></p>
+                            <ul>
+                                <li>Brometo de cetiltrimetilamônio: 20g</li>
+                                <li>Ácido sulfúrico 1M: 1L</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚙️ Interface do Sistema</h2>
+                        <div class="card-content">
+                            <p><strong>Recursos da Interface:</strong></p>
+                            <ul>
+                                <li>Touchscreen colorido 7"</li>
+                                <li>Programas pré-configurados</li>
+                                <li>Monitoramento em tempo real</li>
+                                <li>Alarmes visuais e sonoros</li>
+                                <li>Relatórios automáticos</li>
+                                <li>Backup de dados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Preparação do Sistema</div>
+                        <div class="step-content">
+                            <p>Verificar nível dos reagentes, limpeza dos cadinhos e funcionamento da bomba de vácuo.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Configuração do Método</div>
+                        <div class="step-content">
+                            <p>Selecionar programa: FDN (Fibra Detergente Neutro), FDA (Fibra Detergente Ácido) ou sequencial FDN+FDA.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Carregamento das Amostras</div>
+                        <div class="step-content">
+                            <p>Pesar 0,5-1,0g de amostra em cadinhos previamente pesados. Adicionar 100mL da solução detergente.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Execução Automática</div>
+                        <div class="step-content">
+                            <p>O sistema executará automaticamente: aquecimento, digestão, agitação, filtragem e lavagem.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Amostras -->
+            <section id="samples" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Preparo de Amostras</h1>
+                    <p class="section-subtitle">Procedimentos para preparo adequado das amostras</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🌾 Forragens e Fenos</h2>
+                        <div class="card-content">
+                            <p><strong>Preparação:</strong> Secar a 65°C por 48h, moer em malha de 1mm.</p>
+                            <p style="margin-top: 15px;"><strong>Quantidade:</strong> 0,5-1,0g em cadinho pré-pesado.</p>
+                            <p style="margin-top: 15px;"><strong>Observação:</strong> Material com alta umidade deve ser pré-seco.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🌽 Rações e Concentrados</h2>
+                        <div class="card-content">
+                            <p><strong>Preparação:</strong> Moer finamente (malha 1mm), homogeneizar bem.</p>
+                            <p style="margin-top: 15px;"><strong>Quantidade:</strong> 0,8-1,2g dependendo do teor esperado de fibra.</p>
+                            <p style="margin-top: 15px;"><strong>Cuidado:</strong> Rações com alto teor de gordura necessitam desengorduramento prévio.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Secagem e Moagem</div>
+                        <div class="step-content">
+                            <p>Secar amostra a 65°C até peso constante. Moer em malha de 1mm e armazenar em recipiente hermético.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Pesagem</div>
+                        <div class="step-content">
+                            <p>Pesar 0,5-1,2g em cadinho poroso previamente seco e pesado. Anotar peso com precisão de 0,0001g.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Adição do Detergente</div>
+                        <div class="step-content">
+                            <p>Adicionar 100mL da solução detergente (neutro ou ácido) ao cadinho com amostra.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Manutenção -->
+            <section id="maintenance" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Manutenção Preventiva</h1>
+                    <p class="section-subtitle">Procedimentos para garantir o bom funcionamento do equipamento</p>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Limpeza Diária</div>
+                        <div class="step-content">
+                            <p>Limpar béqueres, cadinhos e superfícies. Verificar funcionamento da bomba de vácuo e sistema de aquecimento.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Manutenção dos Cadinhos</div>
+                        <div class="step-content">
+                            <p>Lavar cadinhos com água quente, secar em estufa a 105°C. Verificar porosidade e substituir se necessário.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Sistema de Refrigeração</div>
+                        <div class="step-content">
+                            <p>Verificar fluxo de água, limpar filtros e inspecionar conexões. Descalcificar condensadores mensalmente.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Calibração</div>
+                        <div class="step-content">
+                            <p>Calibrar temperatura mensalmente com termômetro padrão. Verificar bomba de vácuo e sistema de agitação.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">📅 Cronograma de Manutenção</h2>
+                    <div class="highlight-content">
+                        <strong>Diário:</strong> Limpeza geral, verificação de reagentes<br>
+                        <strong>Semanal:</strong> Limpeza profunda dos cadinhos<br>
+                        <strong>Mensal:</strong> Calibração, descalcificação<br>
+                        <strong>Trimestral:</strong> Manutenção com técnico especializado
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Solução de Problemas -->
+            <section id="troubleshooting" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Solução de Problemas</h1>
+                    <p class="section-subtitle">Identificação e correção de falhas comuns</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problema</th>
+                                <th>Possíveis Causas</th>
+                                <th>Solução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Temperatura instável</strong></td>
+                                <td>Sensor descalibrado<br>Resistência defeituosa</td>
+                                <td>Calibrar sensor<br>Substituir resistência</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vácuo insuficiente</strong></td>
+                                <td>Vedação danificada<br>Bomba com problemas</td>
+                                <td>Verificar vedações<br>Manutenção da bomba</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Agitação irregular</strong></td>
+                                <td>Motor com defeito<br>Obstáculo no sistema</td>
+                                <td>Verificar motores<br>Limpar sistema</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Filtração lenta</strong></td>
+                                <td>Cadinho entupido<br>Vácuo baixo</td>
+                                <td>Limpar/substituir cadinho<br>Verificar bomba</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Resultados inconsistentes</strong></td>
+                                <td>Reagentes contaminados<br>Temperatura incorreta</td>
+                                <td>Renovar reagentes<br>Calibrar sistema</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title">📋 Valores de Referência</h2>
+                    <div class="card-content">
+                        <p><strong>Padrões de Controle (% MS):</strong></p>
+                        
+                        <div class="spec-table" style="margin-top: 20px;">
+                            <table style="margin: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>Material</th>
+                                        <th>FDN (%)</th>
+                                        <th>FDA (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Capim Tifton</td><td>65-75</td><td>30-35</td></tr>
+                                    <tr><td>Milho Grão</td><td>8-12</td><td>2-4</td></tr>
+                                    <tr><td>Soja Farelo</td><td>12-18</td><td>6-9</td></tr>
+                                    <tr><td>Alfafa Feno</td><td>45-55</td><td>25-30</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Garantia -->
+            <section id="warranty" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Informações de Garantia</h1>
+                    <p class="section-subtitle">Condições de garantia e suporte técnico EleveLab</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🛡️ Termos de Garantia</h2>
+                        <div class="card-content">
+                            <p><strong>Período:</strong> Um ano a partir da data de venda (nota fiscal).</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Cobertura:</strong></p>
+                            <ul>
+                                <li>Defeitos de fabricação</li>
+                                <li>Falhas em componentes eletrônicos</li>
+                                <li>Problemas no sistema de aquecimento</li>
+                                <li>Mão de obra especializada</li>
+                                <li>Peças de reposição originais</li>
+                            </ul>
+                            
+                            <p style="margin-top: 15px;"><strong>Exclusões:</strong> Uso inadequado, desmontagem não autorizada, desgaste natural, acidentes.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">📞 Suporte EleveLab</h2>
+                        <div class="card-content">
+                            <p><strong>Contato:</strong></p>
+                            <p>📱 (51) 9 9858-4548</p>
+                            <p>📧 contato@elevelab.com.br</p>
+                            <p>🌐 www.elevelab.com.br</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Endereço:</strong></p>
+                            <p>Av. Benjamin Constant 19, Loja 35<br>São João, Porto Alegre-RS<br>CEP: 90550-003</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Horário:</strong></p>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">🎯 Compromisso EleveLab</h2>
+                    <div class="highlight-content">
+                        "A EleveLab se compromete em fornecer equipamentos científicos de qualidade superior, acompanhados de suporte técnico especializado e treinamento adequado para garantir o máximo aproveitamento de seu investimento."
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">📋</div>
+                    <div class="warning-content">
+                        <strong>Considerações de Segurança:</strong><br>
+                        • Use sempre capela ou ventilação adequada<br>
+                        • Reagentes são corrosivos - use EPIs<br>
+                        • Não toque em superfícies quentes<br>
+                        • Sistema trabalha com vácuo - cuidado<br>
+                        • Manuseie cadinhos com cuidado<br>
+                        • Descarte reagentes adequadamente
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EleveLab</h3>
+                    <p>Equipamentos Científicos de Qualidade</p>
+                    <p>Soluções inovadoras para laboratórios de análise, pesquisa e desenvolvimento em diversos segmentos industriais.</p>
+                    <div style="margin-top: 20px;">
+                        <div class="logo-circles">
+                            <div class="circle-row">
+                                <div class="circle large"></div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle medium"></div>
+                                <div class="circle small"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><strong>Telefone/WhatsApp:</strong></p>
+                    <p>(51) 9 9858-4548</p>
+                    <p><strong>Email:</strong></p>
+                    <a href="mailto:contato@elevelab.com.br">contato@elevelab.com.br</a>
+                    <p><strong>Website:</strong></p>
+                    <a href="https://www.elevelab.com.br" target="_blank">www.elevelab.com.br</a>
+                    <p><strong>Endereço:</strong></p>
+                    <p>Av. Benjamin Constant 19, Loja 35<br>São João, Porto Alegre-RS, 90550-003</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Produtos & Serviços</h3>
+                    <p>• Determinadores de Gordura</p>
+                    <p>• Analisadores de Fibras</p>
+                    <p>• Destiladores de Nitrogênio</p>
+                    <p>• Biorreatores e Fotobiorreatores</p>
+                    <p>• Equipamentos de Laboratório</p>
+                    <p style="margin-top: 15px;"><strong>Suporte Técnico:</strong></p>
+                    <p>• Instalação e Treinamento</p>
+                    <p>• Manutenção Preventiva</p>
+                    <p>• Assistência Técnica</p>
+                    <p>• Peças de Reposição</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px;">Manual do Analisador de Fibras | Versão 1.0 | Janeiro 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/navigation.js"></script>
+</body>
+</html>

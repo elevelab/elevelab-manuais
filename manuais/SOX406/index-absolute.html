@@ -1,0 +1,2117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual SOX406 - Determinador de Gordura | EleveLab</title>
+    <meta name="description" content="Manual interativo do Determinador de Gordura SOX406 - EleveLab Equipamentos Científicos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #E73700;
+            --secondary-black: #1a1d1f;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --shadow: 0 10px 30px rgba(231, 55, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Fixo */
+        .header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary-orange);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-circles {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-end;
+        }
+        
+        .circle-row {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .circle {
+            background: var(--primary-orange);
+            border-radius: 50%;
+        }
+        
+        .circle.large { width: 20px; height: 20px; }
+        .circle.medium { width: 15px; height: 15px; }
+        .circle.small { width: 10px; height: 10px; }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-orange);
+        }
+        
+        .logo-subtitle {
+            font-size: 10px;
+            color: var(--secondary-black);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: -3px;
+        }
+        
+        /* Navegação */
+        .nav {
+            background: var(--secondary-black);
+            padding: 12px 0;
+            position: fixed;
+            top: 70px;
+            width: 100%;
+            z-index: 999;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            color: var(--white);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover,
+        .nav-item.active {
+            background: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+        
+        /* Menu Mobile */
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--primary-orange);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .hamburger {
+            width: 20px;
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Conteúdo Principal */
+        .main {
+            margin-top: 120px;
+            padding: 40px 0 80px 0;
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b3d);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Cards de Conteúdo */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-orange);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(231, 55, 0, 0.15);
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--secondary-black);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-content {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        .card-content ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .card-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* Showcase do Equipamento */
+        .equipment-showcase {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .equipment-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #dee2e6;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px auto;
+            color: #6c757d;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* Tabela de Especificações */
+        .spec-table {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+        }
+        
+        .spec-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .spec-table th {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .spec-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #f1f3f5;
+            font-weight: 500;
+        }
+        
+        .spec-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .spec-table tr:hover {
+            background: #fff3e0;
+        }
+        
+        /* Lista de Procedimentos */
+        .steps-list {
+            margin: 40px 0;
+        }
+        
+        .step-item {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            position: relative;
+            border-left: 5px solid var(--primary-orange);
+            transition: transform 0.3s ease;
+        }
+        
+        .step-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -20px;
+            top: 25px;
+            background: var(--primary-orange);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(231, 55, 0, 0.3);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: var(--secondary-black);
+            margin-bottom: 15px;
+            margin-left: 30px;
+            font-size: 1.2rem;
+        }
+        
+        .step-content {
+            margin-left: 30px;
+            line-height: 1.8;
+        }
+        
+        /* Caixas de Aviso */
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px solid var(--primary-orange);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .warning-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .warning-content {
+            margin-left: 60px;
+            color: var(--secondary-black);
+            font-weight: 500;
+        }
+        
+        /* Box de Destaque */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b3d);
+            color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(231, 55, 0, 0.3);
+        }
+        
+        .highlight-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+        
+        /* Grid de Imagens */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .image-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 2px dashed #dee2e6;
+        }
+        
+        .image-caption {
+            font-size: 14px;
+            color: var(--secondary-black);
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--secondary-black);
+            color: var(--white);
+            padding: 60px 0 40px 0;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-orange);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            margin-bottom: 12px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+        }
+        
+        .footer-bottom p {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-content {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 20px 0;
+            }
+            
+            .nav-content.active {
+                display: flex;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .equipment-showcase {
+                padding: 30px 20px;
+            }
+            
+            .step-number {
+                position: relative;
+                left: 0;
+                margin-bottom: 15px;
+            }
+            
+            .step-title,
+            .step-content {
+                margin-left: 0;
+            }
+            
+            .warning-icon {
+                position: relative;
+                margin-bottom: 15px;
+            }
+            
+            .warning-content {
+                margin-left: 0;
+            }
+        }
+        
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading */
+        .loading {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .loaded {
+            opacity: 1;
+        }
+    
+        /* Estilos para Galeria de Equipamento */
+        .equipment-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .equipment-main-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+
+        .equipment-main-img:hover {
+            transform: scale(1.02);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .main-image:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail.active,
+        .thumbnail:hover {
+            border-color: var(--primary-orange);
+            transform: scale(1.1);
+        }
+
+        .equipment-specs-visual {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .spec-highlight {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            min-width: 120px;
+        }
+
+        .spec-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-orange);
+            margin-bottom: 5px;
+        }
+
+        .spec-label {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Interface Gallery */
+        .interface-gallery {
+            margin: 40px 0;
+        }
+
+        .interface-gallery h3 {
+            text-align: center;
+            color: var(--secondary-black);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .interface-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .interface-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .interface-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .interface-caption {
+            padding: 20px;
+        }
+
+        .interface-caption h4 {
+            color: var(--secondary-black);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .interface-caption p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Components Detailed */
+        .components-detailed {
+            margin: 40px 0;
+        }
+
+        .component-showcase {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .component-main {
+            position: relative;
+        }
+
+        .exploded-view {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .component-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .marker {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .marker-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-orange);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(231, 55, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .marker:hover .marker-number {
+            transform: scale(1.2);
+        }
+
+        .marker-tooltip {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-black);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .marker:hover .marker-tooltip {
+            opacity: 1;
+        }
+
+        .component-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .component-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .component-item:hover,
+        .component-item.active {
+            background: var(--light-gray);
+            border-color: var(--primary-orange);
+        }
+
+        .component-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .component-info h4 {
+            font-size: 1rem;
+            color: var(--secondary-black);
+            margin-bottom: 5px;
+        }
+
+        .component-info p {
+            font-size: 0.85rem;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Operation Visual Guide */
+        .operation-visual-guide {
+            margin: 40px 0;
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .operation-visual-guide h3 {
+            text-align: center;
+            color: var(--secondary-black);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .operation-steps-visual {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .step-visual {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            transition: var(--transition);
+        }
+
+        .step-visual:hover {
+            background: var(--light-gray);
+        }
+
+        .step-image {
+            flex-shrink: 0;
+        }
+
+        .step-image img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .step-description h4 {
+            color: var(--primary-orange);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .step-description p {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Responsive Images */
+        @media (max-width: 768px) {
+            .equipment-gallery {
+                max-width: 100%;
+            }
+
+            .equipment-main-img {
+                height: 250px;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+
+            .equipment-specs-visual {
+                gap: 20px;
+            }
+
+            .component-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .operation-steps-visual .step-visual {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .step-image img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* Image Loading States */
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        img[loading="lazy"].loaded {
+            opacity: 1;
+        }
+
+        /* Zoom Modal */
+        .image-zoom-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .image-zoom-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-zoom-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .zoom-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-orange);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+        }
+        </style>
+</head>
+
+<body class="loading">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circles">
+                        <div class="circle-row">
+                            <div class="circle large"></div>
+                        </div>
+                        <div class="circle-row">
+                            <div class="circle medium"></div>
+                            <div class="circle small"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-text">EleveLab</div>
+                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <div class="hamburger"></div>
+                    <div class="hamburger"></div>
+                    <div class="hamburger"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content" id="navContent">
+                <span class="nav-item active" onclick="showSection('overview', this)">Visão Geral</span>
+                <span class="nav-item" onclick="showSection('specifications', this)">Especificações</span>
+                <span class="nav-item" onclick="showSection('components', this)">Componentes</span>
+                <span class="nav-item" onclick="showSection('installation', this)">Instalação</span>
+                <span class="nav-item" onclick="showSection('operation', this)">Operação</span>
+                <span class="nav-item" onclick="showSection('samples', this)">Amostras</span>
+                <span class="nav-item" onclick="showSection('maintenance', this)">Manutenção</span>
+                <span class="nav-item" onclick="showSection('troubleshooting', this)">Solução de Problemas</span>
+                <span class="nav-item" onclick="showSection('warranty', this)">Garantia</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Seção: Visão Geral -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">Determinador de Gordura Automatizado</h1>
+                    <p class="section-subtitle">Manual do Usuário - SOX406 - Equipamento de alta precisão para análise de gordura baseado no princípio de extração Soxhlet</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <strong>IMPORTANTE:</strong> Leia este manual cuidadosamente antes da instalação e operação do equipamento.
+                    </div>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Determinador de Gordura SOX406</h2>
+                    <div class="equipment-gallery">
+                        <div class="main-image">
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/equipment/equipment-6.jpg?v=1" 
+                                 alt="Determinador de Gordura SOX406" 
+                                 class="equipment-main-img"
+                                 loading="eager"
+                                 onerror="console.error('Erro ao carregar:', this.src); this.style.border='2px solid red';"
+                                 onload="console.log('Imagem carregada:', this.src);">
+                        </div>
+                        <div class="thumbnail-gallery">
+                            
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/equipment/equipment-6.jpg?v=1754577709758" 
+                                 alt="Vista do SOX406" 
+                                 class="thumbnail"
+                                 onclick="document.querySelector('.equipment-main-img').src='images/equipment/equipment-6.jpg'">
+                            
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/equipment/equipment-7.jpg?v=1754577709758" 
+                                 alt="Vista do SOX406" 
+                                 class="thumbnail"
+                                 onclick="document.querySelector('.equipment-main-img').src='images/equipment/equipment-7.jpg'">
+                            
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/equipment/sox406-front.jpg?v=1754577709758" 
+                                 alt="Vista do SOX406" 
+                                 class="thumbnail"
+                                 onclick="document.querySelector('.equipment-main-img').src='images/equipment/sox406-front.jpg'">
+                            
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/equipment/sox406-inside.jpg?v=1754577709758" 
+                                 alt="Vista do SOX406" 
+                                 class="thumbnail"
+                                 onclick="document.querySelector('.equipment-main-img').src='images/equipment/sox406-inside.jpg'">
+                            
+                        </div>
+                    </div>
+                    <div class="equipment-specs-visual">
+                        <div class="spec-highlight">
+                            <span class="spec-number">6</span>
+                            <span class="spec-label">Posições de Amostra</span>
+                        </div>
+                        <div class="spec-highlight">
+                            <span class="spec-number">280°C</span>
+                            <span class="spec-label">Temperatura Máxima</span>
+                        </div>
+                        <div class="spec-highlight">
+                            <span class="spec-number">4.3"</span>
+                            <span class="spec-label">Display LCD</span>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">Extrator de Gordura Automatizado EleveLab</h2>
+                    <p class="highlight-content">Projetado com base no princípio de extração a quente para determinação do teor de gordura/extrato etéreo/lipídios. Necessita apenas um toque do operador para realizar as etapas de elevação, pré-aquecimento, extração, diluição e recuperação de solvente de forma automática.</p>
+                </div>
+
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎯 Aplicações Principais</h2>
+                        <div class="card-content">
+                            <p>O Analisador de Gordura SOX406 é projetado segundo a norma GB/T 14772-2008 e pode medir:</p>
+                            <ul>
+                                <li><strong>Alimentos & Bebidas:</strong> Análise de gordura em produtos alimentícios</li>
+                                <li><strong>Grãos & Óleos:</strong> Determinação de lipídios em sementes e grãos</li>
+                                <li><strong>Nutrição Animal:</strong> Extrato etéreo em rações</li>
+                                <li><strong>Farmacêuticas:</strong> Compostos orgânicos solúveis</li>
+                                <li><strong>Ambiental:</strong> Óleos e graxas em águas residuais</li>
+                                <li><strong>Química & Petroquímica:</strong> Análises de compostos orgânicos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚗️ Princípio de Funcionamento</h2>
+                        <div class="card-content">
+                            <p>O instrumento utiliza o método gravimétrico para medir o conteúdo de gordura de acordo com o <strong>princípio de extração Soxhlet</strong>.</p>
+                            <p style="margin-top: 15px;">Após a extração da amostra usando éter anidro ou éter de petróleo, a gordura é extraída da amostra, seca e pesada. A diferença de massa calculada antes e após a extração representa o conteúdo de gordura.</p>
+                            <p style="margin-top: 15px;"><strong>Automação completa:</strong> Cinco programas de extração para diferentes demandas com processo totalmente automatizado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚡</div>
+                    <div class="warning-content">
+                        <strong>ATENÇÃO - Risco de choque elétrico:</strong> Apenas pessoal profissional e qualificado pode abrir a tampa da máquina e o painel. O equipamento conta com dispositivo de detecção de vazamento de éter integrado para garantir maior segurança experimental.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Especificações -->
+            <section id="specifications" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Características técnicas e de desempenho do equipamento SOX406</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Especificação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Faixa de controle de temperatura</td><td>Temperatura ambiente +5 a 280°C</td></tr>
+                            <tr><td>Precisão de controle de temperatura</td><td>±1°C</td></tr>
+                            <tr><td>Capacidade de processamento</td><td>6 amostras/lote</td></tr>
+                            <tr><td>Volume do copo de solvente</td><td>80 mL</td></tr>
+                            <tr><td>Quantidade de amostra</td><td>0,5-15 g (quantidade constante: 2-5 g)</td></tr>
+                            <tr><td>Taxa de recuperação do solvente</td><td>≥80%</td></tr>
+                            <tr><td>Faixa de medição</td><td>0-100%</td></tr>
+                            <tr><td>Potência nominal</td><td>1KW</td></tr>
+                            <tr><td>Tensão de operação</td><td>220 VAC ±10% 50Hz</td></tr>
+                            <tr><td>Dimensões externas (mm)</td><td>650×320×700</td></tr>
+                            <tr><td>Peso</td><td>35 kg</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎛️ Características Avançadas</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Tela LCD colorida de 4,3"</strong> com sistema de controle por microcomputador</li>
+                                <li><strong>Bloco de aquecimento único</strong> que fornece rápido aquecimento e maior uniformidade</li>
+                                <li><strong>Cinco programas de extração</strong> para atender diferentes demandas</li>
+                                <li><strong>Processo completamente automatizado</strong> - apenas um toque do operador</li>
+                                <li><strong>Dispositivo de detecção de vazamento</strong> integrado para segurança</li>
+                                <li><strong>Sistema triplo de alarme</strong> com som e texto na tela LCD</li>
+                                <li><strong>Tecnologia de isolamento</strong> de camada de ar única</li>
+                                <li><strong>Redução do consumo energético</strong> com maior eficiência</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🏭 Condições de Trabalho</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Tensão:</strong> 220V 50Hz com disjuntor e proteção contra vazamentos</li>
+                                <li><strong>Localização:</strong> Próximo a fonte de água e drenagem (máximo 1m)</li>
+                                <li><strong>Fluxo de água:</strong> 1~2 L/min com pressão adequada</li>
+                                <li><strong>Temperatura da água:</strong> Máximo 20°C</li>
+                                <li><strong>Ambiente:</strong> Temperatura entre 10°C-28°C</li>
+                                <li><strong>Instalação:</strong> Longe de equipamentos de alta potência</li>
+                                <li><strong>Ventilação:</strong> Local com boa circulação de ar</li>
+                                <li><strong>Segurança:</strong> Fio terra obrigatório com dispositivos de proteção</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+                <div class="interface-gallery">
+                    <h3>Interface do Usuário</h3>
+                    <div class="interface-grid">
+                        <div class="interface-card">
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-10.jpg?v=1754577709758" 
+                                 alt="Tela LCD" 
+                                 loading="lazy">
+                            <div class="interface-caption">
+                                <h4>Tela LCD</h4>
+                                <p>Interface principal do equipamento</p>
+                            </div>
+                        </div><div class="interface-card">
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-11.jpg?v=1754577709758" 
+                                 alt="Configurações" 
+                                 loading="lazy">
+                            <div class="interface-caption">
+                                <h4>Configurações</h4>
+                                <p>Ajuste de parâmetros</p>
+                            </div>
+                        </div><div class="interface-card">
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-12.jpg?v=1754577709758" 
+                                 alt="Em Operação" 
+                                 loading="lazy">
+                            <div class="interface-caption">
+                                <h4>Em Operação</h4>
+                                <p>Monitoramento em tempo real</p>
+                            </div>
+                        </div><div class="interface-card">
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-13.jpg?v=1754577709758" 
+                                 alt="Sistema de Alertas" 
+                                 loading="lazy">
+                            <div class="interface-caption">
+                                <h4>Sistema de Alertas</h4>
+                                <p>Avisos e alertas do sistema</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Seção: Componentes -->
+            <section id="components" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Componentes do Instrumento</h1>
+                    <p class="section-subtitle">Identificação dos componentes principais do equipamento</p>
+                </div>
+
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🔧 Componentes Principais</h2>
+                        <div class="card-content">
+                            <ol>
+                                <li><strong>Esferas Deslizantes:</strong> Permitem o movimento vertical dos tubos de condensação para diferentes fases do processo</li>
+                                <li><strong>Tubos de Condensação:</strong> Sistema de condensação eficiente para recuperação de solvente</li>
+                                <li><strong>Torneiras (Plug Cock):</strong> Controlam o fluxo de solvente durante o processo</li>
+                                <li><strong>Copos de Extração (80mL):</strong> Recipientes onde ocorre a extração da gordura</li>
+                                <li><strong>Chave Inglesa:</strong> Para manutenção e ajustes do sistema</li>
+                                <li><strong>Interface de Energia:</strong> Conexão elétrica principal com proteções</li>
+                                <li><strong>Interruptor de Energia:</strong> Controle principal de alimentação</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">💧 Sistema de Refrigeração</h2>
+                        <div class="card-content">
+                            <p><strong>Entrada de Água (1):</strong> Conectar à válvula de água corrente com fluxo de 1-2 L/min</p>
+                            <p style="margin-top: 15px;"><strong>Saída de Água (2):</strong> Conectar ao sistema de drenagem, pelo menos 10cm abaixo da saída</p>
+                            
+                            <div class="warning-box" style="margin-top: 20px;">
+                                <div class="warning-icon">💧</div>
+                                <div class="warning-content">
+                                    <strong>Requisitos Críticos:</strong><br>
+                                    • Fluxo constante de água para condensação eficiente<br>
+                                    • Temperatura da água não superior a 20°C<br>
+                                    • Pressão adequada para circulação contínua<br>
+                                    • Sistema de drenagem livre de obstruções
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Instalação -->
+            <section id="installation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instalação do Instrumento</h1>
+                    <p class="section-subtitle">Procedimentos para instalação correta e segura do equipamento</p>
+                </div>
+
+                <div class="operation-visual-guide">
+                    <h3>Guia Visual de Operação</h3>
+                    <div class="operation-steps-visual">
+                        
+                        <div class="step-visual">
+                            <div class="step-image">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/operation/step1-preparation.jpg?v=1754577709758" 
+                                     alt="Preparação" 
+                                     loading="lazy">
+                            </div>
+                            <div class="step-description">
+                                <h4>1. Preparação</h4>
+                                <p>Verificar nível de água e conectar mangueiras</p>
+                            </div>
+                        </div>
+                        <div class="step-visual">
+                            <div class="step-image">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-11.jpg?v=1754577709758" 
+                                     alt="Inserir Amostras" 
+                                     loading="lazy">
+                            </div>
+                            <div class="step-description">
+                                <h4>2. Inserir Amostras</h4>
+                                <p>Colocar amostras nos tubos com solvente</p>
+                            </div>
+                        </div>
+                        <div class="step-visual">
+                            <div class="step-image">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-12.jpg?v=1754577709758" 
+                                     alt="Configurar Programa" 
+                                     loading="lazy">
+                            </div>
+                            <div class="step-description">
+                                <h4>3. Configurar Programa</h4>
+                                <p>Selecionar temperatura e tempo</p>
+                            </div>
+                        </div>
+                        <div class="step-visual">
+                            <div class="step-image">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-13.jpg?v=1754577709758" 
+                                     alt="Iniciar Processo" 
+                                     loading="lazy">
+                            </div>
+                            <div class="step-description">
+                                <h4>4. Iniciar Processo</h4>
+                                <p>Processo automático de extração</p>
+                            </div>
+                        </div>
+                        <div class="step-visual">
+                            <div class="step-image">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-14.jpg?v=1754577709758" 
+                                     alt="Coleta de Resultados" 
+                                     loading="lazy">
+                            </div>
+                            <div class="step-description">
+                                <h4>5. Coleta de Resultados</h4>
+                                <p>Retirar tubos e pesar resíduo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>\n\n                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Inspeção Antes da Instalação</div>
+                        <div class="step-content">
+                            <p>Após desembalar o instrumento, verifique todos os componentes principais e acessórios:</p>
+                            <ul>
+                                <li>Equipamento principal SOX406</li>
+                                <li>6 copos de extração (80mL)</li>
+                                <li>Tubos de condensação</li>
+                                <li>Chave inglesa para manutenção</li>
+                                <li>Manual do usuário e certificado de garantia</li>
+                                <li>Cabo de alimentação e acessórios</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><strong>Importante:</strong> Verifique se há algum dano e, em caso positivo, entre em contato com a EleveLab imediatamente.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Preparação do Local</div>
+                        <div class="step-content">
+                            <p><strong>Requisitos Ambientais:</strong></p>
+                            <ul>
+                                <li>Temperatura: Entre 10°C-28°C</li>
+                                <li>Umidade: Ambiente controlado</li>
+                                <li>Ventilação: Boa circulação de ar</li>
+                                <li>Vibração: Superfície estável</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Requisitos de Infraestrutura:</strong></p>
+                            <ul>
+                                <li>Bancada: Superfície plana (suportar 35kg)</li>
+                                <li>Espaço traseiro: Mínimo 20cm da parede</li>
+                                <li>Água: Fonte a máximo 1m de distância</li>
+                                <li>Drenagem: 10cm abaixo da saída</li>
+                                <li>Energia: Tomada 220V com terra</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Instalação Elétrica</div>
+                        <div class="step-content">
+                            <div class="warning-box">
+                                <div class="warning-icon">⚡</div>
+                                <div class="warning-content">
+                                    <strong>INSTALAÇÃO ELÉTRICA OBRIGATÓRIA:</strong><br>
+                                    • Disjuntor dedicado para o equipamento<br>
+                                    • Dispositivo DR (proteção contra vazamentos)<br>
+                                    • Fio terra conectado adequadamente<br>
+                                    • Interruptor de alimentação separado
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Operação -->
+            <section id="operation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instruções de Operação</h1>
+                    <p class="section-subtitle">Como operar o equipamento corretamente</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🧪 Reagentes Necessários</h2>
+                        <div class="card-content">
+                            <p><strong>Solventes:</strong></p>
+                            <ul>
+                                <li>Éter anidro (puro para análise)</li>
+                                <li>Éter de petróleo (30-60°C)</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Equipamentos Auxiliares:</strong></p>
+                            <ul>
+                                <li>Balança analítica (0,0001 g)</li>
+                                <li>Papel de filtro (90 mm)</li>
+                                <li>Cilindro graduado (100 mL)</li>
+                                <li>Estufa de secagem</li>
+                                <li>Dessecador</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚙️ Interface do Usuário</h2>
+                        <div class="card-content">
+                            <p><strong>Recursos da Interface:</strong></p>
+                            <ul>
+                                <li>Tela LCD colorida de 4,3"</li>
+                                <li>Controle por microcomputador</li>
+                                <li>5 programas pré-definidos</li>
+                                <li>Alarmes sonoros e visuais</li>
+                                <li>Monitoramento em tempo real</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="components-detailed">
+                    <div class="component-showcase">
+                        <div class="component-main">
+                            <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/equipment/equipment-6.jpg?v=1754577709758" 
+                                 alt="Vista dos componentes SOX406" 
+                                 class="exploded-view"
+                                 loading="lazy">
+                            <div class="component-markers">
+                                <div class="marker" data-component="condensers" style="top: 20%; left: 30%;">
+                                    <span class="marker-number">1</span>
+                                    <div class="marker-tooltip">Sistema de Condensação</div>
+                                </div>
+                                <div class="marker" data-component="control" style="top: 60%; left: 80%;">
+                                    <span class="marker-number">2</span>
+                                    <div class="marker-tooltip">Painel de Controle</div>
+                                </div>
+                                <div class="marker" data-component="heater" style="top: 70%; left: 45%;">
+                                    <span class="marker-number">3</span>
+                                    <div class="marker-tooltip">Sistema de Aquecimento</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="component-details">
+                            <div class="component-item active" data-component="condensers">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-10.jpg?v=1754577709758" alt="Sistema de Condensação">
+                                <div class="component-info">
+                                    <h4>Sistema de Condensação</h4>
+                                    <p>Condensadores para recuperação de solvente</p>
+                                </div>
+                            </div>
+                            <div class="component-item" data-component="control">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-11.jpg?v=1754577709758" alt="Painel de Controle">
+                                <div class="component-info">
+                                    <h4>Painel de Controle</h4>
+                                    <p>Display LCD 4.3" com controle por microcomputador</p>
+                                </div>
+                            </div>
+                            <div class="component-item" data-component="heater">
+                                <img src="file:///Users/camilogralamerten/Projetos/elevelab-manuais/manuais/SOX406/images/interface/interface-12.jpg?v=1754577709758" alt="Sistema de Aquecimento">
+                                <div class="component-info">
+                                    <h4>Sistema de Aquecimento</h4>
+                                    <p>Aquecimento uniforme até 280°C com controle PID</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>\n\n                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🍎 Amostras de Alimentos</h2>
+                        <div class="card-content">
+                            <p><strong>Amostra Sólida:</strong> Pegue 200g mínimo, esmague em almofariz, passe por malha de 1,0 mm.</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Amostra em Pó:</strong> 200g mínimo, pulverize se necessário, passe por malha de 1,0 mm.</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Produtos Cárneus:</strong> Remova parte não comestível, 200g mínimo, moa duas vezes.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🌾 Amostras de Ração</h2>
+                        <div class="card-content">
+                            <p><strong>Baixo Teor de Gordura:</strong> Processar conforme amostras de alimentos.</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Alto Teor de Gordura (>200g/kg):</strong> Requer pré-extração prévia.</p>
+                            
+                            <div class="warning-box" style="margin-top: 20px;">
+                                <div class="warning-icon">⚠️</div>
+                                <div class="warning-content">
+                                    <strong>Importante:</strong> Amostras com alto teor de gordura podem interferir no processo de extração.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Pesagem da Amostra</div>
+                        <div class="step-content">
+                            <p>Use balança analítica para pesar <strong>2-5g</strong> da amostra com precisão de <strong>0,0001g</strong>. Coloque no cilindro de papel de filtro bem enrolado.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Preparação do Copo</div>
+                        <div class="step-content">
+                            <p>Seque o copo até peso constante. Registre o peso inicial. Adicione <strong>60 mL</strong> de solvente no copo de extração.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Processo Automatizado</div>
+                        <div class="step-content">
+                            <p>O equipamento executará automaticamente:</p>
+                            <ul>
+                                <li>Elevação e posicionamento</li>
+                                <li>Pré-aquecimento</li>
+                                <li>Extração principal</li>
+                                <li>Diluição e lavagem</li>
+                                <li>Recuperação do solvente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Manutenção -->
+            <section id="maintenance" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Manutenção Diária</h1>
+                    <p class="section-subtitle">Procedimentos para garantir o bom funcionamento do equipamento</p>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Ventilação e Refrigeração</div>
+                        <div class="step-content">
+                            <p>Mantenha boa ventilação. Verifique se há obstruções nas saídas de ar. Mantenha 20cm livres atrás do equipamento.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Gestão de Solventes</div>
+                        <div class="step-content">
+                            <p>Use o mesmo tipo de solvente no mesmo sistema. Rotule e mantenha pureza. Substitua solventes contaminados regularmente.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Limpeza do Equipamento</div>
+                        <div class="step-content">
+                            <div class="warning-box">
+                                <div class="warning-icon">⚠️</div>
+                                <div class="warning-content">
+                                    <strong>IMPORTANTE:</strong> Use sempre pano <strong>úmido</strong>. Pano seco pode gerar eletricidade estática perigosa.
+                                </div>
+                            </div>
+                            <p>Limpe superfícies externas diariamente. Use pano abrasivo na placa de aquecimento para remover cinzas.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Sistema de Resfriamento</div>
+                        <div class="step-content">
+                            <p>Verifique crescimento de algas. Monitore fluxo (1-2 L/min). Limpe com ácido clorídrico 1 mol/L se necessário.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">📅 Cronograma de Manutenção</h2>
+                    <div class="highlight-content">
+                        <strong>Diário:</strong> Limpeza externa, verificação de água<br>
+                        <strong>Semanal:</strong> Limpeza dos copos, verificação de conexões<br>
+                        <strong>Mensal:</strong> Calibração, limpeza do sistema<br>
+                        <strong>Trimestral:</strong> Manutenção com técnico especializado
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Solução de Problemas -->
+            <section id="troubleshooting" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Solução de Problemas</h1>
+                    <p class="section-subtitle">Identificação e correção de falhas comuns</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problema</th>
+                                <th>Possíveis Causas</th>
+                                <th>Solução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sem energia</strong></td>
+                                <td>Fusível queimado<br>Cabo desconectado</td>
+                                <td>Substitua fusível<br>Conecte cabo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vazamento de solvente</strong></td>
+                                <td>Água insuficiente<br>Anel envelhecido<br>Tubo danificado</td>
+                                <td>Aumente fluxo<br>Substitua anel<br>Substitua tubo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sistema travado</strong></td>
+                                <td>Interferência eletromagnética</td>
+                                <td>Desligue, remova fonte, reinicie</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperatura inadequada</strong></td>
+                                <td>Sensor defeituoso<br>Calibração incorreta</td>
+                                <td>Verifique sensor<br>Recalibre</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Condensação ruim</strong></td>
+                                <td>Água quente (>20°C)<br>Fluxo insuficiente</td>
+                                <td>Use água fria<br>Aumente fluxo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="card-title">📋 Temperaturas de Referência</h2>
+                    <div class="card-content">
+                        <p>Controle a velocidade de gotejamento em <strong>3-5 gotas por segundo</strong>:</p>
+                        
+                        <div class="spec-table" style="margin-top: 20px;">
+                            <table style="margin: 0;">
+                                <thead>
+                                    <tr>
+                                        <th>Solvente</th>
+                                        <th>Temperatura (°C)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>Éter de Petróleo 30-60</td><td>80</td></tr>
+                                    <tr><td>Éter Etílico</td><td>60</td></tr>
+                                    <tr><td>Acetona</td><td>76</td></tr>
+                                    <tr><td>Hexano</td><td>89</td></tr>
+                                    <tr><td>Metanol</td><td>85</td></tr>
+                                    <tr><td>Etanol</td><td>98</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <p style="margin-top: 15px;"><strong>Nota:</strong> Para outros solventes, use ponto de ebulição + 20°C.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Garantia -->
+            <section id="warranty" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Informações de Garantia</h1>
+                    <p class="section-subtitle">Condições de garantia e suporte técnico EleveLab</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🛡️ Termos de Garantia</h2>
+                        <div class="card-content">
+                            <p><strong>Período:</strong> Um ano a partir da data de venda (nota fiscal).</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Cobertura:</strong></p>
+                            <ul>
+                                <li>Defeitos de fabricação</li>
+                                <li>Falhas em componentes eletrônicos</li>
+                                <li>Problemas no sistema de aquecimento</li>
+                                <li>Mão de obra especializada</li>
+                                <li>Peças de reposição originais</li>
+                            </ul>
+                            
+                            <p style="margin-top: 15px;"><strong>Exclusões:</strong> Uso inadequado, desmontagem não autorizada, desgaste natural, acidentes.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">📞 Suporte EleveLab</h2>
+                        <div class="card-content">
+                            <p><strong>Contato:</strong></p>
+                            <p>📱 (51) 9 9858-4548</p>
+                            <p>📧 contato@elevelab.com.br</p>
+                            <p>🌐 www.elevelab.com.br</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Endereço:</strong></p>
+                            <p>Av. Benjamin Constant 19, Loja 35<br>São João, Porto Alegre-RS<br>CEP: 90550-003</p>
+                            
+                            <p style="margin-top: 15px;"><strong>Horário:</strong></p>
+                            <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">🎯 Compromisso EleveLab</h2>
+                    <div class="highlight-content">
+                        "A EleveLab se compromete em fornecer equipamentos científicos de qualidade superior, acompanhados de suporte técnico especializado e treinamento adequado para garantir o máximo aproveitamento de seu investimento."
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">📋</div>
+                    <div class="warning-content">
+                        <strong>Considerações de Segurança:</strong><br>
+                        • Leia as instruções antes do uso<br>
+                        • Apenas operadores treinados devem usar<br>
+                        • Use pano úmido para limpeza<br>
+                        • Há perigo de explosão com solventes<br>
+                        • Não toque no bloco aquecido<br>
+                        • Mantenha supervisão durante experimentos
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EleveLab</h3>
+                    <p>Equipamentos Científicos de Qualidade</p>
+                    <p>Soluções inovadoras para laboratórios de análise, pesquisa e desenvolvimento em diversos segmentos industriais.</p>
+                    <div style="margin-top: 20px;">
+                        <div class="logo-circles">
+                            <div class="circle-row">
+                                <div class="circle large"></div>
+                            </div>
+                            <div class="circle-row">
+                                <div class="circle medium"></div>
+                                <div class="circle small"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><strong>Telefone/WhatsApp:</strong></p>
+                    <p>(51) 9 9858-4548</p>
+                    <p><strong>Email:</strong></p>
+                    <a href="mailto:contato@elevelab.com.br">contato@elevelab.com.br</a>
+                    <p><strong>Website:</strong></p>
+                    <a href="https://www.elevelab.com.br" target="_blank">www.elevelab.com.br</a>
+                    <p><strong>Endereço:</strong></p>
+                    <p>Av. Benjamin Constant 19, Loja 35<br>São João, Porto Alegre-RS, 90550-003</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Produtos & Serviços</h3>
+                    <p>• Determinadores de Gordura</p>
+                    <p>• Analisadores de Fibras</p>
+                    <p>• Destiladores de Nitrogênio</p>
+                    <p>• Biorreatores e Fotobiorreatores</p>
+                    <p>• Equipamentos de Laboratório</p>
+                    <p style="margin-top: 15px;"><strong>Suporte Técnico:</strong></p>
+                    <p>• Instalação e Treinamento</p>
+                    <p>• Manutenção Preventiva</p>
+                    <p>• Assistência Técnica</p>
+                    <p>• Peças de Reposição</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px;">Manual do Determinador de Gordura SOX406 | Versão 2.0 | Janeiro 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            
+            // Smooth scrolling para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+
+        // Função para mostrar seções
+        function showSection(sectionId, element) {
+            // Esconder todas as seções
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar seção selecionada
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Atualizar navegação
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            // Scroll suave para o topo
+            window.scrollTo({ 
+                top: 0, 
+                behavior: 'smooth' 
+            });
+
+            // Fechar menu mobile se aberto
+            const navContent = document.getElementById('navContent');
+            if (navContent && window.innerWidth <= 768) {
+                navContent.classList.remove('active');
+            }
+        }
+        
+        // Menu mobile
+        function toggleMobileMenu() {
+            const navContent = document.getElementById('navContent');
+            if (navContent) {
+                navContent.classList.toggle('active');
+            }
+        }
+        
+        // Fechar menu mobile ao redimensionar
+        window.addEventListener('resize', function() {
+            const navContent = document.getElementById('navContent');
+            if (navContent && window.innerWidth > 768) {
+                navContent.classList.remove('active');
+            }
+        });
+
+        // Lazy loading para imagens (quando adicionadas)
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+            
+            // Observar todas as imagens lazy
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Performance: preload da próxima seção
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                // Preload recursos da seção se necessário
+            });
+        });
+
+        // Detectar seção visível no scroll (para navegação ativa)
+        let isScrolling = false;
+        function handleScroll() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    const sections = document.querySelectorAll('.section.active');
+                    // Lógica adicional de scroll se necessário
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        }
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Otimizações de performance
+        
+        // Cache de elementos DOM
+        const navItems = document.querySelectorAll('.nav-item');
+        const sections = document.querySelectorAll('.section');
+        
+        // Debounce para resize
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // Aplicar debounce ao resize
+        window.addEventListener('resize', debounce(function() {
+            const navContent = document.getElementById('navContent');
+            if (navContent && window.innerWidth > 768) {
+                navContent.classList.remove('active');
+            }
+        }, 250));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // ESC para fechar menu mobile
+            if (e.key === 'Escape') {
+                const navContent = document.getElementById('navContent');
+                if (navContent && navContent.classList.contains('active')) {
+                    navContent.classList.remove('active');
+                }
+            }
+            
+            // Tab navigation melhorada
+            if (e.key === 'Tab') {
+                // Adicionar lógica de navegação por tab se necessário
+            }
+        });
+
+        // Acessibilidade: foco visível
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+        
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Print styles (CSS adicional via JS)
+        const printStyles = `
+            @media print {
+                .header, .nav, .footer { display: none !important; }
+                .main { margin-top: 0 !important; }
+                .section { display: block !important; page-break-after: always; }
+                .content-card, .step-item { page-break-inside: avoid; }
+                .warning-box { border: 2px solid #333 !important; background: #f9f9f9 !important; }
+                .highlight-box { border: 2px solid #333 !important; background: #f0f0f0 !important; color: #000 !important; }
+                * { color: #000 !important; background: transparent !important; }
+            }
+        `;
+        
+        // Adicionar estilos de impressão
+        const printStyleSheet = document.createElement('style');
+        printStyleSheet.textContent = printStyles;
+        document.head.appendChild(printStyleSheet);
+
+        // Analytics básico (se necessário)
+        function trackSectionView(sectionId) {
+            // Implementar analytics se necessário
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    page_title: `Manual SOX406 - ${sectionId}`,
+                    page_location: window.location.href + '#' + sectionId
+                });
+            }
+        }
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.warn('Manual SOX406: ', e.error);
+            // Não quebrar a experiência do usuário
+        });
+
+        // Service Worker para cache (opcional, para PWA)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                // Implementar SW se necessário para cache offline
+            });
+        }
+
+        // Otimização de imagens responsivas (quando adicionadas)
+        function optimizeImages() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.hasAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+            });
+        }
+
+        // Executar otimizações na inicialização
+        document.addEventListener('DOMContentLoaded', optimizeImages);
+
+        // Validação de formulários (se houver)
+        function validateForm(form) {
+            // Implementar validação se necessário
+            return true;
+        }
+
+        // Feedback visual para ações do usuário
+        function showFeedback(message, type = 'info') {
+            // Implementar sistema de feedback se necessário
+            console.log(`${type.toUpperCase()}: ${message}`);
+        }
+
+        // Compatibilidade com navegadores antigos
+        if (!Element.prototype.closest) {
+            Element.prototype.closest = function(s) {
+                var el = this;
+                do {
+                    if (el.matches(s)) return el;
+                    el = el.parentElement || el.parentNode;
+                } while (el !== null && el.nodeType === 1);
+                return null;
+            };
+        }
+
+        // Polyfill para matches
+        if (!Element.prototype.matches) {
+            Element.prototype.matches = Element.prototype.msMatchesSelector || 
+                                        Element.prototype.webkitMatchesSelector;
+        }
+
+        console.log('Manual SOX406 EleveLab - Carregado com sucesso!');
+        
+        // Diagnóstico de imagens
+        function diagnosticarImagens() {
+            console.log('🔍 Diagnóstico de imagens iniciado...');
+            const todasImagens = document.querySelectorAll('img');
+            let carregadas = 0, erros = 0;
+            
+            todasImagens.forEach((img, index) => {
+                img.addEventListener('load', function() {
+                    carregadas++;
+                    console.log(`✅ Imagem ${index + 1} carregada:`, this.src);
+                    atualizarStatus();
+                });
+                
+                img.addEventListener('error', function() {
+                    erros++;
+                    console.error(`❌ Erro na imagem ${index + 1}:`, this.src);
+                    this.style.border = '2px solid red';
+                    this.style.background = '#ffebee';
+                    atualizarStatus();
+                });
+            });
+            
+            function atualizarStatus() {
+                if (carregadas + erros === todasImagens.length) {
+                    console.log(`📊 Resultado: ${carregadas} carregadas, ${erros} erros de ${todasImagens.length} total`);
+                    if (erros > 0) {
+                        alert(`⚠️ ${erros} imagens falharam ao carregar. Verifique o console para detalhes.`);
+                    }
+                }
+            }
+            
+            console.log(`Total de imagens encontradas: ${todasImagens.length}`);
+        }
+        
+        // Executar diagnóstico após carregamento
+        setTimeout(diagnosticarImagens, 1000);
+    </script>
+</body>
+</html>

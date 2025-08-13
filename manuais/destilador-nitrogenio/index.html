@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Destilador de Nitrogênio | EleveLab</title>
+    <meta name="description" content="Manual interativo do Destilador de Nitrogênio Automatizado - EleveLab Equipamentos Científicos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+
+<body class="loading">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circles">
+                        <div class="circle-row">
+                            <div class="circle large"></div>
+                        </div>
+                        <div class="circle-row">
+                            <div class="circle medium"></div>
+                            <div class="circle small"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-text">EleveLab</div>
+                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="../../index.html" class="btn btn-secondary">← Voltar ao Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="nav">
+        <div class="container">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </button>
+            <div class="nav-content" id="navContent">
+                <span class="nav-item active" onclick="showSection('overview', this)">Visão Geral</span>
+                <span class="nav-item" onclick="showSection('specifications', this)">Especificações</span>
+                <span class="nav-item" onclick="showSection('components', this)">Componentes</span>
+                <span class="nav-item" onclick="showSection('installation', this)">Instalação</span>
+                <span class="nav-item" onclick="showSection('operation', this)">Operação</span>
+                <span class="nav-item" onclick="showSection('samples', this)">Amostras</span>
+                <span class="nav-item" onclick="showSection('maintenance', this)">Manutenção</span>
+                <span class="nav-item" onclick="showSection('troubleshooting', this)">Solução de Problemas</span>
+                <span class="nav-item" onclick="showSection('warranty', this)">Garantia</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Seção: Visão Geral -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">Destilador de Nitrogênio Automatizado</h1>
+                    <p class="section-subtitle">Manual do Usuário - Equipamento de alta precisão para determinação de nitrogênio/proteína pelo método Kjeldahl</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <strong>IMPORTANTE:</strong> Equipamento trabalha com hidróxido de sódio concentrado. Leia este manual antes da operação.
+                    </div>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Destilador de Nitrogênio</h2>
+                    <div class="equipment-image">
+                        Sistema de Destilação Automatizado Kjeldahl
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">Destilador Kjeldahl EleveLab</h2>
+                    <p class="highlight-content">Sistema totalmente automatizado para destilação de nitrogênio pelo método Kjeldahl. Controle preciso de temperatura, tempo e adição de reagentes para resultados confiáveis na determinação de proteína.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎯 Aplicações Principais</h2>
+                        <div class="card-content">
+                            <p>O Destilador de Nitrogênio é utilizado para:</p>
+                            <ul>
+                                <li><strong>Alimentos:</strong> Determinação de proteína em produtos alimentícios</li>
+                                <li><strong>Nutrição Animal:</strong> Proteína bruta em rações</li>
+                                <li><strong>Fertilizantes:</strong> Nitrogênio total</li>
+                                <li><strong>Águas:</strong> Nitrogênio Kjeldahl total (NKT)</li>
+                                <li><strong>Solos:</strong> Nitrogênio orgânico</li>
+                                <li><strong>Farmacêutica:</strong> Análise de compostos nitrogenados</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚗️ Princípio de Funcionamento</h2>
+                        <div class="card-content">
+                            <p>O instrumento utiliza o <strong>método Kjeldahl modificado</strong> com destilação por arraste de vapor.</p>
+                            <p style="margin-top: 15px;">Após digestão prévia, a amostra é alcalinizada com NaOH, aquecida para liberar NH₃, que é destilado e coletado em solução receptora de ácido bórico.</p>
+                            <p style="margin-top: 15px;"><strong>Automação completa:</strong> Controle de aquecimento, tempo, adição de reagentes e coleta do destilado.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">☢️</div>
+                    <div class="warning-content">
+                        <strong>CUIDADO - Reagentes perigosos:</strong> Sistema trabalha com NaOH 40% e ácido bórico. Use EPI completo e trabalhe em capela.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Especificações -->
+            <section id="specifications" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Características técnicas e de desempenho do Destilador de Nitrogênio</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Especificação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Capacidade de processamento</td><td>1 amostra por ciclo</td></tr>
+                            <tr><td>Tempo de destilação</td><td>4-10 minutos (programável)</td></tr>
+                            <tr><td>Volume de NaOH adicionado</td><td>50-100 mL (programável)</td></tr>
+                            <tr><td>Volume de água para arraste</td><td>200-500 mL (programável)</td></tr>
+                            <tr><td>Potência de aquecimento</td><td>2KW com controle PID</td></tr>
+                            <tr><td>Faixa de temperatura</td><td>Ambiente até 150°C</td></tr>
+                            <tr><td>Precisão de temperatura</td><td>±2°C</td></tr>
+                            <tr><td>Volume do balão de destilação</td><td>800 mL</td></tr>
+                            <tr><td>Volume do erlenmeyer receptor</td><td>250 mL</td></tr>
+                            <tr><td>Tensão de operação</td><td>220 VAC ±10% 50Hz</td></tr>
+                            <tr><td>Dimensões externas (mm)</td><td>600×400×800</td></tr>
+                            <tr><td>Peso</td><td>45 kg</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎛️ Características Avançadas</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Display LCD 5"</strong> com interface intuitiva</li>
+                                <li><strong>Controle PID</strong> para aquecimento preciso</li>
+                                <li><strong>Dosadores automáticos</strong> para NaOH e água</li>
+                                <li><strong>Sistema de segurança</strong> com sensores múltiplos</li>
+                                <li><strong>Condensador eficiente</strong> refrigerado por água</li>
+                                <li><strong>Coleta automática</strong> do destilado</li>
+                                <li><strong>Programas pré-definidos</strong> para diferentes matrizes</li>
+                                <li><strong>Indicador de fim de destilação</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🏭 Condições de Trabalho</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Tensão:</strong> 220V monofásico com terra</li>
+                                <li><strong>Água:</strong> Pressão 1-4 bar, fluxo 2-4 L/min</li>
+                                <li><strong>Drenagem:</strong> Para descarte de reagentes alcalinos</li>
+                                <li><strong>Capela:</strong> Obrigatório para vapores</li>
+                                <li><strong>Ambiente:</strong> Temperatura 15°C-35°C</li>
+                                <li><strong>Umidade:</strong> Máximo 80% UR</li>
+                                <li><strong>Instalação:</strong> Bancada resistente (50kg)</li>
+                                <li><strong>Reagentes:</strong> Reservatórios de 5L para NaOH e água</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demais seções seguem o mesmo padrão... -->
+            
+            <!-- Scripts -->
+            <script src="../../assets/js/navigation.js"></script>
+        </div>
+    </main>
+</body>
+</html>

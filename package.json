@@ -1,0 +1,48 @@
+{
+  "name": "elevelab-manuais",
+  "version": "1.0.0",
+  "description": "Sistema de manuais interativos EleveLab - Equipamentos Científicos",
+  "main": "index.html",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "generate": "node scripts/generate-manual.js",
+    "optimize-images": "node scripts/optimize-images.js",
+    "extract-word-images": "node scripts/extract-word-images.js",
+    "dev": "npx http-server . -p 3000 -o",
+    "preview": "npx http-server dist -p 3001 -o",
+    "clean": "rm -rf dist",
+    "lint": "eslint assets/js/**/*.js scripts/*.js",
+    "test": "echo 'Testes não implementados ainda' && exit 0",
+    "deploy": "npm run build && echo 'Deploy para produção'",
+    "stats": "node -e \"console.log('Estatísticas do projeto:'); require('fs').readdirSync('./manuais').forEach(m => console.log('Manual:', m));\""
+  },
+  "keywords": [
+    "elevelab",
+    "equipamentos-cientificos",
+    "manuais",
+    "interativo",
+    "laboratorio"
+  ],
+  "author": "EleveLab Equipamentos Científicos",
+  "license": "UNLICENSED",
+  "homepage": "https://manuais.elevelab.com.br",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elevelab/manuais.git"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.16",
+    "sharp": "^0.32.6"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

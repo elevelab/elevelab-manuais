@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Fotobiorreator | EleveLab</title>
+    <meta name="description" content="Manual interativo do Fotobiorreator Autoclavável - EleveLab Equipamentos Científicos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+
+<body class="loading">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circles">
+                        <div class="circle-row">
+                            <div class="circle large"></div>
+                        </div>
+                        <div class="circle-row">
+                            <div class="circle medium"></div>
+                            <div class="circle small"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-text">EleveLab</div>
+                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <a href="../../index.html" class="btn btn-secondary">← Voltar ao Catálogo</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="nav">
+        <div class="container">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </button>
+            <div class="nav-content" id="navContent">
+                <span class="nav-item active" onclick="showSection('overview', this)">Visão Geral</span>
+                <span class="nav-item" onclick="showSection('specifications', this)">Especificações</span>
+                <span class="nav-item" onclick="showSection('components', this)">Componentes</span>
+                <span class="nav-item" onclick="showSection('installation', this)">Instalação</span>
+                <span class="nav-item" onclick="showSection('operation', this)">Operação</span>
+                <span class="nav-item" onclick="showSection('samples', this)">Cultivos</span>
+                <span class="nav-item" onclick="showSection('maintenance', this)">Manutenção</span>
+                <span class="nav-item" onclick="showSection('troubleshooting', this)">Solução de Problemas</span>
+                <span class="nav-item" onclick="showSection('warranty', this)">Garantia</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Seção: Visão Geral -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">Fotobiorreator Autoclavável</h1>
+                    <p class="section-subtitle">Manual do Usuário - Sistema especializado para cultivo de microalgas e organismos fotossintéticos</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">💡</div>
+                    <div class="warning-content">
+                        <strong>SISTEMA COM ILUMINAÇÃO LED:</strong> Equipamento utiliza LEDs de alta potência. Evite olhar diretamente para a fonte luminosa.
+                    </div>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Fotobiorreator</h2>
+                    <div class="equipment-image">
+                        Sistema de Fotobiorreator com Iluminação LED
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">Fotobiorreator EleveLab</h2>
+                    <p class="highlight-content">Sistema especializado para cultivo de microalgas, cianobactérias e outros organismos fotossintéticos. Controle preciso de luz, CO₂, temperatura, pH e nutrientes para produtividade máxima.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎯 Aplicações Principais</h2>
+                        <div class="card-content">
+                            <p>O Fotobiorreator é utilizado para:</p>
+                            <ul>
+                                <li><strong>Biotecnologia:</strong> Produção de biomassa de microalgas</li>
+                                <li><strong>Biocombustíveis:</strong> Cultivo para biodiesel</li>
+                                <li><strong>Nutracêuticos:</strong> Produção de pigmentos e vitaminas</li>
+                                <li><strong>Cosmética:</strong> Extração de compostos bioativos</li>
+                                <li><strong>Tratamento:</strong> Remoção de CO₂ e nutrientes</li>
+                                <li><strong>Pesquisa:</strong> Estudos de fotossíntese</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚗️ Princípio de Funcionamento</h2>
+                        <div class="card-content">
+                            <p>O fotobiorreator combina <strong>iluminação controlada</strong> com condições ideais de cultivo.</p>
+                            <p style="margin-top: 15px;">Sistema LED fornece espectro otimizado para fotossíntese, enquanto controla temperatura, pH, CO₂ e agitação para máximo rendimento celular.</p>
+                            <p style="margin-top: 15px;"><strong>Controle de luz:</strong> Intensidade, espectro e fotoperíodo programáveis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">🌱</div>
+                    <div class="warning-content">
+                        <strong>CULTIVO FOTOAUTOTRÓFICO:</strong> Sistema otimizado para organismos que necessitam de luz para crescimento e metabolismo.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Especificações -->
+            <section id="specifications" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Características técnicas e de desempenho do Fotobiorreator</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Especificação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Volume útil</td><td>1L, 2L, 5L (configurável)</td></tr>
+                            <tr><td>Iluminação LED</td><td>Espectro completo 400-700nm</td></tr>
+                            <tr><td>Intensidade luminosa</td><td>0 - 2000 μmol/m²/s</td></tr>
+                            <tr><td>Controle de CO₂</td><td>0,03% - 5% vol/vol</td></tr>
+                            <tr><td>Controle de pH</td><td>6,0 - 9,0 ±0,1</td></tr>
+                            <tr><td>Controle de temperatura</td><td>15°C - 45°C ±0,5°C</td></tr>
+                            <tr><td>Agitação</td><td>50 - 300 rpm</td></tr>
+                            <tr><td>Aeração</td><td>0,1 - 2,0 vvm</td></tr>
+                            <tr><td>Fotoperíodo</td><td>Programável 0-24h</td></tr>
+                            <tr><td>Material do reator</td><td>Vidro borossilicato</td></tr>
+                            <tr><td>Interface</td><td>Touchscreen 10" colorido</td></tr>
+                            <tr><td>Potência total</td><td>1,5 KW</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">💡 Sistema de Iluminação</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>LEDs de alta eficiência</strong> com vida útil >50.000h</li>
+                                <li><strong>Espectro programável</strong> vermelho, azul, branco</li>
+                                <li><strong>Controle de intensidade</strong> 0-100% com PWM</li>
+                                <li><strong>Fotoperíodo automático</strong> com temporizador</li>
+                                <li><strong>Distribuição homogênea</strong> da luz no reator</li>
+                                <li><strong>Dissipação térmica</strong> eficiente</li>
+                                <li><strong>Medição em tempo real</strong> PAR e intensidade</li>
+                                <li><strong>Proteção UV</strong> para operador</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🌡️ Controle Ambiental</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Temperatura:</strong> Aquecimento/resfriamento</li>
+                                <li><strong>pH:</strong> Controle automático com tampões</li>
+                                <li><strong>CO₂:</strong> Injeção controlada por válvula</li>
+                                <li><strong>O₂:</strong> Monitoramento opcional</li>
+                                <li><strong>Nutrientes:</strong> Adição programada</li>
+                                <li><strong>Agitação suave:</strong> Para não danificar células</li>
+                                <li><strong>Esterilização:</strong> Autoclavável 121°C</li>
+                                <li><strong>Monitoramento:</strong> Densidade óptica online</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Demais seções seguem o padrão estabelecido... -->
+
+        </div>
+    </main>
+
+    <script src="../../assets/js/navigation.js"></script>
+</body>
+</html>
