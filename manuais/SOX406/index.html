@@ -1005,45 +1005,101 @@
     </style>
     
     <style>
-        /* FIX PARA DIMENSÕES DAS IMAGENS */
-        .interface-gallery img {
-            width: 100% !important;
-            height: auto !important;
-            min-height: 150px !important;
+        </style>
+
+
+    <style>
+        /* CRITICAL CSS - FORÇA VISIBILIDADE */
+        img {
             display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
-        .equipment-main-img {
-            width: 100% !important;
-            height: auto !important;
-            min-height: 300px !important;
-            max-height: 500px !important;
-        }
-        
+        .interface-card img,
         .step-image img {
             width: 100% !important;
             height: auto !important;
-            min-height: 100px !important;
-        }
-        
-        /* Remover styles inline conflitantes */
-        img[style*="display: block"] {
-            display: block !important;
-            width: 100% !important;
-            height: auto !important;
-        }
-        
-        /* Fix específico para interface cards */
-        .interface-card {
-            min-height: 250px !important;
-        }
-        
-        .interface-card img {
             min-height: 150px !important;
-            width: 100% !important;
-            height: auto !important;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Remove qualquer hide */
+        .hidden, .invisible, [hidden] {
+            display: block !important;
+            visibility: visible !important;
         }
     </style>
+
+
+    <script>
+        // FORÇA VISIBILIDADE DAS IMAGENS
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Forçando visibilidade das imagens...');
+            
+            // Selecionar TODAS as imagens
+            const allImages = document.querySelectorAll('img');
+            
+            allImages.forEach((img, index) => {
+                // Remover estilos inline problemáticos
+                img.style.removeProperty('display');
+                img.style.removeProperty('visibility');
+                img.style.removeProperty('opacity');
+                
+                // Forçar visibilidade
+                img.style.display = 'block';
+                img.style.visibility = 'visible';
+                img.style.opacity = '1';
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                img.style.minHeight = '100px';
+                img.style.maxWidth = '100%';
+                
+                // Log para debug
+                console.log(`Imagem ${index + 1}: ${img.src}`);
+                console.log(`  Dimensões: ${img.width}x${img.height}`);
+                
+                // Recarregar imagem se necessário
+                if (img.width === 0 || img.height === 0) {
+                    console.log(`  ⚠️ Recarregando imagem ${index + 1}...`);
+                    const src = img.src;
+                    img.src = '';
+                    setTimeout(() => {
+                        img.src = src;
+                    }, 100);
+                }
+            });
+            
+            // Forçar especificamente imagens da interface
+            const interfaceImages = document.querySelectorAll('.interface-card img');
+            interfaceImages.forEach(img => {
+                img.style.width = '100%';
+                img.style.height = 'auto';
+                img.style.minHeight = '150px';
+                img.style.display = 'block';
+                img.style.visibility = 'visible';
+                img.style.opacity = '1';
+            });
+            
+            console.log(`✅ Total de imagens processadas: ${allImages.length}`);
+        });
+        
+        // Adicionar fallback após 2 segundos
+        setTimeout(function() {
+            const images = document.querySelectorAll('img[src*="interface"]');
+            images.forEach(img => {
+                if (img.width === 0 || img.height === 0) {
+                    console.warn('Aplicando fallback para:', img.src);
+                    img.style.width = '480px !important';
+                    img.style.height = '272px !important';
+                    img.style.objectFit = 'contain';
+                    img.style.backgroundColor = '#f0f0f0';
+                }
+            });
+        }, 2000);
+    </script>
 
 </head>
 
@@ -1274,7 +1330,7 @@
                     <h3>Interface do Usuário</h3>
                     <div class="interface-grid">
                         <div class="interface-card">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-10.jpg" 
+                            <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-10.jpg" 
                                  alt="Tela LCD" 
                                  loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             <div class="interface-caption">
@@ -1282,7 +1338,7 @@
                                 <p>Interface principal do equipamento</p>
                             </div>
                         </div><div class="interface-card">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-11.jpg" 
+                            <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-11.jpg" 
                                  alt="Configurações" 
                                  loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             <div class="interface-caption">
@@ -1290,7 +1346,7 @@
                                 <p>Ajuste de parâmetros</p>
                             </div>
                         </div><div class="interface-card">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-12.jpg" 
+                            <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-12.jpg" 
                                  alt="Em Operação" 
                                  loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             <div class="interface-caption">
@@ -1298,7 +1354,7 @@
                                 <p>Monitoramento em tempo real</p>
                             </div>
                         </div><div class="interface-card">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-13.jpg" 
+                            <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-13.jpg" 
                                  alt="Sistema de Alertas" 
                                  loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             <div class="interface-caption">
@@ -1378,7 +1434,7 @@
                         </div>
                         <div class="step-visual">
                             <div class="step-image">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-11.jpg" 
+                                <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-11.jpg" 
                                      alt="Inserir Amostras" 
                                      loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             </div>
@@ -1389,7 +1445,7 @@
                         </div>
                         <div class="step-visual">
                             <div class="step-image">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-12.jpg" 
+                                <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-12.jpg" 
                                      alt="Configurar Programa" 
                                      loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             </div>
@@ -1400,7 +1456,7 @@
                         </div>
                         <div class="step-visual">
                             <div class="step-image">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-13.jpg" 
+                                <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-13.jpg" 
                                      alt="Iniciar Processo" 
                                      loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             </div>
@@ -1411,7 +1467,7 @@
                         </div>
                         <div class="step-visual">
                             <div class="step-image">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-14.jpg" 
+                                <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-14.jpg" 
                                      alt="Coleta de Resultados" 
                                      loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                             </div>
@@ -1548,21 +1604,21 @@
                         </div>
                         <div class="component-details">
                             <div class="component-item active" data-component="condensers">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-10.jpg" alt="Sistema de Condensação" loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
+                                <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-10.jpg" alt="Sistema de Condensação" loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                                 <div class="component-info">
                                     <h4>Sistema de Condensação</h4>
                                     <p>Condensadores para recuperação de solvente</p>
                                 </div>
                             </div>
                             <div class="component-item" data-component="control">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-11.jpg" alt="Painel de Controle" loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
+                                <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-11.jpg" alt="Painel de Controle" loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                                 <div class="component-info">
                                     <h4>Painel de Controle</h4>
                                     <p>Display LCD 4.3" com controle por microcomputador</p>
                                 </div>
                             </div>
                             <div class="component-item" data-component="heater">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-12.jpg" alt="Sistema de Aquecimento" loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
+                                <img style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;" src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-12.jpg" alt="Sistema de Aquecimento" loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
                                 <div class="component-info">
                                     <h4>Sistema de Aquecimento</h4>
                                     <p>Aquecimento uniforme até 280°C com controle PID</p>
