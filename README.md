@@ -7,13 +7,13 @@ Sistema completo de manuais interativos para equipamentos científicos EleveLab.
 Este repositório está configurado para deploy automático no GitHub Pages. Toda alteração na branch `main` é automaticamente publicada.
 
 ### Status do Deploy
-![Deploy Status](https://github.com/[seu-usuario]/elevelab-manuais/actions/workflows/deploy.yml/badge.svg)
+![Deploy Status](https://github.com/elevelab/elevelab-manuais/actions/workflows/deploy.yml/badge.svg)
 
 ### Como funciona:
 1. **Push para `main`** → GitHub Actions inicia automaticamente
 2. **Build automático** → Prepara arquivos para produção
 3. **Deploy para Pages** → Site atualizado em ~2 minutos
-4. **URL de produção** → `https://[seu-usuario].github.io/elevelab-manuais/`
+4. **URL de produção** → `https://elevelab.github.io/elevelab-manuais/`
 
 ## 📁 Estrutura do Projeto
 
