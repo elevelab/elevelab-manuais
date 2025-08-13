@@ -619,12 +619,12 @@
         }
 
         .thumbnail {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            object-fit: cover;
+            width: 80px !important;
+            height: 80px !important;
+            object-fit: cover !important;
             cursor: pointer;
-            border: 3px solid transparent;
+            border: 2px solid #ddd;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
 
@@ -696,9 +696,13 @@
         }
 
         .interface-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
+            width: 100% !important;
+            height: auto !important;
+            min-height: 150px !important;
+            max-height: 300px !important;
+            object-fit: contain !important;
+            border-radius: 8px;
+            background: #f5f5f5;
         }
 
         .interface-caption {
@@ -905,9 +909,14 @@
             }
 
             .thumbnail {
-                width: 60px;
-                height: 60px;
-            }
+            width: 80px !important;
+            height: 80px !important;
+            object-fit: cover !important;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
 
             .equipment-specs-visual {
                 gap: 20px;
@@ -985,23 +994,51 @@
         }
         </style>
 
-        /* DEBUG TEMPORÁRIO - REMOVER APÓS CONFIRMAR */
-        img {
-            border: 1px solid #ddd !important;
-            min-width: 50px;
-            min-height: 50px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%23f0f0f0"/><text x="50%" y="50%" font-family="Arial" font-size="12" fill="%23999" text-anchor="middle" dominant-baseline="middle">Carregando...</text></svg>') center/cover;
+        
+    </style>
+    
+    <style>
+        /* FIX PARA DIMENSÕES DAS IMAGENS */
+        .interface-gallery img {
+            width: 100% !important;
+            height: auto !important;
+            min-height: 150px !important;
+            display: block !important;
         }
         
-        img[src*="equipment"] {
-            min-height: 200px !important;
+        .equipment-main-img {
+            width: 100% !important;
+            height: auto !important;
+            min-height: 300px !important;
+            max-height: 500px !important;
         }
         
-        img[src*="interface"] {
+        .step-image img {
+            width: 100% !important;
+            height: auto !important;
             min-height: 100px !important;
         }
+        
+        /* Remover styles inline conflitantes */
+        img[style*="display: block"] {
+            display: block !important;
+            width: 100% !important;
+            height: auto !important;
+        }
+        
+        /* Fix específico para interface cards */
+        .interface-card {
+            min-height: 250px !important;
+        }
+        
+        .interface-card img {
+            min-height: 150px !important;
+            width: 100% !important;
+            height: auto !important;
+        }
     </style>
-    </head>
+
+</head>
 
 <body class="loading">
     <!-- Header -->
@@ -1072,7 +1109,7 @@
                     <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Determinador de Gordura SOX406</h2>
                     <div class="equipment-gallery">
                         <div class="main-image">
-                            <img src="https://raw.githubusercontent.com/elevelab/elevelab-manuais/main/manuais/SOX406/images/equipment/equipment-6.jpg" style="display: block; width: 100%; height: auto;" 
+                            <img src="https://raw.githubusercontent.com/elevelab/elevelab-manuais/main/manuais/SOX406/images/equipment/equipment-6.jpg"  
                                  alt="Determinador de Gordura SOX406" 
                                  class="equipment-main-img"
                                  loading="eager"
@@ -1081,7 +1118,7 @@
                         </div>
                         <div class="thumbnail-gallery">
                             
-                            <img src="https://raw.githubusercontent.com/elevelab/elevelab-manuais/main/manuais/SOX406/images/equipment/equipment-6.jpg" style="display: block; width: 100%; height: auto;" 
+                            <img src="https://raw.githubusercontent.com/elevelab/elevelab-manuais/main/manuais/SOX406/images/equipment/equipment-6.jpg"  
                                  alt="Vista do SOX406" 
                                  class="thumbnail"
                                  onclick="document.querySelector('.equipment-main-img').src='https://raw.githubusercontent.com/elevelab/elevelab-manuais/main/manuais/SOX406/images/equipment/equipment-6.jpg'" loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
@@ -1483,7 +1520,7 @@
                 <div class="components-detailed">
                     <div class="component-showcase">
                         <div class="component-main">
-                            <img src="https://raw.githubusercontent.com/elevelab/elevelab-manuais/main/manuais/SOX406/images/equipment/equipment-6.jpg" style="display: block; width: 100%; height: auto;" 
+                            <img src="https://raw.githubusercontent.com/elevelab/elevelab-manuais/main/manuais/SOX406/images/equipment/equipment-6.jpg"  
                                  alt="Vista dos componentes SOX406" 
                                  class="exploded-view"
                                  loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
