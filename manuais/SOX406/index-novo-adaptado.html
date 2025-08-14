@@ -45,14 +45,13 @@
         /* Header Fixo */
         .header {
             background: var(--white);
-            padding: 15px 0;
+            padding: 10px 0;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             border-bottom: 3px solid var(--primary-orange);
-            min-height: 80px;
         }
         
         .header-content {
@@ -64,20 +63,14 @@
         .logo {
             display: flex;
             align-items: center;
-            overflow: visible;
-            min-height: 80px;
-            width: 200px;
         }
         
         .logo img {
             display: block;
-            height: 120px;
+            height: 45px;
             width: auto;
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
-            max-width: 250px;
-            clip-path: inset(20% 15% 20% 15%);
-            transform: scale(1.2);
         }
         
         /* Navegação */
@@ -85,7 +78,7 @@
             background: var(--secondary-black);
             padding: 12px 0;
             position: fixed;
-            top: 90px;
+            top: 75px;
             width: 100%;
             z-index: 999;
         }
