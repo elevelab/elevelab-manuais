@@ -633,14 +633,7 @@
         }
         
         /* Estilos para as imagens funcionais */
-        img {
-            display: block !important;
-            width: 100% !important;
-            height: auto !important;
-            min-height: 150px !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
+        /* CSS removido - estilos de imagem agora inline para controle específico */
         
         .equipment-main-img {
             max-width: 600px;
@@ -1582,13 +1575,10 @@
         window.addEventListener('load', function() {
             const images = document.querySelectorAll('img');
             images.forEach(img => {
-                // Força display e visibilidade
+                // Força apenas display e visibilidade (sem width forçado)
                 img.style.display = 'block';
                 img.style.visibility = 'visible';
                 img.style.opacity = '1';
-                img.style.width = '100%';
-                img.style.height = 'auto';
-                img.style.minHeight = '150px';
                 
                 // Remove qualquer classe que possa esconder
                 img.classList.remove('hidden', 'invisible', 'd-none');

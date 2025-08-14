@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Proporções - SOX406</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #E73700;
+            text-align: center;
+        }
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .version {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .version h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .before h2 { color: #dc3545; }
+        .after h2 { color: #28a745; }
+        
+        /* Versão ANTIGA (problemática) */
+        .old-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .old-card {
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+        .old-container {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .old-img {
+            width: auto !important;
+            height: auto !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            object-fit: contain !important;
+        }
+        
+        /* Versão NOVA (corrigida) */
+        .new-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .new-card {
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .new-container {
+            width: 100%;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .new-img {
+            max-width: 100% !important;
+            max-height: 160px !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+        }
+        
+        .caption {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        img {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .explanation {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Teste de Correção das Proporções</h1>
+    
+    <div class="before-after">
+        <div class="version before">
+            <h2>❌ ANTES (Problemático)</h2>
+            <div class="explanation">
+                <strong>Problema:</strong> aspect-ratio: 16/9 força todas as imagens no mesmo formato, distorcendo-as
+            </div>
+            
+            <div class="old-grid">
+                <div class="old-card">
+                    <div class="old-container">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-home.jpg" 
+                             alt="LCD Home - Antigo" class="old-img">
+                    </div>
+                    <div class="caption">Tela Principal (Distorcida)</div>
+                </div>
+                
+                <div class="old-card">
+                    <div class="old-container">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-settings.jpg" 
+                             alt="LCD Settings - Antigo" class="old-img">
+                    </div>
+                    <div class="caption">Menu Configurações (Distorcida)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="version after">
+            <h2>✅ DEPOIS (Corrigido)</h2>
+            <div class="explanation">
+                <strong>Solução:</strong> max-height fixo + object-fit: contain mantém proporções naturais
+            </div>
+            
+            <div class="new-grid">
+                <div class="new-card">
+                    <div class="new-container">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-home.jpg" 
+                             alt="LCD Home - Novo" class="new-img">
+                    </div>
+                    <div class="caption">Tela Principal (Proporcional)</div>
+                </div>
+                
+                <div class="new-card">
+                    <div class="new-container">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-settings.jpg" 
+                             alt="LCD Settings - Novo" class="new-img">
+                    </div>
+                    <div class="caption">Menu Configurações (Proporcional)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="background: #fff3cd; border: 1px solid #ffc107; padding: 20px; border-radius: 10px; text-align: center;">
+        <h3>🎯 O que mudou?</h3>
+        <ul style="text-align: left; display: inline-block;">
+            <li><strong>Removido:</strong> aspect-ratio: 16/9 forçado</li>
+            <li><strong>Adicionado:</strong> max-height: 160px</li>
+            <li><strong>Mantido:</strong> object-fit: contain</li>
+            <li><strong>Resultado:</strong> Cada imagem mantém sua proporção natural</li>
+        </ul>
+    </div>
+    
+    <script>
+        window.addEventListener('load', function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.display = 'block';
+                img.style.visibility = 'visible';
+                img.style.opacity = '1';
+            });
+            console.log('✅ ' + images.length + ' imagens forçadas para visibilidade');
+        });
+    </script>
+</body>
+</html>
