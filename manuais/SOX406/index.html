@@ -645,7 +645,10 @@
             .section-title {
                 font-size: 18pt;
                 font-weight: bold;
-                color: #E73700 !important;
+                color: #000 !important;
+                border: 2pt solid #333;
+                padding: 8pt;
+                background: #f5f5f5 !important;
                 margin: 0 0 8pt 0;
                 page-break-after: avoid;
                 text-align: center;
@@ -659,10 +662,10 @@
                 font-style: italic;
             }
             
-            /* Cards de conteúdo */
+            /* Cards de conteúdo - melhor visibilidade */
             .content-card {
                 background: white !important;
-                border: 1px solid #ccc;
+                border: 1.5pt solid #333 !important;
                 box-shadow: none !important;
                 margin: 0 0 10pt 0;
                 padding: 10pt;
@@ -671,7 +674,9 @@
             
             .content-card h2 {
                 font-size: 14pt;
-                color: #E73700 !important;
+                color: #000 !important;
+                border-bottom: 2pt solid #333;
+                padding-bottom: 3pt;
                 margin: 0 0 8pt 0;
                 page-break-after: avoid;
             }
@@ -683,21 +688,31 @@
                 page-break-after: avoid;
             }
             
-            /* Avisos de segurança */
+            /* Avisos de segurança - melhor contraste */
             .safety-warning {
-                background: #f8f8f8 !important;
-                border: 2px solid #E73700 !important;
+                background: #fff8f5 !important;
+                border: 2px solid #000 !important;
                 color: #000 !important;
                 page-break-inside: avoid;
                 margin: 0 0 10pt 0;
                 padding: 10pt;
             }
             
+            .safety-warning::before {
+                content: "⚠️ AVISO DE SEGURANÇA";
+                display: block;
+                font-weight: bold;
+                color: #000 !important;
+                margin-bottom: 5pt;
+            }
+            
             .warning-item {
-                background: #f0f0f0 !important;
-                border-left: 3px solid #E73700 !important;
+                background: #fff !important;
+                border: 1px solid #333 !important;
+                border-left: 4px solid #000 !important;
                 margin: 5pt 0;
                 padding: 5pt;
+                color: #000 !important;
             }
             
             /* Tabelas */
@@ -710,10 +725,10 @@
             }
             
             .spec-table th {
-                background: #E73700 !important;
+                background: #333 !important;
                 color: white !important;
                 padding: 5pt;
-                border: 1px solid #666;
+                border: 1px solid #000;
                 font-weight: bold;
             }
             
@@ -723,19 +738,36 @@
                 vertical-align: top;
             }
             
-            /* Imagens - ocultar temporariamente para evitar problemas */
+            /* Imagens - configurar para impressão */
             .equipment-image,
             .interface-image {
-                display: none !important;
+                display: block !important;
+                max-width: 100% !important;
+                height: auto !important;
+                margin: 10pt auto !important;
+                page-break-inside: avoid;
             }
             
-            /* Texto de placeholder para imagens */
+            .equipment-image img,
+            .interface-image img {
+                max-width: 100% !important;
+                max-height: 400pt !important;
+                width: auto !important;
+                height: auto !important;
+                object-fit: contain !important;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+            
+            /* Legendas de imagens */
             .equipment-image + p,
             .interface-image + .interface-caption {
                 font-style: italic;
                 color: #666;
                 text-align: center;
-                margin: 5pt 0;
+                margin: 5pt 0 10pt 0;
+                font-size: 9pt;
+                page-break-before: avoid;
             }
             
             /* Grids simplificados */
@@ -760,7 +792,8 @@
             .procedure-card {
                 margin: 5pt 0;
                 page-break-inside: avoid;
-                border: 1px solid #ccc;
+                border: 1pt solid #333;
+                background: #fafafa !important;
                 padding: 5pt;
                 display: block;
             }
