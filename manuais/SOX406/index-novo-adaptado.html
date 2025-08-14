@@ -45,7 +45,7 @@
         /* Header Fixo */
         .header {
             background: var(--white);
-            padding: 15px 0;
+            padding: 10px 0;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
@@ -67,7 +67,7 @@
         
         .logo img {
             display: block;
-            height: 50px;
+            height: 120px;
             width: auto;
         }
         
@@ -76,7 +76,7 @@
             background: var(--secondary-black);
             padding: 12px 0;
             position: fixed;
-            top: 70px;
+            top: 140px;
             width: 100%;
             z-index: 999;
         }
@@ -125,7 +125,7 @@
         
         /* Conteúdo Principal */
         .main {
-            margin-top: 120px;
+            margin-top: 190px;
             padding: 40px 0 80px 0;
         }
         
@@ -463,6 +463,22 @@
         
         /* Responsivo */
         @media (max-width: 768px) {
+            .logo img {
+                height: 80px;
+            }
+            
+            .header {
+                padding: 8px 0;
+            }
+            
+            .nav {
+                top: 96px;
+            }
+            
+            .main {
+                margin-top: 144px;
+            }
+            
             .nav-content {
                 display: none;
                 position: absolute;
@@ -514,7 +530,7 @@
                 <div class="logo">
                     <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/logo-elevelab.png" 
                          alt="EleveLab - Equipamentos Científicos" 
-                         style="height: 50px; width: auto;">
+                         style="height: 120px; width: auto;">
                 </div>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <div class="hamburger"></div>
