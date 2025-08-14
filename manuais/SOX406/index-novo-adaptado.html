@@ -63,12 +63,17 @@
         .logo {
             display: flex;
             align-items: center;
+            height: 60px;
+            overflow: hidden;
         }
         
         .logo img {
             display: block;
-            height: 120px;
-            width: auto;
+            width: 200px;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.8);
         }
         
         /* Navegação */
@@ -76,7 +81,7 @@
             background: var(--secondary-black);
             padding: 12px 0;
             position: fixed;
-            top: 140px;
+            top: 80px;
             width: 100%;
             z-index: 999;
         }
@@ -125,7 +130,7 @@
         
         /* Conteúdo Principal */
         .main {
-            margin-top: 190px;
+            margin-top: 130px;
             padding: 40px 0 80px 0;
         }
         
@@ -463,8 +468,13 @@
         
         /* Responsivo */
         @media (max-width: 768px) {
+            .logo {
+                height: 50px;
+            }
+            
             .logo img {
-                height: 80px;
+                width: 160px;
+                transform: scale(1.6);
             }
             
             .header {
@@ -472,11 +482,11 @@
             }
             
             .nav {
-                top: 96px;
+                top: 66px;
             }
             
             .main {
-                margin-top: 144px;
+                margin-top: 114px;
             }
             
             .nav-content {
@@ -529,8 +539,7 @@
             <div class="header-content">
                 <div class="logo">
                     <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/logo-elevelab.png" 
-                         alt="EleveLab - Equipamentos Científicos" 
-                         style="height: 120px; width: auto;">
+                         alt="EleveLab - Equipamentos Científicos">
                 </div>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <div class="hamburger"></div>
