@@ -261,20 +261,20 @@
         
         .interface-image-container {
             width: 100%;
-            height: 200px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 10px;
+            padding: 15px;
             overflow: hidden;
         }
         
         .interface-image {
             max-width: 100%;
-            max-height: 100%;
+            max-height: 220px;
             width: auto;
             height: auto;
             object-fit: contain;
@@ -930,10 +930,14 @@
 
                 <div class="content-card">
                     <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🎛️ Painel de Controle</h2>
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem3.png" 
-                         alt="Painel de controle" 
-                         style="width: 100%; max-width: 600px; margin: 20px auto; display: block; border-radius: 10px;">
-                    <p style="text-align: center; color: #666; margin-top: 10px;">Vista detalhada do painel de controle com botões e display LCD</p>
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem3.png" 
+                                 alt="Painel de controle" 
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Vista detalhada do painel de controle com botões e display LCD</div>
+                    </div>
                     
                     <p style="margin-top: 20px;">O painel possui display LCD 4,3" e botões numerados de 0-9, além dos botões:</p>
                     <ul>
