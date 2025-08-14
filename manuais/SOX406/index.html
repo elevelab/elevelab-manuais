@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-
     <!-- Preload de imagens principais para melhor performance -->
-    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/equipment/equipment-6.jpg">
-    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-10.jpg">
-    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-11.jpg">
-    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-12.jpg">
-
+    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem1.jpg">
+    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem3.png">
+    <link rel="preload" as="image" href="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem4.png">
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,13 +45,12 @@
         /* Header Fixo */
         .header {
             background: var(--white);
-            padding: 15px 0;
+            padding: 10px 0;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
-            border-bottom: 3px solid var(--primary-orange);
         }
         
         .header-content {
@@ -66,42 +62,14 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
         
-        .logo-circles {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            align-items: flex-end;
-        }
-        
-        .circle-row {
-            display: flex;
-            gap: 2px;
-        }
-        
-        .circle {
-            background: var(--primary-orange);
-            border-radius: 50%;
-        }
-        
-        .circle.large { width: 20px; height: 20px; }
-        .circle.medium { width: 15px; height: 15px; }
-        .circle.small { width: 10px; height: 10px; }
-        
-        .logo-text {
-            font-weight: 700;
-            font-size: 24px;
-            color: var(--primary-orange);
-        }
-        
-        .logo-subtitle {
-            font-size: 10px;
-            color: var(--secondary-black);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: -3px;
+        .logo img {
+            display: block;
+            height: 55px;
+            width: auto;
+            object-fit: contain;
+            object-position: center;
         }
         
         /* Navegação */
@@ -109,7 +77,7 @@
             background: var(--secondary-black);
             padding: 12px 0;
             position: fixed;
-            top: 70px;
+            top: 75px;
             width: 100%;
             z-index: 999;
         }
@@ -158,7 +126,7 @@
         
         /* Conteúdo Principal */
         .main {
-            margin-top: 120px;
+            margin-top: 130px;
             padding: 40px 0 80px 0;
         }
         
@@ -201,400 +169,149 @@
         }
         
         /* Cards de Conteúdo */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
         .content-card {
             background: var(--white);
             border-radius: 20px;
-            padding: 35px;
-            box-shadow: var(--shadow);
-            border-left: 5px solid var(--primary-orange);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
         }
         
         .content-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(231, 55, 0, 0.15);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
         }
         
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--secondary-black);
-            margin-bottom: 20px;
+        /* Avisos de Segurança */
+        .safety-warning {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .safety-warning h3 {
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-bottom: 20px;
         }
         
-        .card-content {
-            color: var(--text-dark);
-            line-height: 1.8;
+        .warning-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--white);
         }
         
-        .card-content ul {
-            margin-left: 20px;
-            margin-top: 15px;
+        .warning-item strong {
+            display: block;
+            margin-bottom: 5px;
         }
         
-        .card-content li {
-            margin-bottom: 8px;
+        /* Grids de Imagens */
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
         }
         
-        /* Showcase do Equipamento */
-        .equipment-showcase {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 50px;
-            margin: 50px 0;
-            text-align: center;
-            box-shadow: var(--shadow);
+        .interface-card {
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
-        .equipment-image {
+        .interface-image-container {
             width: 100%;
-            max-width: 600px;
-            height: 400px;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border: 2px solid #dee2e6;
-            border-radius: 15px;
+            height: 250px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 30px auto;
-            color: #6c757d;
-            font-size: 18px;
-            font-weight: 600;
-        }
-        
-        /* Tabela de Especificações */
-        .spec-table {
-            background: var(--white);
-            border-radius: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            margin: 40px 0;
         }
         
-        .spec-table table {
+        .interface-image {
+            max-width: 100%;
+            max-height: 220px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .interface-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        /* Imagem de destaque */
+        .equipment-image {
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 500px;
+            margin: 30px auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            object-fit: contain;
+        }
+        
+        /* Tabelas */
+        .spec-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
         
         .spec-table th {
             background: var(--primary-orange);
             color: var(--white);
-            padding: 20px;
+            padding: 15px;
             text-align: left;
             font-weight: 600;
-            font-size: 1.1rem;
         }
         
         .spec-table td {
-            padding: 18px 20px;
-            border-bottom: 1px solid #f1f3f5;
-            font-weight: 500;
-        }
-        
-        .spec-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        
-        .spec-table tr:hover {
-            background: #fff3e0;
-        }
-        
-        /* Lista de Procedimentos */
-        .steps-list {
-            margin: 40px 0;
-        }
-        
-        .step-item {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
             background: var(--white);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow);
-            position: relative;
-            border-left: 5px solid var(--primary-orange);
-            transition: transform 0.3s ease;
         }
         
-        .step-item:hover {
-            transform: translateX(5px);
+        .spec-table tr:last-child td {
+            border-bottom: none;
         }
         
-        .step-number {
-            position: absolute;
-            left: -20px;
-            top: 25px;
-            background: var(--primary-orange);
-            color: var(--white);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 16px;
-            box-shadow: 0 5px 15px rgba(231, 55, 0, 0.3);
-        }
-        
-        .step-title {
-            font-weight: 600;
-            color: var(--secondary-black);
-            margin-bottom: 15px;
-            margin-left: 30px;
-            font-size: 1.2rem;
-        }
-        
-        .step-content {
-            margin-left: 30px;
-            line-height: 1.8;
-        }
-        
-        /* Caixas de Aviso */
-        .warning-box {
-            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-            border: 2px solid var(--primary-orange);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .warning-icon {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 30px;
-            height: 30px;
-            background: var(--primary-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-weight: bold;
-            font-size: 16px;
-        }
-        
-        .warning-content {
-            margin-left: 60px;
-            color: var(--secondary-black);
-            font-weight: 500;
-        }
-        
-        /* Box de Destaque */
-        .highlight-box {
-            background: linear-gradient(135deg, var(--primary-orange), #ff6b3d);
-            color: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(231, 55, 0, 0.3);
-        }
-        
-        .highlight-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .highlight-content {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
-        
-        /* Grid de Imagens */
-        .image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .image-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .image-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .image-placeholder {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            height: 200px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6c757d;
-            font-weight: 600;
-            margin-bottom: 15px;
-            border: 2px dashed #dee2e6;
-        }
-        
-        .image-caption {
-            font-size: 14px;
-            color: var(--secondary-black);
-            font-weight: 600;
-        }
-        
-        /* Footer */
-        .footer {
-            background: var(--secondary-black);
-            color: var(--white);
-            padding: 60px 0 40px 0;
-            margin-top: 100px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-section h3 {
-            color: var(--primary-orange);
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
-        .footer-section p,
-        .footer-section a {
-            color: var(--white);
-            text-decoration: none;
-            margin-bottom: 12px;
-            display: block;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-section a:hover {
-            color: var(--primary-orange);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid #444;
-        }
-        
-        .footer-bottom p {
-            color: #999;
-            font-size: 14px;
-        }
-        
-        /* Mobile Responsivo */
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .nav-content {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--secondary-black);
-                flex-direction: column;
-                padding: 20px;
-            }
-            
-            .nav-content.active {
-                display: flex;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .equipment-showcase {
-                padding: 30px 20px;
-            }
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-orange), #ff6b3d);
-            color: var(--white);
-            padding: 80px 0;
-            margin-bottom: 60px;
-            border-radius: 20px;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Estatísticas */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            margin: 50px 0;
-        }
-        
-        .stat-card {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            border-top: 5px solid var(--primary-orange);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-orange);
-            margin-bottom: 10px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--secondary-black);
-            font-weight: 600;
-            text-transform: uppercase;
+        .spec-table tr:hover td {
+            background: #fff5f0;
         }
         
         /* Features */
-        .features-grid {
+        .feature-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin: 50px 0;
+            margin: 40px 0;
         }
         
         .feature-item {
@@ -632,69 +349,182 @@
             line-height: 1.6;
         }
         
-        /* Estilos para as imagens funcionais */
-        /* CSS removido - estilos de imagem agora inline para controle específico */
+        /* Listas */
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
         
-        /* Estilos para cards de interface padronizados */
-        .interface-grid {
+        ul li, ol li {
+            margin-bottom: 10px;
+        }
+        
+        /* Procedimentos */
+        .procedure-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
         
-        .interface-card {
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        .procedure-card {
+            background: linear-gradient(to bottom, var(--white), #f9f9f9);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.3s ease;
         }
         
-        .interface-image-container {
-            width: 100%;
-            height: 200px;
+        .procedure-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, var(--primary-orange), #ff8c42);
+            border-radius: 15px;
+            padding: 2px;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            z-index: -1;
+        }
+        
+        .procedure-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(231, 55, 0, 0.2);
+        }
+        
+        .procedure-number {
+            background: var(--primary-orange);
+            color: var(--white);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            overflow: hidden;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
         
-        .interface-image {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            display: block;
-        }
-        
-        .interface-caption {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 13px;
+        .procedure-title {
             font-weight: 600;
-            color: #333;
+            color: var(--secondary-black);
+            margin-bottom: 10px;
         }
         
-        .equipment-main-img {
-            max-width: 600px;
-            margin: 0 auto;
+        .procedure-description {
+            font-size: 14px;
+            color: var(--text-dark);
+            line-height: 1.5;
         }
         
-        .gallery-thumb {
-            cursor: pointer;
-            transition: transform 0.3s ease;
+        /* Footer */
+        .footer {
+            background: var(--secondary-black);
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 100px;
         }
         
-        .gallery-thumb:hover {
-            transform: scale(1.05);
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-orange);
+            margin-bottom: 20px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .logo {
+                height: 45px;
+            }
+            
+            .logo img {
+                width: 140px;
+                transform: scale(1.1);
+            }
+            
+            .header {
+                padding: 8px 0;
+            }
+            
+            .nav {
+                top: 66px;
+            }
+            
+            .main {
+                margin-top: 114px;
+            }
+            
+            .nav-content {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--secondary-black);
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            .nav-content.active {
+                display: flex;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-card {
+                padding: 20px;
+            }
+            
+            .feature-grid,
+            .procedure-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .spec-table {
+                font-size: 14px;
+            }
+            
+            .spec-table th,
+            .spec-table td {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -704,21 +534,10 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-circles">
-                        <div class="circle-row">
-                            <div class="circle large"></div>
-                        </div>
-                        <div class="circle-row">
-                            <div class="circle medium"></div>
-                            <div class="circle small"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="logo-text">EleveLab</div>
-                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
-                    </div>
+                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/logo-colorido.png" 
+                         alt="EleveLab - Equipamentos Científicos">
                 </div>
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <div class="hamburger"></div>
                     <div class="hamburger"></div>
                     <div class="hamburger"></div>
@@ -726,123 +545,133 @@
             </div>
         </div>
     </header>
-    
+
     <!-- Navegação -->
     <nav class="nav">
         <div class="container">
             <div class="nav-content" id="navContent">
-                <a href="#overview" class="nav-item active" onclick="showSection('overview')">Visão Geral</a>
-                <a href="#specs" class="nav-item" onclick="showSection('specs')">Especificações</a>
-                <a href="#components" class="nav-item" onclick="showSection('components')">Componentes</a>
-                <a href="#installation" class="nav-item" onclick="showSection('installation')">Instalação</a>
-                <a href="#operation" class="nav-item" onclick="showSection('operation')">Operação</a>
-                <a href="#troubleshooting" class="nav-item" onclick="showSection('troubleshooting')">Solução de Problemas</a>
-                <a href="#maintenance" class="nav-item" onclick="showSection('maintenance')">Manutenção</a>
-                <a href="#warranty" class="nav-item" onclick="showSection('warranty')">Garantia</a>
+                <a class="nav-item active" onclick="showSection('visao-geral')">Visão Geral</a>
+                <a class="nav-item" onclick="showSection('especificacoes')">Especificações</a>
+                <a class="nav-item" onclick="showSection('componentes')">Componentes</a>
+                <a class="nav-item" onclick="showSection('instalacao')">Instalação</a>
+                <a class="nav-item" onclick="showSection('operacao')">Operação</a>
+                <a class="nav-item" onclick="showSection('manutencao')">Solução de Problemas</a>
+                <a class="nav-item" onclick="showSection('manuais')">Manutenção</a>
+                <a class="nav-item" onclick="showSection('garantia')">Garantia</a>
             </div>
         </div>
     </nav>
-    
+
     <!-- Conteúdo Principal -->
     <main class="main">
         <div class="container">
-            
-            <!-- Seção Visão Geral -->
-            <section id="overview" class="section active">
+            <!-- Seção: Visão Geral -->
+            <section id="visao-geral" class="section active">
                 <div class="section-header">
-                    <h1 class="section-title">ANALISADOR DE GORDURA SEMI-AUTOMATIZADO</h1>
-                    <p class="section-subtitle">Modelo SOX406 - Equipamento de alta precisão para análise de gordura baseado no princípio de extração Soxhlet adaptado</p>
+                    <h1 class="section-title">Analisador de Gordura SOX406</h1>
+                    <p class="section-subtitle">Semi-Automatizado · Alta Precisão · Método Soxhlet Adaptado</p>
                 </div>
-                
-                <div class="warning-box">
-                    <div class="warning-icon">⚠️</div>
-                    <div class="warning-content">
-                        <strong>AVISOS IMPORTANTES DE SEGURANÇA:</strong><br>
-                        • Leia atentamente este manual antes da instalação e operação<br>
-                        • Use sempre EPIs apropriados (jaleco, óculos, luvas)<br>
-                        • Manuseie solventes seguindo as normas de segurança<br>
-                        • Apenas técnicos qualificados podem abrir o equipamento
+
+                <!-- Avisos de Segurança -->
+                <div class="safety-warning">
+                    <h3>⚠️ AVISOS IMPORTANTES DE SEGURANÇA</h3>
+                    <div class="warning-item">
+                        <strong>ATENÇÃO:</strong>
+                        O responsável pela operação deve estar ciente de que o uso inadequado do equipamento pode comprometer as proteções de segurança incorporadas.
                     </div>
-                </div>
-                
-                <div class="equipment-showcase">
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/equipment/visao-geral.png" 
-                         alt="Analisador de Gordura SOX406" 
-                         class="equipment-main-img"
-                         style="display:block !important; width:100% !important; max-width:800px !important; height:auto !important; min-height:400px !important; visibility:visible !important; opacity:1 !important; margin:0 auto !important;" 
-                         loading="lazy" onerror="console.error('Erro ao carregar imagem:', this.src); this.style.border='2px solid red';">
-                </div>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-number">6</div>
-                        <div class="stat-label">Posições de Amostra</div>
+                    <div class="warning-item">
+                        <strong>CUIDADO:</strong>
+                        Manuseie todos os solventes utilizados nas análises seguindo rigorosamente as normas de segurança laboratorial. Consulte sempre a Ficha de Informações de Segurança (FISPQ). Use jaleco, óculos de proteção e luvas de borracha em todos os momentos.
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">280°C</div>
-                        <div class="stat-label">Temperatura Máxima</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">4.3"</div>
-                        <div class="stat-label">Display LCD</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-number">≥80%</div>
-                        <div class="stat-label">Taxa de Recuperação</div>
+                    <div class="warning-item">
+                        <strong>PERIGO:</strong>
+                        Risco de choque elétrico! Apenas pessoal técnico qualificado pode abrir a tampa da máquina e os painéis de acesso.
                     </div>
                 </div>
-                
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3 class="card-title">🎯 Aplicações Principais</h3>
-                        <div class="card-content">
-                            <p>O Analisador de Gordura SOX406 é desenvolvido conforme a norma GB/T 14772-2008 e pode medir:</p>
-                            <ul>
-                                <li><strong>Alimentos & Bebidas:</strong> Análise de gordura em produtos alimentícios</li>
-                                <li><strong>Rações:</strong> Determinação de extrato etéreo em nutrição animal</li>
-                                <li><strong>Grãos & Sementes:</strong> Determinação de lipídios e óleos</li>
-                                <li><strong>Farmacêuticas:</strong> Compostos orgânicos solúveis</li>
-                                <li><strong>Ambiental:</strong> Óleos e graxas em águas residuais</li>
-                                <li><strong>Química:</strong> Pré-tratamento para cromatografia</li>
-                            </ul>
-                        </div>
-                    </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 20px;">📊 Aplicações</h2>
+                    <p>O Analisador de Gordura SOX406 é um equipamento desenvolvido conforme a norma GB/T 14772-2008, projetado para determinar o teor de gordura em alimentos, produtos lácteos e ração animal. Também é aplicável para medir compostos orgânicos solúveis em detergentes, produtos farmacêuticos, petroquímicos, produtos fibrosos, solo e lodo.</p>
                     
-                    <div class="content-card">
-                        <h3 class="card-title">⚗️ Princípio de Funcionamento</h3>
-                        <div class="card-content">
-                            <p>O equipamento utiliza o <strong>método gravimétrico</strong> baseado no princípio de extração Soxhlet adaptado.</p>
-                            <p>A amostra é extraída usando éter anidro, éter de petróleo ou hexano através de um sistema automatizado que reduz significativamente o tempo de extração.</p>
-                            <p>A gordura extraída é seca e pesada, sendo o teor calculado pela diferença de massa.</p>
-                        </div>
-                    </div>
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Exemplos de aplicação:</h3>
+                    <ul>
+                        <li>Determinação rápida e segura de gordura em alimentos, rações, grãos e sementes</li>
+                        <li>Extração de óleos e graxas em águas residuais e lodo</li>
+                        <li>Extração de compostos orgânicos semi-voláteis em solo (pesticidas e herbicidas)</li>
+                        <li>Extração de plastificantes em plásticos, resina em papel e papelão, graxa em couro</li>
+                        <li>Pré-tratamento de amostras sólidas para cromatografia gasosa e líquida</li>
+                    </ul>
                 </div>
-                
-                <div class="highlight-box">
-                    <h3 class="highlight-title">⚡ Características Avançadas</h3>
-                    <div class="highlight-content">
-                        Tela LCD colorida de 4,3" com sistema de controle microprocessado<br>
-                        Bloco de aquecimento metálico com alta precisão<br>
-                        Sistema triplo de alarme com avisos sonoros e visuais<br>
-                        Processo automatizado com recuperação de solvente<br>
-                        Tecnologia de isolamento térmico avançada
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 20px;">⚙️ Princípio de Funcionamento</h2>
+                    <p>O equipamento utiliza o método gravimétrico baseado no <strong>princípio de extração Soxhlet adaptado</strong>. A amostra é extraída usando éter anidro, éter de petróleo ou hexano através de um sistema automatizado que reduz significativamente o tempo de extração comparado ao método Soxhlet tradicional.</p>
+                    <p style="margin-top: 15px;">A gordura extraída é então seca e pesada, sendo o teor de gordura calculado pela diferença de massa do copo de extração antes e após o processo.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">✨ Características Principais</h2>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Display LCD 4,3"</div>
+                                <div class="feature-description">Sistema de controle microprocessado com interface intuitiva</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🌡️</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Alta Precisão</div>
+                                <div class="feature-description">Precisão de ±1°C com faixa de temperatura até 280°C</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-content">
+                                <div class="feature-title">6 Amostras Simultâneas</div>
+                                <div class="feature-description">Processe até 6 amostras por lote com eficiência</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">♻️</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Recuperação ≥80%</div>
+                                <div class="feature-description">Taxa de recuperação de solvente superior a 80%</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🔔</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Sistema de Alarmes</div>
+                                <div class="feature-description">Alarme de sobretemperatura e avisos sonoros/visuais</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-content">
+                                <div class="feature-title">Segurança Aprimorada</div>
+                                <div class="feature-description">Separação total entre circuito elétrico e espaço de extração</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
-            
-            <!-- Seção Especificações -->
-            <section id="specs" class="section">
+
+            <!-- Seção: Especificações -->
+            <section id="especificacoes" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">Especificações Técnicas</h2>
-                    <p class="section-subtitle">Características técnicas e de desempenho do equipamento SOX406</p>
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Parâmetros técnicos e características de desempenho</p>
                 </div>
-                
-                <div class="spec-table">
-                    <table>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">📋 Parâmetros Técnicos</h2>
+                    <table class="spec-table">
                         <thead>
                             <tr>
-                                <th>Parâmetro</th>
                                 <th>Especificação</th>
+                                <th>Valor</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -893,441 +722,11 @@
                         </tbody>
                     </table>
                 </div>
-                
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <div class="feature-icon">🖥️</div>
-                        <div class="feature-content">
-                            <div class="feature-title">Display LCD 4,3"</div>
-                            <div class="feature-description">Sistema de controle microprocessado com interface intuitiva</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🌡️</div>
-                        <div class="feature-content">
-                            <div class="feature-title">Controle Preciso</div>
-                            <div class="feature-description">Precisão de ±1°C com ampla faixa de temperatura</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">⚠️</div>
-                        <div class="feature-content">
-                            <div class="feature-title">Sistema de Alarmes</div>
-                            <div class="feature-description">Triplo sistema com avisos sonoros e visuais</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">♻️</div>
-                        <div class="feature-content">
-                            <div class="feature-title">Recuperação de Solvente</div>
-                            <div class="feature-description">Taxa de recuperação superior a 80%</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🔥</div>
-                        <div class="feature-content">
-                            <div class="feature-title">Aquecimento Uniforme</div>
-                            <div class="feature-description">Bloco metálico com distribuição homogênea</div>
-                        </div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">🛡️</div>
-                        <div class="feature-content">
-                            <div class="feature-title">Isolamento Térmico</div>
-                            <div class="feature-description">Gabinete mantido em temperatura ambiente</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Seção Componentes -->
-            <section id="components" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Componentes do Equipamento</h2>
-                    <p class="section-subtitle">Identificação dos componentes principais do SOX406</p>
-                </div>
-                
-                <div class="equipment-showcase">
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/components/sox406-exploded.jpg" 
-                         alt="Componentes do SOX406"
-                         class="equipment-main-img"
-                         style="display:block !important; width:100% !important; height:auto !important; min-height:150px !important; visibility:visible !important; opacity:1 !important;">
-                </div>
-                
+
                 <div class="content-card">
-                    <h3 class="card-title">🔧 Componentes Principais</h3>
-                    <div class="card-content">
-                        <ul>
-                            <li><strong>1. Esfera deslizante:</strong> Permite movimento vertical dos tubos</li>
-                            <li><strong>2. Tubo de condensação:</strong> Sistema de recuperação de solvente</li>
-                            <li><strong>3. Torneira:</strong> Controle de fluxo de solvente</li>
-                            <li><strong>4. Copo de extração (80mL):</strong> Recipiente para extração</li>
-                            <li><strong>5. Chave:</strong> Para manutenção e ajustes</li>
-                            <li><strong>6. Interface de energia:</strong> Conexão elétrica principal</li>
-                            <li><strong>7. Interruptor principal:</strong> Controle de alimentação</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Seção Instalação -->
-            <section id="installation" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Instalação</h2>
-                    <p class="section-subtitle">Procedimentos para instalação correta e segura do equipamento</p>
-                </div>
-                
-                <div class="steps-list">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <h3 class="step-title">Inspeção Antes da Instalação</h3>
-                        <div class="step-content">
-                            <p>Após desembalar, verifique todos os componentes:</p>
-                            <ul>
-                                <li>Equipamento principal SOX406</li>
-                                <li>6 copos de extração (80mL)</li>
-                                <li>Tubos de condensação</li>
-                                <li>Chave para manutenção</li>
-                                <li>Manual e certificado de garantia</li>
-                            </ul>
-                            <p><strong>Importante:</strong> Em caso de danos, contate a Eleve Lab imediatamente.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <h3 class="step-title">Preparação do Local</h3>
-                        <div class="step-content">
-                            <p><strong>Requisitos Ambientais:</strong></p>
-                            <ul>
-                                <li>Temperatura: 10°C a 28°C</li>
-                                <li>Local com boa ventilação</li>
-                                <li>Superfície estável (suportar 35kg)</li>
-                            </ul>
-                            <p><strong>Requisitos de Infraestrutura:</strong></p>
-                            <ul>
-                                <li>Fonte de água a máximo 1m de distância</li>
-                                <li>Dreno 10cm abaixo da saída</li>
-                                <li>Tomada 220V com aterramento</li>
-                                <li>20cm de espaço livre atrás do equipamento</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <h3 class="step-title">Instalação Elétrica</h3>
-                        <div class="step-content">
-                            <p><strong>⚡ INSTALAÇÃO ELÉTRICA OBRIGATÓRIA:</strong></p>
-                            <ul>
-                                <li>Fio terra obrigatório</li>
-                                <li>Disjuntor e proteção contra vazamento</li>
-                                <li>Interruptor de energia separado</li>
-                                <li>Longe de equipamentos de alta potência</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">4</div>
-                        <h3 class="step-title">Sistema de Refrigeração</h3>
-                        <div class="step-content">
-                            <p><strong>Conexões de água (lado esquerdo do equipamento):</strong></p>
-                            <ul>
-                                <li><strong>Entrada de água (1):</strong> Conectar à torneira de água corrente com fluxo de 1-2 L/min</li>
-                                <li><strong>Saída de água (2):</strong> Conectar ao sistema de drenagem, posicionado pelo menos 10cm abaixo da saída</li>
-                            </ul>
-                            <p><strong>Importante:</strong> Temperatura máxima da água: 20°C para condensação eficiente</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="equipment-showcase">
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/equipment/sox406-main.jpg" 
-                         alt="Vista Lateral - Conexões de Água"
-                         style="display:block !important; width:100% !important; max-width:700px !important; height:auto !important; min-height:300px !important; visibility:visible !important; opacity:1 !important; margin:0 auto !important;">
-                    <p style="text-align: center; margin-top: 10px; font-style: italic;">Figura 1 - Sistema de refrigeração: (1) Entrada de água, (2) Saída de água</p>
-                </div>
-            </section>
-            
-            <!-- Seção Operação -->
-            <section id="operation" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Operação</h2>
-                    <p class="section-subtitle">Como operar o equipamento corretamente</p>
-                </div>
-                
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3 class="card-title">🧪 Reagentes Necessários</h3>
-                        <div class="card-content">
-                            <p><strong>Solventes:</strong></p>
-                            <ul>
-                                <li>Éter anidro (grau analítico)</li>
-                                <li>Éter de petróleo (30-60°C)</li>
-                                <li>Hexano (grau analítico)</li>
-                            </ul>
-                            <p><strong>Equipamentos Auxiliares:</strong></p>
-                            <ul>
-                                <li>Balança analítica (0,0001 g)</li>
-                                <li>Papel de filtro (90 mm)</li>
-                                <li>Estufa de secagem</li>
-                                <li>Dessecador</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="content-card">
-                        <h3 class="card-title">⚙️ Painel de Controle</h3>
-                        <div class="card-content">
-                            <p><strong>Interface LCD 4,3":</strong></p>
-                            <ul>
-                                <li>Display de temperatura atual e configurada</li>
-                                <li>Tempo decorrido e configurado</li>
-                                <li>Botões numerados 0-9</li>
-                                <li><strong>Enter:</strong> Confirmar/Entrar</li>
-                                <li><strong>Stop:</strong> Parar operação</li>
-                                <li><strong>Pause:</strong> Pausar processo</li>
-                                <li><strong>Setas:</strong> Navegação no menu</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="interface-grid">
-                    <div class="interface-card">
-                        <div class="interface-image-container">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-home.jpg" 
-                                 alt="Tela Principal"
-                                 class="interface-image">
-                        </div>
-                        <div class="interface-caption">Tela Principal</div>
-                    </div>
-                    <div class="interface-card">
-                        <div class="interface-image-container">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-settings.jpg" 
-                                 alt="Menu de Configurações"
-                                 class="interface-image">
-                        </div>
-                        <div class="interface-caption">Menu de Configurações</div>
-                    </div>
-                    <div class="interface-card">
-                        <div class="interface-image-container">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-running.jpg" 
-                                 alt="Processo em Andamento"
-                                 class="interface-image">
-                        </div>
-                        <div class="interface-caption">Processo em Andamento</div>
-                    </div>
-                    <div class="interface-card">
-                        <div class="interface-image-container">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-alarm.jpg" 
-                                 alt="Alarme de Sobretemperatura"
-                                 class="interface-image">
-                        </div>
-                        <div class="interface-caption">Alarme de Sobretemperatura</div>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 50px; margin-bottom: 30px; font-size: 1.5rem; color: var(--secondary-black);">Interface de Operação</h3>
-                
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3 class="card-title">📊 Configuração de Temperatura e Tempo</h3>
-                        <div class="card-content">
-                            <p>Após ligar o equipamento, pressione <strong>"Enter"</strong> para acessar o menu de aquecimento.</p>
-                            <ul>
-                                <li>Configure o tempo desejado (formato HH:MM)</li>
-                                <li>Configure a temperatura desejada (°C)</li>
-                                <li>Pressione <strong>"Enter"</strong> para iniciar o aquecimento</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="content-card">
-                        <h3 class="card-title">⚠️ Sistema de Alarmes</h3>
-                        <div class="card-content">
-                            <p><strong>Alarme de Sobretemperatura:</strong></p>
-                            <p>Se a temperatura exceder em 25°C a temperatura configurada, o sistema exibirá aviso de sobretemperatura com alarme sonoro e visual.</p>
-                            <p><strong>Controles durante o processo:</strong></p>
-                            <ul>
-                                <li><strong>Pause:</strong> Pausa temporária do aquecimento</li>
-                                <li><strong>Stop:</strong> Parada de emergência</li>
-                                <li><strong>Return:</strong> Retorna ao menu principal</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="interface-grid">
-                    <div class="interface-card">
-                        <div class="interface-image-container">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-15.jpg" 
-                                 alt="Configuração do Sistema"
-                                 class="interface-image">
-                        </div>
-                        <div class="interface-caption">Configuração do Sistema</div>
-                    </div>
-                    <div class="interface-card">
-                        <div class="interface-image-container">
-                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-16.jpg" 
-                                 alt="Parâmetros de Calibração"
-                                 class="interface-image">
-                        </div>
-                        <div class="interface-caption">Parâmetros de Calibração</div>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 50px; margin-bottom: 30px; font-size: 1.5rem; color: var(--secondary-black);">Configurações do Sistema</h3>
-                
-                <div class="content-card">
-                    <h3 class="card-title">⚙️ Menu de Configuração (Set)</h3>
-                    <div class="card-content">
-                        <p>Após a inicialização, use as setas para navegar até "Set" e pressione Enter para acessar:</p>
-                        <ul>
-                            <li><strong>Temperatura do sensor:</strong> Temperatura coletada pelo sensor de temperatura</li>
-                            <li><strong>Temperatura calibrada:</strong> Temperatura real do dispositivo de aquecimento (permite correção da temperatura exibida)</li>
-                            <li><strong>Modo de temporização:</strong> Contagem progressiva ou regressiva</li>
-                            <li><strong>Ponto de temporização:</strong> Início da contagem (ao iniciar aquecimento ou ao atingir temperatura)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 50px; margin-bottom: 30px; font-size: 1.5rem; color: var(--secondary-black);">Procedimento Experimental</h3>
-                
-                <div class="steps-list">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <h3 class="step-title">Preparo da Amostra</h3>
-                        <div class="step-content">
-                            <ul>
-                                <li>Pese 2-5g de amostra (precisão 0,0001g)</li>
-                                <li>Coloque no cartucho de papel filtro</li>
-                                <li>Posicione no suporte e fixe com ímã</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <h3 class="step-title">Preparo do Copo de Extração</h3>
-                        <div class="step-content">
-                            <ul>
-                                <li>Seque o copo em estufa até peso constante</li>
-                                <li>Registre o peso do copo vazio</li>
-                                <li>Adicione 60 mL de solvente</li>
-                                <li>Posicione na placa de aquecimento</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <h3 class="step-title">Extração</h3>
-                        <div class="step-content">
-                            <ul>
-                                <li>Pressione a alavanca para selar o copo</li>
-                                <li>Imerja a amostra no solvente</li>
-                                <li>Configure temperatura e tempo</li>
-                                <li>Inicie o processo de aquecimento</li>
-                                <li>Mantenha velocidade de 3-5 gotas/segundo</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item">
-                        <div class="step-number">4</div>
-                        <h3 class="step-title">Finalização e Cálculo</h3>
-                        <div class="step-content">
-                            <ul>
-                                <li>Recupere o solvente através da torneira</li>
-                                <li>Remova e seque o copo em estufa</li>
-                                <li>Esfrie em dessecador e pese</li>
-                                <li><strong>Cálculo:</strong> Teor (%) = [(peso final - peso inicial) / peso amostra] × 100</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <h3 style="margin-top: 50px; margin-bottom: 30px; font-size: 1.5rem; color: var(--secondary-black);">Preparo de Amostras</h3>
-                
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3 class="card-title">🍎 Amostras de Alimentos</h3>
-                        <div class="card-content">
-                            <p><strong>Sólidas:</strong> 200g mínimo, triturar, peneira 1,0 mm</p>
-                            <p><strong>Em pó:</strong> 200g mínimo, homogeneizar</p>
-                            <p><strong>Pastosas:</strong> 200g mínimo, homogeneizar bem</p>
-                            <p><strong>Cárneas:</strong> Remover não comestível, moer 2x</p>
-                        </div>
-                    </div>
-                    
-                    <div class="content-card">
-                        <h3 class="card-title">🌾 Amostras de Ração</h3>
-                        <div class="card-content">
-                            <p><strong>Baixo teor de gordura:</strong> Processar como alimentos</p>
-                            <p><strong>Alto teor (>200g/kg):</strong> Requer pré-extração</p>
-                            <p>⚠️ <strong>Importante:</strong> Alto teor de gordura pode interferir no processo</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Seção Solução de Problemas -->
-            <section id="troubleshooting" class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Solução de Problemas</h2>
-                    <p class="section-subtitle">Identificação e correção de falhas comuns</p>
-                </div>
-                
-                <div class="spec-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Problema</th>
-                                <th>Causa Provável</th>
-                                <th>Solução</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Equipamento sem energia</td>
-                                <td>Fusível queimado<br>Cabo mal conectado</td>
-                                <td>Substitua o fusível<br>Conecte adequadamente</td>
-                            </tr>
-                            <tr>
-                                <td>Vazamento de solvente</td>
-                                <td>Fluxo de água insuficiente<br>Anel de vedação deteriorado</td>
-                                <td>Aumente fluxo de água<br>Substitua anel de vedação</td>
-                            </tr>
-                            <tr>
-                                <td>Sistema travado</td>
-                                <td>Interferência eletromagnética</td>
-                                <td>Desligue, remova fonte, reinicie</td>
-                            </tr>
-                            <tr>
-                                <td>Temperatura inadequada</td>
-                                <td>Sensor defeituoso</td>
-                                <td>Verifique/substitua sensor</td>
-                            </tr>
-                            <tr>
-                                <td>Condensação ruim</td>
-                                <td>Água quente (>20°C)</td>
-                                <td>Use água mais fria</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="highlight-box">
-                    <h3 class="highlight-title">📋 Temperaturas de Referência</h3>
-                    <div class="highlight-content">
-                        Controle a velocidade de gotejamento em 3-5 gotas por segundo
-                    </div>
-                </div>
-                
-                <div class="spec-table">
-                    <table>
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🌡️ Referências de Temperatura</h2>
+                    <p style="margin-bottom: 20px;">A temperatura de aquecimento deve ser ajustada para manter velocidade de gotejamento de aproximadamente 3-5 gotas por segundo.</p>
+                    <table class="spec-table">
                         <thead>
                             <tr>
                                 <th>Solvente</th>
@@ -1336,11 +735,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Éter de Petróleo (30-60°C)</td>
+                                <td>Éter de petróleo (30-60°C)</td>
                                 <td>80</td>
                             </tr>
                             <tr>
-                                <td>Éter Etílico</td>
+                                <td>Éter etílico</td>
                                 <td>60</td>
                             </tr>
                             <tr>
@@ -1373,171 +772,498 @@
                             </tr>
                         </tbody>
                     </table>
+                    <p style="margin-top: 15px;"><strong>Nota:</strong> Para reagentes orgânicos não listados, use temperatura 20°C acima do ponto de ebulição.</p>
                 </div>
-                
-                <p style="margin-top: 20px; text-align: center; font-style: italic;">
-                    <strong>Nota:</strong> Para reagentes não listados, use temperatura 20°C acima do ponto de ebulição.
-                </p>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🚀 Características de Desempenho</h2>
+                    <ul>
+                        <li><strong>Display LCD 4,3"</strong> com sistema de controle microprocessado</li>
+                        <li><strong>Alarme de sobretemperatura</strong> e lembrete temporizado</li>
+                        <li><strong>Sistema triplo de alarme</strong> com avisos sonoros e visuais no display</li>
+                        <li><strong>Funções de cronômetro</strong> e contagem regressiva</li>
+                        <li><strong>Bloco de aquecimento metálico</strong> com ampla faixa de controle e alta precisão</li>
+                        <li><strong>Tecnologia de elevação linear</strong> para operação suave e confortável</li>
+                        <li><strong>Interface rica em informações</strong> mostrando simultaneamente temperatura configurada, temperatura atual, tempo configurado e tempo de aquecimento</li>
+                        <li><strong>Separação total</strong> entre circuito elétrico e espaço de extração para maior segurança</li>
+                        <li><strong>Tecnologia de isolamento térmico</strong> mantendo o gabinete em temperatura ambiente</li>
+                        <li><strong>Velocidade de extração superior</strong> comparado à análise Soxhlet tradicional</li>
+                    </ul>
+                </div>
             </section>
-            
-            <!-- Seção Manutenção -->
-            <section id="maintenance" class="section">
+
+            <!-- Seção: Componentes -->
+            <section id="componentes" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">Manutenção</h2>
-                    <p class="section-subtitle">Procedimentos para garantir o bom funcionamento do equipamento</p>
+                    <h1 class="section-title">Componentes do Equipamento</h1>
+                    <p class="section-subtitle">Estrutura e componentes principais do SOX406</p>
                 </div>
-                
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3 class="card-title">📅 Manutenção Diária</h3>
-                        <div class="card-content">
-                            <ul>
-                                <li>Mantenha boa ventilação e resfriamento</li>
-                                <li>Use mesmo tipo de solvente no mesmo conjunto</li>
-                                <li>Limpe com pano ÚMIDO (evita eletricidade estática)</li>
-                                <li>Limpe placa de aquecimento com pano abrasivo</li>
-                                <li>Verifique fluxo de água (1-2 L/min)</li>
-                            </ul>
-                        </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🔧 Estrutura do Equipamento</h2>
+                    <div style="text-align: center;">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem1.jpg" 
+                             alt="Estrutura geral do equipamento" 
+                             class="equipment-image">
+                        <p style="color: #666; margin-top: 10px;">Vista geral do Analisador de Gordura SOX406 com componentes numerados</p>
                     </div>
                     
-                    <div class="content-card">
-                        <h3 class="card-title">🔧 Manutenção Periódica</h3>
-                        <div class="card-content">
-                            <ul>
-                                <li><strong>Semanal:</strong> Limpeza dos copos, verificação conexões</li>
-                                <li><strong>Mensal:</strong> Calibração, limpeza do sistema</li>
-                                <li><strong>Trimestral:</strong> Manutenção técnica especializada</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">Componentes principais:</h3>
+                    <ol>
+                        <li><strong>Esfera deslizante</strong></li>
+                        <li><strong>Tubo de condensação</strong></li>
+                        <li><strong>Torneira</strong></li>
+                        <li><strong>Copo de extração</strong></li>
+                        <li><strong>Chave</strong></li>
+                        <li><strong>Interface de energia</strong></li>
+                        <li><strong>Interruptor principal</strong></li>
+                    </ol>
                     
-                    <div class="content-card">
-                        <h3 class="card-title">💧 Sistema de Resfriamento</h3>
-                        <div class="card-content">
-                            <p>Verifique crescimento de algas regularmente.</p>
-                            <p>Se necessário, limpe com:</p>
-                            <ul>
-                                <li>Solução de ácido clorídrico 1 mol/L</li>
-                                <li>Hipoclorito diluído</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="content-card">
-                        <h3 class="card-title">⚠️ Cuidados com Solventes</h3>
-                        <div class="card-content">
-                            <ul>
-                                <li>Descarte solvente se não usar por longo período</li>
-                                <li>Use mesmo tipo para evitar contaminação</li>
-                                <li><strong>PERIGO:</strong> Evite chamas e eletricidade estática</li>
-                                <li>Mantenha responsável no laboratório</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="warning-box">
-                    <div class="warning-icon">!</div>
-                    <div class="warning-content">
-                        <strong>SEGURANÇA OPERACIONAL:</strong><br>
-                        • Pessoal não familiarizado não deve operar<br>
-                        • Desligue energia ao desmontar tampas<br>
-                        • Cuidado com acessórios de vidro<br>
-                        • Não toque bloco aquecido
-                    </div>
                 </div>
             </section>
-            
-            <!-- Seção Garantia -->
-            <section id="warranty" class="section">
+
+            <!-- Seção: Instalação -->
+            <section id="instalacao" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">Garantia</h2>
-                    <p class="section-subtitle">Condições de garantia e suporte técnico</p>
+                    <h1 class="section-title">Instalação</h1>
+                    <p class="section-subtitle">Requisitos e procedimentos para instalação correta</p>
                 </div>
-                
-                <div class="highlight-box">
-                    <h3 class="highlight-title">🛡️ Termos de Garantia</h3>
-                    <div class="highlight-content">
-                        Período: 1 ano a partir da data de venda (nota fiscal)<br>
-                        Cobertura: Defeitos de fabricação e componentes<br>
-                        Mão de obra especializada e peças originais
-                    </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">📦 Inspeção Antes da Instalação</h2>
+                    <p>Após desembalar o equipamento, verifique todos os componentes principais e acessórios conforme a lista de embalagem. Verifique se há danos e, em caso positivo, entre em contato imediatamente com a Eleve Lab (mantenha as peças danificadas para análise).</p>
                 </div>
-                
-                <div class="content-grid">
-                    <div class="content-card">
-                        <h3 class="card-title">✅ Cobertura Inclui</h3>
-                        <div class="card-content">
-                            <ul>
-                                <li>Defeitos de fabricação</li>
-                                <li>Falhas em componentes eletrônicos</li>
-                                <li>Problemas no sistema de aquecimento</li>
-                                <li>Mão de obra especializada</li>
-                                <li>Peças de reposição originais</li>
-                            </ul>
-                        </div>
-                    </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🏢 Condições de Instalação</h2>
                     
-                    <div class="content-card">
-                        <h3 class="card-title">❌ Exclusões da Garantia</h3>
-                        <div class="card-content">
-                            <ul>
-                                <li>Período de garantia expirado</li>
-                                <li>Danos por uso inadequado</li>
-                                <li>Desmontagem não autorizada</li>
-                                <li>Modificações não autorizadas</li>
-                                <li>Danos por transporte inadequado</li>
-                                <li>Desgaste natural de peças</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">Requisitos ambientais:</h3>
+                    <ul>
+                        <li>Não instale em locais com exposição direta ao sol ou muito frios, quentes ou úmidos</li>
+                        <li>Temperatura ambiente recomendada: 10°C a 28°C</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">Requisitos de infraestrutura:</h3>
+                    <ul>
+                        <li>Instale próximo a fonte de água e dreno</li>
+                        <li>Tomada elétrica a no máximo 1 metro do equipamento</li>
+                        <li>Fluxo de água: 1-2 L/min</li>
+                        <li>Temperatura da água: máximo 20°C</li>
+                        <li>Dreno deve estar 10 cm abaixo da saída de drenagem do equipamento</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">Requisitos elétricos:</h3>
+                    <ul>
+                        <li>Configuração de energia adequada aos requisitos</li>
+                        <li>Fio terra obrigatório</li>
+                        <li>Interruptor de energia separado e dispositivos de segurança</li>
+                        <li>Instale longe de equipamentos de alta potência para evitar interferência eletromagnética</li>
+                    </ul>
                 </div>
-                
-                <div class="content-card" style="margin-top: 40px;">
-                    <h3 class="card-title">📞 Suporte Eleve Lab</h3>
-                    <div class="card-content">
-                        <p><strong>Distribuidor Autorizado Hanon Lab no Brasil</strong></p>
-                        <p>📱 Telefone/WhatsApp: (51) 9 9858-4548</p>
-                        <p>📧 Email: contato@elevelab.com.br</p>
-                        <p>🌐 Website: www.elevelab.com.br</p>
-                        <p>📍 Endereço: Av. Benjamin Constant 19, Loja 35</p>
-                        <p>🕐 Horário: Segunda a Sexta - 8h às 18h</p>
-                    </div>
-                </div>
-                
-                <div class="highlight-box" style="margin-top: 40px;">
-                    <h3 class="highlight-title">🎯 Compromisso Eleve Lab</h3>
-                    <div class="highlight-content">
-                        "Comprometidos com a excelência em equipamentos analíticos,<br>
-                        fornecendo suporte técnico especializado e treinamento adequado<br>
-                        para garantir o máximo aproveitamento de seu investimento."
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🔌 Instalação do Equipamento</h2>
+                    <ul>
+                        <li>Posicione o equipamento de forma estável na bancada</li>
+                        <li>Mantenha 20 cm de distância da parede na parte traseira</li>
+                        <li>Distância máxima de 1 m da tomada elétrica</li>
+                        <li>Instale disjuntor, proteção contra vazamento e aterramento confiável</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">Conexões de água (lado esquerdo do equipamento):</h3>
+                    <ol>
+                        <li><strong>Entrada de água condensada:</strong> conecte à torneira de água corrente</li>
+                        <li><strong>Saída de água condensada:</strong> conecte ao dreno</li>
+                    </ol>
+                    
+                    <div style="text-align: center; margin-top: 40px;">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem2.jpg" 
+                             alt="Vista detalhada das conexões" 
+                             class="equipment-image">
+                        <p style="color: #666; margin-top: 10px;">Vista detalhada mostrando as conexões e instalação do equipamento</p>
                     </div>
                 </div>
             </section>
-            
+
+            <!-- Seção: Operação -->
+            <section id="operacao" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Operação</h1>
+                    <p class="section-subtitle">Como operar o equipamento corretamente</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🧪 Reagentes Necessários</h2>
+                    <div class="content-grid">
+                        <div>
+                            <h3>Solventes:</h3>
+                            <ul>
+                                <li>Éter anidro (grau analítico)</li>
+                                <li>Éter de petróleo (30-60°C)</li>
+                                <li>Hexano (grau analítico)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Equipamentos Auxiliares:</h3>
+                            <ul>
+                                <li>Balança analítica (0,0001 g)</li>
+                                <li>Papel de filtro (90 mm)</li>
+                                <li>Estufa de secagem</li>
+                                <li>Dessecador</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🎛️ Painel de Controle</h2>
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem3.png" 
+                                 alt="Painel de controle" 
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Vista detalhada do painel de controle com botões e display LCD</div>
+                    </div>
+                    
+                    <p style="margin-top: 20px;">O painel possui display LCD 4,3" e botões numerados de 0-9, além dos botões:</p>
+                    <ul>
+                        <li><strong>Enter:</strong> Confirmar/Entrar</li>
+                        <li><strong>Stop:</strong> Parar operação</li>
+                        <li><strong>Pause:</strong> Pausar processo</li>
+                        <li><strong>Setas:</strong> Navegação no menu</li>
+                    </ul>
+                    
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">⚙️ Interface de Operação</h2>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">📊 Configuração de Temperatura e Tempo</h3>
+                    
+                    <p><strong>1.</strong> Após ligar o equipamento, pressione "Enter" para acessar o menu "Aquecimento"</p>
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem4.png" 
+                                 alt="Menu principal do sistema"
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Menu principal do sistema - Tela inicial mostrando opções "Heating" e "Set"</div>
+                    </div>
+                    
+                    <p><strong>2.</strong> Configure o tempo desejado (formato HH:MM)</p>
+                    <p><strong>3.</strong> Configure a temperatura desejada (°C)</p>
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-settings.jpg" 
+                                 alt="Interface de configuração"
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Interface de configuração - Tela de configuração mostrando campos para tempo e temperatura</div>
+                    </div>
+                    
+                    <p><strong>4.</strong> Pressione "Enter" para iniciar o aquecimento</p>
+                    
+                    <h3 style="margin-top: 40px; margin-bottom: 20px;">🔥 Interface de Aquecimento</h3>
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-running.jpg" 
+                                 alt="Interface durante aquecimento"
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Interface durante aquecimento - Tela mostrando temperatura atual, tempo decorrido e parâmetros configurados</div>
+                    </div>
+                    
+                    <p>Durante o aquecimento, o display mostra:</p>
+                    <ul>
+                        <li>Temperatura atual</li>
+                        <li>Tempo decorrido</li>
+                        <li>Tempo configurado</li>
+                        <li>Temperatura configurada</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 20px;">🚨 Sistema de Alarmes</h3>
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/lcd-alarm.jpg" 
+                                 alt="Alarme de sobretemperatura"
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Alarme de sobretemperatura - Tela mostrando aviso de sobretemperatura com ícone de alerta</div>
+                    </div>
+                    
+                    <p><strong>Alarme de Sobretemperatura:</strong></p>
+                    <ul>
+                        <li>Ativa quando a temperatura excede em 25°C a temperatura configurada</li>
+                        <li>Display mostra ícone de aviso e "Over Temperature"</li>
+                    </ul>
+                    
+                    <p><strong>Controles durante o processo:</strong></p>
+                    <ul>
+                        <li><strong>Pause:</strong> Pausa temporária do aquecimento</li>
+                        <li><strong>Stop:</strong> Parada de emergência</li>
+                        <li><strong>Return:</strong> Retorna ao menu principal</li>
+                    </ul>
+                    
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🔬 Configurações do Sistema</h2>
+                    
+                    <h3 style="margin-bottom: 15px;">Menu de Configuração (Set)</h3>
+                    <p>Acesse através do menu "Set" para configurar:</p>
+                    
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem8.png" 
+                                 alt="Menu de seleção principal"
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Menu de seleção principal - Tela mostrando opções "Heating" e "Set" com cursor na opção "Set"</div>
+                    </div>
+                    
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/interface/interface-15.jpg" 
+                                 alt="Menu de configurações do sistema"
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Menu de configurações do sistema - Tela de configurações mostrando parâmetros do sensor, calibração e temporização</div>
+                    </div>
+                    
+                    <ul>
+                        <li><strong>Temperatura do sensor:</strong> Temperatura coletada pelo sensor de temperatura</li>
+                        <li><strong>Temperatura calibrada:</strong> Temperatura real do dispositivo de aquecimento (permite correção da temperatura exibida)</li>
+                        <li><strong>Modo de temporização:</strong> Contagem progressiva ou regressiva</li>
+                        <li><strong>Ponto de temporização:</strong> Início da contagem (ao iniciar aquecimento ou ao atingir temperatura)</li>
+                    </ul>
+                    
+                    <div class="interface-card" style="max-width: 500px; margin: 20px auto;">
+                        <div class="interface-image-container">
+                            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem10.png" 
+                                 alt="Interface de operação normal"
+                                 class="interface-image">
+                        </div>
+                        <div class="interface-caption">Interface de operação normal - Tela de operação mostrando temperatura atual e controles de processo</div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">📝 Procedimento Experimental</h2>
+                    
+                    <h3 style="margin-bottom: 20px;">Preparo de Amostras</h3>
+                    
+                    <h4 style="margin-top: 20px; margin-bottom: 10px;">🍽️ Amostras de Alimentos</h4>
+                    <ul>
+                        <li><strong>Sólidas:</strong> 200g mínimo, triturar, peneira 1,0 mm</li>
+                        <li><strong>Em pó:</strong> 200g mínimo, homogeneizar</li>
+                        <li><strong>Pastosas:</strong> 200g mínimo, homogeneizar bem</li>
+                        <li><strong>Cárneas:</strong> Remover não comestível, moer 2x</li>
+                    </ul>
+                    
+                    <h4 style="margin-top: 20px; margin-bottom: 10px;">🌾 Amostras de Ração</h4>
+                    <ul>
+                        <li><strong>Baixo teor de gordura:</strong> Processar como alimentos</li>
+                        <li><strong>Alto teor (>200g/kg):</strong> Requer pré-extração</li>
+                        <li><strong>Importante:</strong> Alto teor de gordura pode interferir no processo</li>
+                    </ul>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px;">🔄 Processo de Extração</h2>
+                    <div class="procedure-grid">
+                        <div class="procedure-card">
+                            <div class="procedure-number">1</div>
+                            <div class="procedure-title">Preparo da Amostra</div>
+                            <div class="procedure-description">
+                                Pese 2-5g de amostra (precisão 0,0001g)<br>
+                                Coloque no cartucho de papel filtro<br>
+                                Posicione no suporte e fixe com ímã
+                            </div>
+                        </div>
+                        
+                        <div class="procedure-card">
+                            <div class="procedure-number">2</div>
+                            <div class="procedure-title">Preparo do Copo de Extração</div>
+                            <div class="procedure-description">
+                                Seque o copo em estufa até peso constante<br>
+                                Registre o peso do copo vazio<br>
+                                Adicione 60 mL de solvente<br>
+                                Posicione na placa de aquecimento
+                            </div>
+                        </div>
+                        
+                        <div class="procedure-card">
+                            <div class="procedure-number">3</div>
+                            <div class="procedure-title">Extração</div>
+                            <div class="procedure-description">
+                                Pressione a alavanca para selar o copo<br>
+                                Imerja a amostra no solvente<br>
+                                Configure temperatura e tempo<br>
+                                Inicie o processo de aquecimento<br>
+                                Mantenha velocidade de 3-5 gotas/segundo
+                            </div>
+                        </div>
+                        
+                        <div class="procedure-card">
+                            <div class="procedure-number">4</div>
+                            <div class="procedure-title">Finalização e Cálculo</div>
+                            <div class="procedure-description">
+                                Recupere o solvente através da torneira<br>
+                                Remova e seque o copo em estufa<br>
+                                Esfrie em dessecador e pese<br>
+                                <strong>Cálculo:</strong> Teor (%) = [(peso final - peso inicial) / peso amostra] × 100
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Solução de Problemas -->
+            <section id="manutencao" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Solução de Problemas</h1>
+                    <p class="section-subtitle">Identificação e resolução de problemas comuns</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🔧 Problemas Comuns e Soluções</h2>
+                    <table class="spec-table">
+                        <thead>
+                            <tr>
+                                <th>Problema</th>
+                                <th>Causa Provável</th>
+                                <th>Solução</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Equipamento sem energia</strong></td>
+                                <td>Fusível queimado<br>Cabo de força mal conectado</td>
+                                <td>Substitua o fusível<br>Conecte adequadamente</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vazamento de solvente</strong></td>
+                                <td>Fluxo de água insuficiente<br>Anel de vedação deteriorado<br>Tubo de condensação danificado</td>
+                                <td>Aumente fluxo de água<br>Substitua anel de vedação<br>Substitua tubo de condensação</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sistema travado</strong></td>
+                                <td>Interferência eletromagnética</td>
+                                <td>Desligue equipamento, remova fonte de interferência e reinicie</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Seção: Manutenção -->
+            <section id="manuais" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Manutenção</h1>
+                    <p class="section-subtitle">Cuidados e manutenção preventiva</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🧹 Manutenção Diária</h2>
+                    <ul>
+                        <li>Mantenha boa ventilação e condições de resfriamento</li>
+                        <li>Use o mesmo tipo de solvente para o mesmo conjunto de extração</li>
+                        <li>Limpe com pano úmido (nunca seco para evitar eletricidade estática)</li>
+                        <li>Limpe a placa de aquecimento com pano abrasivo para remover resíduos</li>
+                        <li>Limpe regularmente os copos de extração</li>
+                        <li>Verifique crescimento de algas no sistema de resfriamento</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">💧 Limpeza do Sistema de Resfriamento</h3>
+                    <p>Se necessário, use solução de ácido clorídrico 1 mol/L ou hipoclorito para limpeza.</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">⚠️ Cuidados Importantes</h2>
+                    
+                    <h3 style="margin-bottom: 15px;">🛡️ Segurança Operacional</h3>
+                    <ul>
+                        <li>Leia cuidadosamente este manual antes de operar</li>
+                        <li>Pessoal não familiarizado não deve operar o equipamento</li>
+                        <li>Use sempre pano úmido para limpeza (evita eletricidade estática)</li>
+                        <li>Manutenção deve seguir rigorosamente os procedimentos</li>
+                        <li>Desligue energia principal ao desmontar tampas</li>
+                        <li>Cuidado com acessórios de vidro durante transporte</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">🧪 Cuidados com Solventes</h3>
+                    <ul>
+                        <li>Descarte solvente do tubo de condensação se não for usar por longo período</li>
+                        <li>Use mesmo tipo de solvente para evitar contaminação cruzada</li>
+                        <li><strong>PERIGO DE EXPLOSÃO:</strong> evite chamas e eletricidade estática ao manusear solventes</li>
+                        <li>Não toque o bloco de aquecimento quando aquecido</li>
+                        <li>Mantenha pessoa responsável no laboratório durante experimentos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Seção: Garantia -->
+            <section id="garantia" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Garantia</h1>
+                    <p class="section-subtitle">Termos e condições de garantia</p>
+                </div>
+
+                <div class="content-card">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 25px;">📋 Termos de Garantia</h2>
+                    <p><strong>Período:</strong> 1 ano a partir da data de venda (conforme nota fiscal)</p>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">❌ Exclusões da garantia:</h3>
+                    <ul>
+                        <li>Período de garantia expirado</li>
+                        <li>Danos por uso inadequado</li>
+                        <li>Desmontagem não autorizada</li>
+                        <li>Danos por transporte ou armazenamento inadequado</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 25px; margin-bottom: 15px;">⚠️ Restrições de Garantia</h3>
+                    <p>A Hanon Lab não se responsabiliza por:</p>
+                    <ul>
+                        <li>Modificações não autorizadas</li>
+                        <li>Danos por uso inadequado</li>
+                        <li>Substituições realizadas sem autorização</li>
+                    </ul>
+                </div>
+
+                <div class="content-card" style="background: linear-gradient(135deg, var(--primary-orange), #ff6b3d); color: white;">
+                    <h2 style="color: white; margin-bottom: 25px;">📞 Suporte EleveLab</h2>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">Distribuidor Autorizado Hanon Lab no Brasil</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                        <div>
+                            <h3 style="color: white;">Contato</h3>
+                            <p>📱 +55 (51) 3010-6132</p>
+                            <p>✉️ contato@elevelab.com.br</p>
+                            <p>🌐 www.elevelab.com.br</p>
+                        </div>
+                        <div>
+                            <h3 style="color: white;">Endereço</h3>
+                            <p>Rua Onze de Agosto, 19, Bairro São João</p>
+                            <p>Porto Alegre - RS | CEP: 91020-050</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
-    
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>EleveLab</h3>
-                    <p>Equipamentos Científicos de Qualidade</p>
-                    <p>Distribuidor Autorizado Hanon Lab</p>
-                    <p>Soluções inovadoras para laboratórios</p>
-                </div>
-                
-                <div class="footer-section">
                     <h3>Contato</h3>
-                    <p>📱 (51) 9 9858-4548</p>
-                    <a href="mailto:contato@elevelab.com.br">📧 contato@elevelab.com.br</a>
-                    <a href="https://www.elevelab.com.br" target="_blank">🌐 www.elevelab.com.br</a>
-                    <p>📍 Av. Benjamin Constant 19, Loja 35</p>
+                    <a href="tel:5130106132">📞 +55 (51) 3010-6132</a>
+                    <a href="mailto:contato@elevelab.com.br">✉️ contato@elevelab.com.br</a>
+                    <a href="https://www.elevelab.com.br">🌐 www.elevelab.com.br</a>
+                    <p>📍 Rua Onze de Agosto, 19, Bairro São João</p>
+                    <p>Porto Alegre - RS | CEP: 91020-050</p>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Produtos & Serviços</h3>
                     <p>• Analisadores de Gordura</p>
@@ -1546,7 +1272,6 @@
                     <p>• Biorreatores</p>
                     <p>• Assistência Técnica</p>
                 </div>
-                
                 <div class="footer-section">
                     <h3>Suporte</h3>
                     <p>• Instalação e Treinamento</p>
@@ -1556,17 +1281,15 @@
                     <p>• Garantia Estendida</p>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>© 2024 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
-                <p>Manual do Analisador de Gordura SOX406 | Versão 3.0 | Janeiro 2024</p>
+                <p>© 2025 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
+                <p>Manual do Analisador de Gordura SOX406 | Versão 4.0 | Agosto 2025</p>
             </div>
         </div>
     </footer>
-    
-    <!-- Scripts -->
+
     <script>
-        // Navegação entre seções
+        // Função para mostrar seção
         function showSection(sectionId) {
             // Esconde todas as seções
             const sections = document.querySelectorAll('.section');
@@ -1580,43 +1303,29 @@
                 targetSection.classList.add('active');
             }
             
-            // Atualiza navegação ativa
+            // Atualiza o item ativo na navegação
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
                 item.classList.remove('active');
-                if (item.getAttribute('href') === '#' + sectionId) {
+                if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(sectionId)) {
                     item.classList.add('active');
                 }
             });
             
-            // Fecha menu mobile se estiver aberto
+            // Fecha o menu mobile se estiver aberto
             const navContent = document.getElementById('navContent');
-            navContent.classList.remove('active');
+            if (navContent && navContent.classList.contains('active')) {
+                navContent.classList.remove('active');
+            }
             
-            // Scroll suave para o topo
+            // Scroll para o topo
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // Menu mobile toggle
-        function toggleMobileMenu() {
+        // Toggle menu mobile
+        document.getElementById('mobileMenuToggle').addEventListener('click', function() {
             const navContent = document.getElementById('navContent');
             navContent.classList.toggle('active');
-        }
-        
-        // Inicialização
-        document.addEventListener('DOMContentLoaded', function() {
-            // Adiciona listeners aos links de navegação
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const sectionId = this.getAttribute('href').replace('#', '');
-                    showSection(sectionId);
-                });
-            });
-            
-            // Mostra a primeira seção por padrão
-            showSection('overview');
         });
         
         // Script para forçar visibilidade das imagens
@@ -1635,7 +1344,12 @@
                 img.onerror = function() {
                     console.error('Erro ao carregar imagem:', this.src);
                     this.style.border = '2px solid red';
-                    this.alt = 'Imagem não disponível';
+                    this.alt = 'Imagem não disponível: ' + this.src;
+                    
+                    // Log específico para debug
+                    if (this.src.includes('lcd-alarm')) {
+                        console.error('ATENÇÃO: Problema com lcd-alarm.jpg');
+                    }
                 };
             });
             
