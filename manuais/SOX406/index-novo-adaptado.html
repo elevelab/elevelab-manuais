@@ -63,42 +63,12 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
         
-        .logo-circles {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            align-items: flex-end;
-        }
-        
-        .circle-row {
-            display: flex;
-            gap: 2px;
-        }
-        
-        .circle {
-            background: var(--primary-orange);
-            border-radius: 50%;
-        }
-        
-        .circle.large { width: 20px; height: 20px; }
-        .circle.medium { width: 15px; height: 15px; }
-        .circle.small { width: 10px; height: 10px; }
-        
-        .logo-text {
-            font-weight: 700;
-            font-size: 24px;
-            color: var(--primary-orange);
-        }
-        
-        .logo-subtitle {
-            font-size: 10px;
-            color: var(--secondary-black);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-top: -3px;
+        .logo img {
+            display: block;
+            height: 50px;
+            width: auto;
         }
         
         /* Navegação */
@@ -542,19 +512,9 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <div class="logo-circles">
-                        <div class="circle-row">
-                            <div class="circle large"></div>
-                        </div>
-                        <div class="circle-row">
-                            <div class="circle medium"></div>
-                            <div class="circle small"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="logo-text">EleveLab</div>
-                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
-                    </div>
+                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/logo-elevelab.png" 
+                         alt="EleveLab - Equipamentos Científicos" 
+                         style="height: 50px; width: auto;">
                 </div>
                 <button class="mobile-menu-toggle" id="mobileMenuToggle">
                     <div class="hamburger"></div>
@@ -1256,14 +1216,14 @@
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                         <div>
                             <h3 style="color: white;">Contato</h3>
-                            <p>📱 (51) 9 9858-4548</p>
+                            <p>📱 +55 (51) 3010-6132</p>
                             <p>✉️ contato@elevelab.com.br</p>
                             <p>🌐 www.elevelab.com.br</p>
                         </div>
                         <div>
                             <h3 style="color: white;">Endereço</h3>
-                            <p>Av. Benjamin Constant 19, Loja 35</p>
-                            <p>Porto Alegre - RS</p>
+                            <p>Rua Onze de Agosto, 19, Bairro São João</p>
+                            <p>Porto Alegre - RS | CEP: 91020-050</p>
                         </div>
                     </div>
                 </div>
@@ -1277,10 +1237,11 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>Contato</h3>
-                    <a href="tel:5198584548">📞 (51) 9 9858-4548</a>
+                    <a href="tel:5130106132">📞 +55 (51) 3010-6132</a>
                     <a href="mailto:contato@elevelab.com.br">✉️ contato@elevelab.com.br</a>
                     <a href="https://www.elevelab.com.br">🌐 www.elevelab.com.br</a>
-                    <p>📍 Av. Benjamin Constant 19, Loja 35</p>
+                    <p>📍 Rua Onze de Agosto, 19, Bairro São João</p>
+                    <p>Porto Alegre - RS | CEP: 91020-050</p>
                 </div>
                 <div class="footer-section">
                     <h3>Produtos & Serviços</h3>
