@@ -1324,6 +1324,12 @@
                 }
             });
             
+            // Fecha o menu mobile se estiver aberto
+            const navContent = document.getElementById('navContent');
+            if (navContent && navContent.classList.contains('active')) {
+                navContent.classList.remove('active');
+            }
+            
             // Scroll para o topo
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1350,7 +1356,12 @@
                 img.onerror = function() {
                     console.error('Erro ao carregar imagem:', this.src);
                     this.style.border = '2px solid red';
-                    this.alt = 'Imagem não disponível';
+                    this.alt = 'Imagem não disponível: ' + this.src;
+                    
+                    // Log específico para debug
+                    if (this.src.includes('lcd-alarm')) {
+                        console.error('ATENÇÃO: Problema com lcd-alarm.jpg');
+                    }
                 };
             });
             
