@@ -291,12 +291,15 @@
         
         /* Imagem de destaque */
         .equipment-image {
-            width: 100%;
-            max-width: 800px;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 500px;
             margin: 30px auto;
             display: block;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            object-fit: contain;
         }
         
         /* Tabelas */
@@ -817,10 +820,12 @@
 
                 <div class="content-card">
                     <h2 style="color: var(--primary-orange); margin-bottom: 25px;">🔧 Estrutura do Equipamento</h2>
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem1.jpg" 
-                         alt="Estrutura geral do equipamento" 
-                         class="equipment-image">
-                    <p style="text-align: center; color: #666; margin-top: 10px;">Vista geral do Analisador de Gordura SOX406 com componentes numerados</p>
+                    <div style="text-align: center;">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem1.jpg" 
+                             alt="Estrutura geral do equipamento" 
+                             class="equipment-image">
+                        <p style="color: #666; margin-top: 10px;">Vista geral do Analisador de Gordura SOX406 com componentes numerados</p>
+                    </div>
                     
                     <h3 style="margin-top: 30px; margin-bottom: 20px;">Componentes principais:</h3>
                     <ol>
@@ -890,11 +895,12 @@
                         <li><strong>Saída de água condensada:</strong> conecte ao dreno</li>
                     </ol>
                     
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem2.jpg" 
-                         alt="Vista detalhada das conexões" 
-                         class="equipment-image" 
-                         style="margin-top: 40px;">
-                    <p style="text-align: center; color: #666; margin-top: 10px;">Vista detalhada mostrando as conexões e instalação do equipamento</p>
+                    <div style="text-align: center; margin-top: 40px;">
+                        <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/nova-versao/Imagem2.jpg" 
+                             alt="Vista detalhada das conexões" 
+                             class="equipment-image">
+                        <p style="color: #666; margin-top: 10px;">Vista detalhada mostrando as conexões e instalação do equipamento</p>
+                    </div>
                 </div>
             </section>
 
