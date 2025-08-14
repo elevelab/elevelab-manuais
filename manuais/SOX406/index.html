@@ -72,6 +72,39 @@
             object-position: center;
         }
         
+        /* Botão de Impressão */
+        .print-button {
+            background: var(--primary-orange);
+            color: var(--white);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-right: 15px;
+        }
+        
+        .print-button:hover {
+            background: #c52d00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 55, 0, 0.3);
+        }
+        
+        .print-button:active {
+            transform: translateY(0);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         /* Navegação */
         .nav {
             background: var(--secondary-black);
@@ -504,6 +537,16 @@
                 display: block;
             }
             
+            .print-button {
+                padding: 8px 12px;
+                font-size: 12px;
+                margin-right: 10px;
+            }
+            
+            .print-button span {
+                display: none;
+            }
+            
             .section-title {
                 font-size: 2rem;
             }
@@ -526,6 +569,213 @@
                 padding: 10px;
             }
         }
+        
+        /* CSS para Impressão/PDF */
+        @media print {
+            /* Reset de layout para impressão */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            /* Ocultar elementos desnecessários */
+            .header,
+            .nav,
+            .mobile-menu-toggle,
+            .nav-item,
+            .nav-content {
+                display: none !important;
+            }
+            
+            /* Configurações de página */
+            @page {
+                size: A4;
+                margin: 2cm;
+            }
+            
+            /* Layout principal */
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+                color: #000;
+                background: white;
+            }
+            
+            .main {
+                margin-top: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .container {
+                max-width: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            /* Mostrar todas as seções para impressão */
+            .section {
+                display: block !important;
+                page-break-before: always;
+                margin-bottom: 20px;
+            }
+            
+            .section:first-child {
+                page-break-before: avoid;
+            }
+            
+            /* Títulos de seção */
+            .section-title {
+                font-size: 24pt;
+                color: #E73700 !important;
+                margin-bottom: 10px;
+                page-break-after: avoid;
+            }
+            
+            .section-subtitle {
+                font-size: 14pt;
+                margin-bottom: 20px;
+                page-break-after: avoid;
+            }
+            
+            /* Cards de conteúdo */
+            .content-card {
+                background: white !important;
+                border: 1px solid #ddd;
+                box-shadow: none !important;
+                margin-bottom: 15px;
+                padding: 15px;
+                page-break-inside: avoid;
+            }
+            
+            /* Avisos de segurança */
+            .safety-warning {
+                background: #f5f5f5 !important;
+                border: 2px solid #E73700 !important;
+                color: #000 !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Tabelas */
+            .spec-table {
+                font-size: 10pt;
+                page-break-inside: avoid;
+                margin: 10px 0;
+            }
+            
+            .spec-table th {
+                background: #E73700 !important;
+                color: white !important;
+                padding: 8px;
+            }
+            
+            .spec-table td {
+                padding: 6px;
+                border-bottom: 1px solid #ddd;
+            }
+            
+            /* Imagens */
+            .equipment-image,
+            .interface-image {
+                max-width: 100% !important;
+                max-height: 300px !important;
+                page-break-inside: avoid;
+                margin: 10px 0;
+            }
+            
+            .interface-grid {
+                display: block !important;
+            }
+            
+            .interface-card {
+                margin-bottom: 15px;
+                page-break-inside: avoid;
+                border: 1px solid #ddd;
+            }
+            
+            /* Grids e layouts */
+            .feature-grid,
+            .procedure-grid {
+                display: block !important;
+            }
+            
+            .feature-item,
+            .procedure-card {
+                margin-bottom: 10px;
+                page-break-inside: avoid;
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+            
+            /* Listas */
+            ul, ol {
+                margin: 10px 0;
+                padding-left: 20px;
+            }
+            
+            li {
+                margin-bottom: 3px;
+            }
+            
+            /* Footer simplificado para impressão */
+            .footer {
+                page-break-before: always;
+                background: white !important;
+                color: #000 !important;
+                padding: 20px 0;
+                border-top: 2px solid #E73700;
+            }
+            
+            .footer-content {
+                display: block !important;
+            }
+            
+            .footer-section {
+                margin-bottom: 15px;
+            }
+            
+            .footer-section h3 {
+                color: #E73700 !important;
+                font-size: 14pt;
+            }
+            
+            /* Cabeçalho para cada página */
+            .section::before {
+                content: "Manual SOX406 - EleveLab | Versão 4.0";
+                display: block;
+                font-size: 10pt;
+                color: #666;
+                text-align: right;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+            }
+            
+            .section:first-child::before {
+                content: none;
+            }
+            
+            /* Quebras de página estratégicas */
+            h2 {
+                page-break-after: avoid;
+            }
+            
+            h3 {
+                page-break-after: avoid;
+            }
+            
+            /* Links impressos */
+            a[href]:after {
+                content: " (" attr(href) ")";
+                font-size: 9pt;
+                color: #666;
+            }
+            
+            a[href^="tel:"]:after,
+            a[href^="mailto:"]:after,
+            a[href^="#"]:after {
+                content: "";
+            }
+        }
     </style>
 </head>
 <body>
@@ -537,11 +787,16 @@
                     <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/SOX406/images/logo-colorido.png" 
                          alt="EleveLab - Equipamentos Científicos">
                 </div>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <div class="hamburger"></div>
-                    <div class="hamburger"></div>
-                    <div class="hamburger"></div>
-                </button>
+                <div class="header-actions">
+                    <button class="print-button" onclick="printManual()">
+                        🖨️ <span>Imprimir Manual</span>
+                    </button>
+                    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <div class="hamburger"></div>
+                        <div class="hamburger"></div>
+                        <div class="hamburger"></div>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -1355,6 +1610,61 @@
             
             console.log('Script de visibilidade de imagens executado');
         });
+        
+        // Função para imprimir manual
+        function printManual() {
+            // Preparar o manual para impressão
+            const originalTitle = document.title;
+            document.title = 'Manual SOX406 - EleveLab - Analisador de Gordura';
+            
+            // Mostrar todas as seções para impressão
+            const sections = document.querySelectorAll('.section');
+            const originalDisplays = [];
+            
+            sections.forEach((section, index) => {
+                originalDisplays[index] = section.style.display;
+                section.style.display = 'block';
+                section.classList.add('active');
+            });
+            
+            // Aguardar um momento para o layout se ajustar
+            setTimeout(() => {
+                // Executar impressão
+                window.print();
+                
+                // Restaurar estado original após impressão
+                setTimeout(() => {
+                    document.title = originalTitle;
+                    
+                    // Restaurar visibilidade das seções
+                    sections.forEach((section, index) => {
+                        if (originalDisplays[index]) {
+                            section.style.display = originalDisplays[index];
+                        } else {
+                            section.style.display = '';
+                        }
+                        
+                        // Manter apenas a primeira seção ativa
+                        if (index === 0) {
+                            section.classList.add('active');
+                        } else {
+                            section.classList.remove('active');
+                        }
+                    });
+                    
+                    // Restaurar navegação ativa
+                    const navItems = document.querySelectorAll('.nav-item');
+                    navItems.forEach((item, index) => {
+                        if (index === 0) {
+                            item.classList.add('active');
+                        } else {
+                            item.classList.remove('active');
+                        }
+                    });
+                    
+                }, 1000);
+            }, 300);
+        }
     </script>
 </body>
 </html>
