@@ -66,6 +66,50 @@
             width: auto;
         }
         
+        /* Botão de Impressão e Ações do Header */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .print-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-orange);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .print-button:hover {
+            background: #c52e00;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 55, 0, 0.3);
+        }
+        
+        .print-button span {
+            display: inline-block;
+        }
+        
+        @media (max-width: 768px) {
+            .print-button span {
+                display: none;
+            }
+            
+            .print-button {
+                padding: 10px;
+                font-size: 18px;
+            }
+        }
+        
         .logo-circles {
             display: flex;
             flex-direction: column;
@@ -605,15 +649,296 @@
             opacity: 1;
         }
         
-        /* Print styles */
+        /* CSS para Impressão/PDF */
         @media print {
-            .header, .nav, .footer { display: none !important; }
-            .main { margin-top: 0 !important; }
-            .section { display: block !important; page-break-after: always; }
-            .content-card, .step-item { page-break-inside: avoid; }
-            .warning-box { border: 2px solid #333 !important; background: #f9f9f9 !important; }
-            .highlight-box { border: 2px solid #333 !important; background: #f0f0f0 !important; color: #000 !important; }
-            * { color: #000 !important; background: transparent !important; }
+            /* Reset de layout para impressão */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                box-sizing: border-box;
+            }
+            
+            /* Ocultar elementos desnecessários */
+            .header,
+            .nav,
+            .footer,
+            .mobile-menu-toggle,
+            .nav-item,
+            .nav-content,
+            .print-button {
+                display: none !important;
+            }
+            
+            /* Configurações de página */
+            @page {
+                size: A4 portrait;
+                margin: 1.5cm;
+            }
+            
+            /* Layout principal */
+            body {
+                font-size: 10pt !important;
+                line-height: 1.4 !important;
+                color: #000 !important;
+                background: white !important;
+            }
+            
+            .main {
+                margin-top: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            /* Seções */
+            .section {
+                display: block !important;
+                page-break-after: always;
+                margin-bottom: 20pt;
+            }
+            
+            .section:last-child {
+                page-break-after: avoid;
+            }
+            
+            /* Headers de seção */
+            .section-header {
+                background: #f5f5f5 !important;
+                border: 2px solid var(--primary-orange) !important;
+                color: #000 !important;
+                padding: 15pt !important;
+                margin-bottom: 15pt !important;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+            
+            .section-title {
+                font-size: 18pt !important;
+                color: var(--primary-orange) !important;
+                margin-bottom: 5pt !important;
+            }
+            
+            .section-subtitle {
+                font-size: 10pt !important;
+                color: #666 !important;
+            }
+            
+            /* Cards de conteúdo */
+            .content-card {
+                border: 1px solid #ddd !important;
+                padding: 10pt !important;
+                margin-bottom: 10pt !important;
+                page-break-inside: avoid;
+                background: white !important;
+            }
+            
+            .card-title {
+                font-size: 12pt !important;
+                color: var(--primary-orange) !important;
+                margin-bottom: 8pt !important;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5pt;
+            }
+            
+            /* Passos */
+            .step-item {
+                border: 1px solid #ddd !important;
+                padding: 10pt !important;
+                margin-bottom: 10pt !important;
+                page-break-inside: avoid;
+                background: white !important;
+            }
+            
+            .step-number {
+                position: static !important;
+                display: inline-block !important;
+                background: var(--primary-orange) !important;
+                color: white !important;
+                width: 25pt !important;
+                height: 25pt !important;
+                line-height: 25pt !important;
+                text-align: center !important;
+                border-radius: 50% !important;
+                margin-right: 10pt !important;
+                margin-bottom: 5pt !important;
+            }
+            
+            .step-title {
+                font-size: 11pt !important;
+                font-weight: bold !important;
+                margin-bottom: 5pt !important;
+            }
+            
+            /* Avisos */
+            .warning-box {
+                border: 2px solid var(--primary-orange) !important;
+                background: #fff3e0 !important;
+                padding: 10pt !important;
+                margin: 10pt 0 !important;
+                page-break-inside: avoid;
+            }
+            
+            .warning-icon {
+                position: static !important;
+                display: inline-block !important;
+                margin-right: 10pt !important;
+                font-size: 14pt !important;
+            }
+            
+            .warning-content {
+                margin-left: 0 !important;
+                color: #000 !important;
+            }
+            
+            /* Highlight boxes */
+            .highlight-box {
+                border: 2px solid var(--primary-orange) !important;
+                background: #f0f0f0 !important;
+                padding: 10pt !important;
+                margin: 10pt 0 !important;
+                page-break-inside: avoid;
+            }
+            
+            .highlight-title {
+                font-size: 12pt !important;
+                color: var(--primary-orange) !important;
+                margin-bottom: 5pt !important;
+            }
+            
+            .highlight-content {
+                color: #000 !important;
+                font-size: 10pt !important;
+            }
+            
+            /* Tabelas */
+            .spec-table {
+                page-break-inside: avoid;
+                margin: 10pt 0 !important;
+            }
+            
+            .spec-table table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                font-size: 9pt !important;
+            }
+            
+            .spec-table th {
+                background: #f0f0f0 !important;
+                color: #000 !important;
+                border: 1px solid #000 !important;
+                padding: 5pt !important;
+                font-weight: bold !important;
+            }
+            
+            .spec-table td {
+                border: 1px solid #ccc !important;
+                padding: 4pt !important;
+                color: #000 !important;
+                background: white !important;
+            }
+            
+            /* Imagens */
+            .equipment-image,
+            .equipment-image-small,
+            .inline-image {
+                page-break-inside: avoid;
+                margin: 10pt auto !important;
+                text-align: center !important;
+            }
+            
+            .equipment-image img,
+            .equipment-image-small img,
+            .inline-image img {
+                max-width: 100% !important;
+                max-height: 400pt !important;
+                width: auto !important;
+                height: auto !important;
+                display: block !important;
+                margin: 0 auto !important;
+            }
+            
+            .inline-image-caption {
+                font-style: italic !important;
+                color: #666 !important;
+                font-size: 9pt !important;
+                margin-top: 5pt !important;
+            }
+            
+            /* Grids */
+            .content-grid,
+            .image-grid {
+                display: block !important;
+            }
+            
+            .image-card {
+                margin-bottom: 10pt !important;
+                page-break-inside: avoid;
+            }
+            
+            /* Links */
+            a {
+                color: #000 !important;
+                text-decoration: underline !important;
+            }
+            
+            a[href^="http"]:after {
+                content: "";
+            }
+            
+            a[href^="tel:"]:after,
+            a[href^="mailto:"]:after {
+                content: " (" attr(href) ")";
+                font-size: 8pt;
+                color: #666;
+            }
+            
+            /* Listas */
+            ul, ol {
+                margin-left: 15pt !important;
+                margin-top: 5pt !important;
+                margin-bottom: 5pt !important;
+            }
+            
+            li {
+                margin-bottom: 3pt !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* Títulos e subtítulos */
+            h2 {
+                font-size: 14pt !important;
+                color: var(--primary-orange) !important;
+                margin-top: 10pt !important;
+                margin-bottom: 8pt !important;
+                page-break-after: avoid;
+            }
+            
+            h3 {
+                font-size: 12pt !important;
+                color: #333 !important;
+                margin-top: 8pt !important;
+                margin-bottom: 6pt !important;
+                page-break-after: avoid;
+            }
+            
+            /* Parágrafos */
+            p {
+                margin-bottom: 5pt !important;
+                line-height: 1.4 !important;
+            }
+            
+            /* Evitar quebras desnecessárias */
+            h1, h2, h3, h4, h5, h6 {
+                page-break-after: avoid;
+            }
+            
+            .section-header + * {
+                page-break-before: avoid;
+            }
         }
     </style>
 </head>
@@ -628,11 +953,16 @@
                          alt="EleveLab - Equipamentos Científicos">
                 </div>
                 
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <div class="header-actions">
+                    <button class="print-button" onclick="printManual()">
+                        🖨️ <span>Imprimir Manual</span>
+                    </button>
+                    <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                     <div class="hamburger"></div>
                     <div class="hamburger"></div>
                     <div class="hamburger"></div>
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -1546,8 +1876,8 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
-                <p style="margin-top: 10px;">Manual do Analisador de Fibras F800 | Versão 1.0 | Janeiro 2024</p>
+                <p>© 2025 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px;">Manual do Analisador de Fibras F800 | Versão 1.0 | Agosto 2025</p>
             </div>
         </div>
     </footer>
@@ -1719,6 +2049,11 @@
         // Executar otimizações na inicialização
         document.addEventListener('DOMContentLoaded', optimizeImages);
 
+        // Função de impressão
+        function printManual() {
+            window.print();
+        }
+        
         console.log('Manual F800 EleveLab - Carregado com sucesso!');
     </script>
 </body>
