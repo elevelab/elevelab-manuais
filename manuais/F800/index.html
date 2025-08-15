@@ -649,9 +649,9 @@
             opacity: 1;
         }
         
-        /* CSS para Impressão/PDF */
+        /* CSS Otimizado para Impressão/PDF */
         @media print {
-            /* Reset de layout para impressão */
+            /* Reset básico */
             * {
                 -webkit-print-color-adjust: exact !important;
                 color-adjust: exact !important;
@@ -666,217 +666,282 @@
             .mobile-menu-toggle,
             .nav-item,
             .nav-content,
-            .print-button {
+            .print-button,
+            .header-actions {
                 display: none !important;
             }
             
             /* Configurações de página */
             @page {
                 size: A4 portrait;
-                margin: 1.5cm;
+                margin: 1.2cm;
             }
             
             /* Layout principal */
-            body {
-                font-size: 10pt !important;
-                line-height: 1.4 !important;
+            html, body {
+                font-size: 11pt !important;
+                line-height: 1.3 !important;
                 color: #000 !important;
                 background: white !important;
+                font-family: 'Poppins', Arial, sans-serif !important;
+                height: auto !important;
+                overflow: visible !important;
+                margin: 0 !important;
+                padding: 0 !important;
             }
             
             .main {
-                margin-top: 0 !important;
+                margin: 0 !important;
                 padding: 0 !important;
+                display: block !important;
             }
             
             .container {
                 max-width: 100% !important;
                 padding: 0 !important;
+                margin: 0 !important;
             }
             
-            /* Seções */
+            /* Título principal - apenas uma vez */
+            .hero {
+                text-align: center;
+                margin-bottom: 20pt;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                padding: 0 !important;
+            }
+            
+            .hero h1 {
+                font-size: 20pt !important;
+                font-weight: bold !important;
+                color: #E73700 !important;
+                margin: 0 0 8pt 0 !important;
+                text-align: center !important;
+                line-height: 1.2 !important;
+            }
+            
+            .hero p {
+                font-size: 12pt !important;
+                color: #333 !important;
+                margin: 0 !important;
+                text-align: center !important;
+            }
+            
+            /* Seções - sem quebras automáticas de página */
             .section {
                 display: block !important;
-                page-break-after: always;
-                margin-bottom: 20pt;
+                margin-bottom: 15pt !important;
+                page-break-inside: avoid;
+                orphans: 3;
+                widows: 3;
             }
             
-            .section:last-child {
-                page-break-after: avoid;
+            /* Quebras de página apenas entre seções principais */
+            .section:nth-child(3),
+            .section:nth-child(6) {
+                page-break-before: always;
             }
             
             /* Headers de seção */
             .section-header {
-                background: #f5f5f5 !important;
-                border: 2px solid var(--primary-orange) !important;
+                background: #f8f9fa !important;
+                border-left: 4px solid #E73700 !important;
                 color: #000 !important;
-                padding: 15pt !important;
-                margin-bottom: 15pt !important;
+                padding: 10pt !important;
+                margin: 15pt 0 10pt 0 !important;
                 page-break-after: avoid;
                 page-break-inside: avoid;
             }
             
             .section-title {
-                font-size: 18pt !important;
-                color: var(--primary-orange) !important;
-                margin-bottom: 5pt !important;
+                font-size: 16pt !important;
+                color: #E73700 !important;
+                margin: 0 !important;
+                font-weight: bold !important;
             }
             
             .section-subtitle {
                 font-size: 10pt !important;
                 color: #666 !important;
+                margin: 2pt 0 0 0 !important;
             }
             
-            /* Cards de conteúdo */
-            .content-card {
+            /* Cards de conteúdo compactos */
+            .content-card, .step-item {
                 border: 1px solid #ddd !important;
-                padding: 10pt !important;
-                margin-bottom: 10pt !important;
-                page-break-inside: avoid;
-                background: white !important;
-            }
-            
-            .card-title {
-                font-size: 12pt !important;
-                color: var(--primary-orange) !important;
+                padding: 8pt !important;
                 margin-bottom: 8pt !important;
-                border-bottom: 1px solid #ddd;
-                padding-bottom: 5pt;
-            }
-            
-            /* Passos */
-            .step-item {
-                border: 1px solid #ddd !important;
-                padding: 10pt !important;
-                margin-bottom: 10pt !important;
                 page-break-inside: avoid;
                 background: white !important;
             }
             
+            .card-title, .step-title {
+                font-size: 12pt !important;
+                color: #E73700 !important;
+                margin-bottom: 6pt !important;
+                font-weight: bold !important;
+            }
+            
+            .card-content, .step-content {
+                font-size: 10pt !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* Passos numerados */
             .step-number {
-                position: static !important;
                 display: inline-block !important;
-                background: var(--primary-orange) !important;
+                background: #E73700 !important;
                 color: white !important;
-                width: 25pt !important;
-                height: 25pt !important;
-                line-height: 25pt !important;
+                width: 20pt !important;
+                height: 20pt !important;
+                line-height: 20pt !important;
                 text-align: center !important;
                 border-radius: 50% !important;
-                margin-right: 10pt !important;
-                margin-bottom: 5pt !important;
-            }
-            
-            .step-title {
-                font-size: 11pt !important;
-                font-weight: bold !important;
-                margin-bottom: 5pt !important;
-            }
-            
-            /* Avisos */
-            .warning-box {
-                border: 2px solid var(--primary-orange) !important;
-                background: #fff3e0 !important;
-                padding: 10pt !important;
-                margin: 10pt 0 !important;
-                page-break-inside: avoid;
-            }
-            
-            .warning-icon {
-                position: static !important;
-                display: inline-block !important;
-                margin-right: 10pt !important;
-                font-size: 14pt !important;
-            }
-            
-            .warning-content {
-                margin-left: 0 !important;
-                color: #000 !important;
-            }
-            
-            /* Highlight boxes */
-            .highlight-box {
-                border: 2px solid var(--primary-orange) !important;
-                background: #f0f0f0 !important;
-                padding: 10pt !important;
-                margin: 10pt 0 !important;
-                page-break-inside: avoid;
-            }
-            
-            .highlight-title {
-                font-size: 12pt !important;
-                color: var(--primary-orange) !important;
-                margin-bottom: 5pt !important;
-            }
-            
-            .highlight-content {
-                color: #000 !important;
+                margin-right: 8pt !important;
                 font-size: 10pt !important;
-            }
-            
-            /* Tabelas */
-            .spec-table {
-                page-break-inside: avoid;
-                margin: 10pt 0 !important;
-            }
-            
-            .spec-table table {
-                width: 100% !important;
-                border-collapse: collapse !important;
-                font-size: 9pt !important;
-            }
-            
-            .spec-table th {
-                background: #f0f0f0 !important;
-                color: #000 !important;
-                border: 1px solid #000 !important;
-                padding: 5pt !important;
                 font-weight: bold !important;
             }
             
-            .spec-table td {
-                border: 1px solid #ccc !important;
-                padding: 4pt !important;
-                color: #000 !important;
+            /* Grids em coluna única */
+            .content-grid, .image-grid {
+                display: block !important;
+                margin: 10pt 0 !important;
+            }
+            
+            .image-card {
+                margin-bottom: 12pt !important;
+                page-break-inside: avoid;
+                border: 1px solid #ddd !important;
+                padding: 8pt !important;
                 background: white !important;
             }
             
-            /* Imagens */
-            .equipment-image,
-            .equipment-image-small,
-            .inline-image {
-                page-break-inside: avoid;
-                margin: 10pt auto !important;
+            /* Imagens otimizadas */
+            .image-placeholder {
+                border: none !important;
+                background: white !important;
+                padding: 5pt !important;
                 text-align: center !important;
+                min-height: auto !important;
+                margin-bottom: 5pt !important;
             }
             
-            .equipment-image img,
-            .equipment-image-small img,
+            .image-placeholder img,
             .inline-image img {
                 max-width: 100% !important;
-                max-height: 400pt !important;
-                width: auto !important;
                 height: auto !important;
+                max-height: 180pt !important;
+                object-fit: contain !important;
                 display: block !important;
                 margin: 0 auto !important;
             }
             
-            .inline-image-caption {
-                font-style: italic !important;
-                color: #666 !important;
-                font-size: 9pt !important;
-                margin-top: 5pt !important;
+            .equipment-image-small img {
+                max-width: 100% !important;
+                max-height: 200pt !important;
             }
             
-            /* Grids */
-            .content-grid,
-            .image-grid {
-                display: block !important;
-            }
-            
-            .image-card {
-                margin-bottom: 10pt !important;
+            .inline-image {
+                margin: 8pt 0 !important;
+                padding: 5pt !important;
+                border: 1px solid #ddd !important;
+                background: white !important;
+                text-align: center !important;
                 page-break-inside: avoid;
+            }
+            
+            .image-caption,
+            .inline-image-caption {
+                font-size: 9pt !important;
+                color: #666 !important;
+                margin-top: 3pt !important;
+                text-align: center !important;
+                font-style: italic !important;
+            }
+            
+            /* Avisos e destaques */
+            .warning-box, .highlight-box {
+                border: 2px solid #E73700 !important;
+                background: #fff8f5 !important;
+                padding: 8pt !important;
+                margin: 8pt 0 !important;
+                page-break-inside: avoid;
+            }
+            
+            .warning-title, .highlight-title {
+                font-size: 11pt !important;
+                font-weight: bold !important;
+                color: #E73700 !important;
+                margin-bottom: 5pt !important;
+            }
+            
+            /* Tabelas de especificações */
+            .spec-table {
+                width: 100% !important;
+                border-collapse: collapse !important;
+                margin: 8pt 0 !important;
+                page-break-inside: avoid;
+                font-size: 9pt !important;
+            }
+            
+            .spec-table th,
+            .spec-table td {
+                border: 1px solid #333 !important;
+                padding: 4pt !important;
+                text-align: left !important;
+                vertical-align: top !important;
+            }
+            
+            .spec-table th {
+                background: #f0f0f0 !important;
+                font-weight: bold !important;
+                color: #333 !important;
+            }
+            
+            /* Listas compactas */
+            ul, ol {
+                margin: 5pt 0 8pt 15pt !important;
+                padding: 0 !important;
+            }
+            
+            li {
+                margin-bottom: 2pt !important;
+                font-size: 10pt !important;
+                line-height: 1.3 !important;
+            }
+            
+            /* Parágrafos */
+            p {
+                margin-bottom: 6pt !important;
+                font-size: 10pt !important;
+                line-height: 1.3 !important;
+                text-align: justify !important;
+            }
+            
+            /* Títulos hierárquicos */
+            h1 { 
+                font-size: 18pt !important; 
+                margin: 15pt 0 8pt 0 !important; 
+            }
+            h2 { 
+                font-size: 14pt !important; 
+                margin: 12pt 0 6pt 0 !important; 
+            }
+            h3 { 
+                font-size: 12pt !important; 
+                margin: 10pt 0 5pt 0 !important; 
+            }
+            h4 { 
+                font-size: 11pt !important; 
+                margin: 8pt 0 4pt 0 !important; 
+            }
+            
+            h1, h2, h3, h4 {
+                color: #E73700 !important;
+                font-weight: bold !important;
+                page-break-after: avoid !important;
+                orphans: 3;
+                widows: 3;
             }
             
             /* Links */
@@ -885,58 +950,25 @@
                 text-decoration: underline !important;
             }
             
-            a[href^="http"]:after {
-                content: "";
+            /* Controle de órfãos e viúvas */
+            p, li, .card-content, .step-content {
+                orphans: 2;
+                widows: 2;
             }
             
-            a[href^="tel:"]:after,
-            a[href^="mailto:"]:after {
-                content: " (" attr(href) ")";
-                font-size: 8pt;
-                color: #666;
+            /* Remover efeitos visuais desnecessários */
+            * {
+                box-shadow: none !important;
+                text-shadow: none !important;
+                border-radius: 0 !important;
+                transform: none !important;
+                transition: none !important;
             }
             
-            /* Listas */
-            ul, ol {
-                margin-left: 15pt !important;
-                margin-top: 5pt !important;
-                margin-bottom: 5pt !important;
-            }
-            
-            li {
-                margin-bottom: 3pt !important;
-                line-height: 1.3 !important;
-            }
-            
-            /* Títulos e subtítulos */
-            h2 {
-                font-size: 14pt !important;
-                color: var(--primary-orange) !important;
-                margin-top: 10pt !important;
-                margin-bottom: 8pt !important;
-                page-break-after: avoid;
-            }
-            
-            h3 {
-                font-size: 12pt !important;
-                color: #333 !important;
-                margin-top: 8pt !important;
-                margin-bottom: 6pt !important;
-                page-break-after: avoid;
-            }
-            
-            /* Parágrafos */
-            p {
-                margin-bottom: 5pt !important;
-                line-height: 1.4 !important;
-            }
-            
-            /* Evitar quebras desnecessárias */
-            h1, h2, h3, h4, h5, h6 {
-                page-break-after: avoid;
-            }
-            
-            .section-header + * {
+            /* Evitar quebras indesejadas */
+            .section-header + *,
+            .card-title + *,
+            .step-title + * {
                 page-break-before: avoid;
             }
         }
@@ -1002,7 +1034,6 @@
                 </div>
 
                 <div class="equipment-showcase">
-                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Analisador de Fibras F800</h2>
                     <div class="equipment-image">
                         <img src="images/Imagem1.png" alt="Fluxograma do processo operacional">
                     </div>
