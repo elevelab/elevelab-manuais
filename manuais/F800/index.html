@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual F800 - Analisador de Fibras Automatizado | EleveLab</title>
+    <meta name="description" content="Manual interativo do Analisador de Fibras Automatizado F800 - EleveLab Equipamentos Científicos">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #E73700;
+            --secondary-black: #1a1d1f;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --shadow: 0 10px 30px rgba(231, 55, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-gray);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Fixo */
+        .header {
+            background: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 3px solid var(--primary-orange);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-circles {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-end;
+        }
+        
+        .circle-row {
+            display: flex;
+            gap: 2px;
+        }
+        
+        .circle {
+            background: var(--primary-orange);
+            border-radius: 50%;
+        }
+        
+        .circle.large { width: 20px; height: 20px; }
+        .circle.medium { width: 15px; height: 15px; }
+        .circle.small { width: 10px; height: 10px; }
+        
+        .logo-text {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-orange);
+        }
+        
+        .logo-subtitle {
+            font-size: 10px;
+            color: var(--secondary-black);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: -3px;
+        }
+        
+        /* Navegação */
+        .nav {
+            background: var(--secondary-black);
+            padding: 12px 0;
+            position: fixed;
+            top: 70px;
+            width: 100%;
+            z-index: 999;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            color: var(--white);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        
+        .nav-item:hover,
+        .nav-item.active {
+            background: var(--primary-orange);
+            transform: translateY(-2px);
+        }
+        
+        /* Menu Mobile */
+        .mobile-menu-toggle {
+            display: none;
+            background: var(--primary-orange);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .hamburger {
+            width: 20px;
+            height: 2px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        
+        /* Conteúdo Principal */
+        .main {
+            margin-top: 120px;
+            padding: 40px 0 80px 0;
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b3d);
+            color: white;
+            border-radius: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+        
+        /* Cards de Conteúdo */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .content-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-orange);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(231, 55, 0, 0.15);
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--secondary-black);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-content {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        .card-content ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+        
+        .card-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* Showcase do Equipamento */
+        .equipment-showcase {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 50px 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .equipment-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .equipment-image-small {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .equipment-image img,
+        .equipment-image-small img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 100%;
+        }
+        
+        /* Tabela de Especificações */
+        .spec-table {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+        }
+        
+        .spec-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .spec-table th {
+            background: var(--primary-orange);
+            color: var(--white);
+            padding: 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .spec-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #f1f3f5;
+            font-weight: 500;
+        }
+        
+        .spec-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .spec-table tr:hover {
+            background: #fff3e0;
+        }
+        
+        /* Lista de Procedimentos */
+        .steps-list {
+            margin: 40px 0;
+        }
+        
+        .step-item {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+            position: relative;
+            border-left: 5px solid var(--primary-orange);
+            transition: transform 0.3s ease;
+        }
+        
+        .step-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -20px;
+            top: 25px;
+            background: var(--primary-orange);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 5px 15px rgba(231, 55, 0, 0.3);
+        }
+        
+        .step-title {
+            font-weight: 600;
+            color: var(--secondary-black);
+            margin-bottom: 15px;
+            margin-left: 30px;
+            font-size: 1.2rem;
+        }
+        
+        .step-content {
+            margin-left: 30px;
+            line-height: 1.8;
+        }
+        
+        /* Caixas de Aviso */
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+            border: 2px solid var(--primary-orange);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .warning-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .warning-content {
+            margin-left: 60px;
+            color: var(--secondary-black);
+            font-weight: 500;
+        }
+        
+        /* Box de Destaque */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary-orange), #ff6b3d);
+            color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(231, 55, 0, 0.3);
+        }
+        
+        .highlight-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+        
+        /* Grid de Imagens */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .image-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .image-placeholder {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            min-height: 250px;
+            height: auto;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 2px dashed #dee2e6;
+            overflow: hidden;
+        }
+        
+        .image-placeholder img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            max-height: 400px;
+        }
+        
+        .image-caption {
+            font-size: 14px;
+            color: var(--secondary-black);
+            font-weight: 600;
+        }
+        
+        /* Imagens inline no conteúdo */
+        .inline-image {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .inline-image img {
+            max-width: 80%;
+            height: auto;
+            border-radius: 10px;
+            margin: 15px auto;
+            display: block;
+        }
+        
+        .inline-image-caption {
+            font-size: 14px;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--secondary-black);
+            color: var(--white);
+            padding: 60px 0 40px 0;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-orange);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            margin-bottom: 12px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+        }
+        
+        .footer-bottom p {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-content {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 20px 0;
+            }
+            
+            .nav-content.active {
+                display: flex;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .equipment-showcase {
+                padding: 30px 20px;
+            }
+            
+            .step-number {
+                position: relative;
+                left: 0;
+                margin-bottom: 15px;
+            }
+            
+            .step-title,
+            .step-content {
+                margin-left: 0;
+            }
+            
+            .warning-icon {
+                position: relative;
+                margin-bottom: 15px;
+            }
+            
+            .warning-content {
+                margin-left: 0;
+            }
+        }
+        
+        /* Scroll suave */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Loading */
+        .loading {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .loaded {
+            opacity: 1;
+        }
+        
+        /* Print styles */
+        @media print {
+            .header, .nav, .footer { display: none !important; }
+            .main { margin-top: 0 !important; }
+            .section { display: block !important; page-break-after: always; }
+            .content-card, .step-item { page-break-inside: avoid; }
+            .warning-box { border: 2px solid #333 !important; background: #f9f9f9 !important; }
+            .highlight-box { border: 2px solid #333 !important; background: #f0f0f0 !important; color: #000 !important; }
+            * { color: #000 !important; background: transparent !important; }
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-circles">
+                        <div class="circle-row">
+                            <div class="circle large"></div>
+                        </div>
+                        <div class="circle-row">
+                            <div class="circle medium"></div>
+                            <div class="circle small"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="logo-text">EleveLab</div>
+                        <div class="logo-subtitle">EQUIPAMENTOS CIENTÍFICOS</div>
+                    </div>
+                </div>
+                
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <div class="hamburger"></div>
+                    <div class="hamburger"></div>
+                    <div class="hamburger"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content" id="navContent">
+                <span class="nav-item active" onclick="showSection('overview', this)">Visão Geral</span>
+                <span class="nav-item" onclick="showSection('specifications', this)">Especificações</span>
+                <span class="nav-item" onclick="showSection('structure', this)">Estrutura</span>
+                <span class="nav-item" onclick="showSection('installation', this)">Instalação</span>
+                <span class="nav-item" onclick="showSection('operation', this)">Operação</span>
+                <span class="nav-item" onclick="showSection('procedures', this)">Procedimentos</span>
+                <span class="nav-item" onclick="showSection('care', this)">Cuidados</span>
+                <span class="nav-item" onclick="showSection('maintenance', this)">Manutenção</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main">
+        <div class="container">
+            
+            <!-- Seção: Visão Geral -->
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h1 class="section-title">Analisador de Fibras Automatizado</h1>
+                    <p class="section-subtitle">Manual do Usuário - Modelo F800 - Equipamento de precisão para análise de fibras em alimentos, grãos e rações</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <strong>AVISOS IMPORTANTES:</strong> Leia atentamente este manual antes da instalação e operação. O uso inadequado pode comprometer as proteções de segurança incorporadas.
+                    </div>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px; font-size: 2rem;">Analisador de Fibras F800</h2>
+                    <div class="equipment-image">
+                        <img src="images/Imagem1.png" alt="Fluxograma do processo operacional">
+                    </div>
+                    <p style="color: #6c757d; font-style: italic;">Fluxograma do processo operacional do equipamento</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">Tecnologia Avançada em Análise de Fibras</h2>
+                    <p class="highlight-content">Equipamento projetado especificamente para determinação de fibras conforme métodos Weende, van Soest e outros métodos reconhecidos internacionalmente. Processamento simultâneo de 6 amostras com operações totalmente automatizadas.</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎯 Aplicações Principais</h2>
+                        <div class="card-content">
+                            <p>O Analisador F800 é adequado para análise de:</p>
+                            <ul>
+                                <li><strong>Fibra Bruta:</strong> Determinação conforme método Weende</li>
+                                <li><strong>FDA:</strong> Fibra em Detergente Ácido</li>
+                                <li><strong>FDN:</strong> Fibra em Detergente Neutro</li>
+                                <li><strong>LDA:</strong> Lignina em Detergente Ácido</li>
+                                <li><strong>Celulose e Hemicelulose:</strong> Análise completa</li>
+                                <li><strong>Aplicação:</strong> Matérias-primas e produtos acabados de alimentos, grãos e rações</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚗️ Princípio de Funcionamento</h2>
+                        <div class="card-content">
+                            <p><strong>Método de Determinação da Fibra Bruta:</strong></p>
+                            <p style="margin-top: 15px;">1. <strong>Hidrólise ácida:</strong> Eliminação de açúcares, amido, substâncias pécticas e hemicelulose</p>
+                            <p>2. <strong>Tratamento alcalino:</strong> Eliminação de proteínas e ácidos graxos</p>
+                            <p>3. <strong>Calcinação:</strong> Eliminação de substâncias minerais em alta temperatura</p>
+                            <p style="margin-top: 15px;">A Fibra Bruta resultante é composta principalmente por celulose, com pequena quantidade de hemicelulose e lignina.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">✨ Características Principais</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Materiais anti-corrosivos</strong> de alta qualidade</li>
+                                <li><strong>Processamento simultâneo</strong> de 6 amostras</li>
+                                <li><strong>Design preciso</strong> que otimiza a operação</li>
+                                <li><strong>Hidrólise ácido-base</strong> automatizada</li>
+                                <li><strong>Digestão fria/quente</strong> programável</li>
+                                <li><strong>Retrolavagem automática</strong> para prevenir entupimentos</li>
+                                <li><strong>Evacuação automática</strong> de resíduos</li>
+                                <li><strong>Controle eletrônico</strong> de temperatura</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🔬 Processo Operacional</h2>
+                        <div class="card-content">
+                            <p>O processo completo inclui as seguintes operações automatizadas:</p>
+                            <ul>
+                                <li><strong>Lavagem:</strong> Limpeza inicial das amostras</li>
+                                <li><strong>Enxágue:</strong> Remoção de reagentes residuais</li>
+                                <li><strong>Limpeza alcalina:</strong> Tratamento com solução básica</li>
+                                <li><strong>Filtração:</strong> Separação de sólidos e líquidos</li>
+                                <li><strong>Secagem:</strong> Preparação para pesagem final</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚡</div>
+                    <div class="warning-content">
+                        <strong>PERIGO - Risco de choque elétrico:</strong> Apenas pessoal técnico qualificado pode abrir a tampa da máquina e os painéis de acesso. Equipamento com dispositivos de segurança integrados.
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">🧪</div>
+                    <div class="warning-content">
+                        <strong>CUIDADO - Manuseio de reagentes:</strong> Use sempre jaleco, óculos de proteção e luvas de borracha. Consulte a FISPQ dos reagentes. Tenha cuidado especial ao manusear reagentes aquecidos.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Especificações -->
+            <section id="specifications" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Características técnicas e de desempenho do equipamento F800</p>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parâmetro</th>
+                                <th>Especificação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Volume da amostra</td><td>0,5 - 3,0 g</td></tr>
+                            <tr><td>Faixa de medição</td><td>0,1 - 100%</td></tr>
+                            <tr><td>Erro de repetibilidade</td><td>≤0,4% (fibra bruta <10%)<br>≤1% (fibra bruta >10%)</td></tr>
+                            <tr><td>Capacidade simultânea</td><td>6 amostras</td></tr>
+                            <tr><td>Cadinho padrão</td><td>Poro de núcleo de areia: 40-100 μm<br>Opcionais: 16-40 μm, 100-160 μm, 160-250 μm</td></tr>
+                            <tr><td>Tempo de medição</td><td>~90 min (30 min fervura ácida + 30 min fervura alcalina + 30 min descarga/lavagem)</td></tr>
+                            <tr><td>Bomba de ar integrada</td><td>Pressão de retrolavagem >4 bar</td></tr>
+                            <tr><td>Modo de descarga</td><td>Vácuo por pressão negativa</td></tr>
+                            <tr><td>Aquecimento</td><td>Radiação infravermelha</td></tr>
+                            <tr><td>Potência de aquecimento</td><td>Continuamente ajustável</td></tr>
+                            <tr><td>Alimentação</td><td>220 VAC ±10% 50Hz</td></tr>
+                            <tr><td>Potência nominal</td><td>2,2 kW</td></tr>
+                            <tr><td>Dimensões (L×P×A)</td><td>776×530×645 mm</td></tr>
+                            <tr><td>Peso líquido</td><td>75 kg</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🎛️ Características Técnicas Avançadas</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Interface touch screen</strong> para controle intuitivo</li>
+                                <li><strong>Aquecimento por radiação infravermelha</strong> para uniformidade térmica</li>
+                                <li><strong>Bomba de ar integrada</strong> com pressão >4 bar</li>
+                                <li><strong>Sistema de vácuo</strong> por pressão negativa</li>
+                                <li><strong>Potência ajustável</strong> continuamente</li>
+                                <li><strong>6 posições independentes</strong> para amostras</li>
+                                <li><strong>Cronômetro integrado</strong> com alarmes</li>
+                                <li><strong>Múltiplos tamanhos de poro</strong> disponíveis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⏱️ Eficiência Operacional</h2>
+                        <div class="card-content">
+                            <p><strong>Tempo total de análise: ~90 minutos</strong></p>
+                            <ul>
+                                <li>30 minutos - Fervura ácida</li>
+                                <li>30 minutos - Fervura alcalina</li>
+                                <li>30 minutos - Descarga e lavagem</li>
+                            </ul>
+                            <p style="margin-top: 20px;"><strong>Repetibilidade excepcional:</strong></p>
+                            <ul>
+                                <li>≤0,4% para fibra bruta <10%</li>
+                                <li>≤1% para fibra bruta >10%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Estrutura -->
+            <section id="structure" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Estrutura do Equipamento</h1>
+                    <p class="section-subtitle">Identificação dos componentes principais do F800</p>
+                </div>
+
+                <div class="equipment-showcase">
+                    <h2 style="color: var(--primary-orange); margin-bottom: 30px;">Vista Frontal</h2>
+                    <div class="equipment-image-small">
+                        <img src="images/Imagem2.png" alt="Vista frontal do equipamento">
+                    </div>
+                    <p style="color: #6c757d; font-style: italic;">Vista frontal do Analisador de Fibras F800 com componentes numerados</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🔧 Componentes Frontais</h2>
+                        <div class="card-content">
+                            <ol>
+                                <li><strong>Válvula manual de água:</strong> Controle de entrada de água</li>
+                                <li><strong>Tubo:</strong> Sistema de digestão</li>
+                                <li><strong>Barra de elevação:</strong> Ajuste de altura dos tubos</li>
+                                <li><strong>Área de aquecimento:</strong> Zona de radiação infravermelha</li>
+                                <li><strong>Refletor:</strong> Distribuição uniforme do calor</li>
+                                <li><strong>Módulo de elevação:</strong> Sistema automático de movimentação</li>
+                                <li><strong>Tela touch:</strong> Interface de controle principal</li>
+                                <li><strong>Botão de regulagem de potência:</strong> Ajuste fino de aquecimento</li>
+                                <li><strong>Solução 1:</strong> Recipiente para reagente ácido</li>
+                                <li><strong>Solução 2:</strong> Recipiente para reagente alcalino</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="image-grid">
+                    <div class="image-card">
+                        <div class="image-placeholder">
+                            <img src="images/Imagem3.png" alt="Vista lateral direita">
+                        </div>
+                        <div class="image-caption">Vista Lateral Direita - Componentes Elétricos</div>
+                    </div>
+                    
+                    <div class="image-card">
+                        <div class="image-placeholder">
+                            <img src="images/Imagem4.png" alt="Vista lateral esquerda">
+                        </div>
+                        <div class="image-caption">Vista Lateral Esquerda - Conexões Hidráulicas</div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">⚡ Lado Direito - Sistema Elétrico</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>11. RCD:</strong> Dispositivo de Corrente Residual para proteção</li>
+                                <li><strong>12. Interruptor principal:</strong> Controle geral de energia</li>
+                                <li><strong>13. Tomada de energia:</strong> Conexão elétrica 220V</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">💧 Lado Esquerdo - Sistema Hidráulico</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>14. Transbordamento:</strong> Saída de excesso do tanque</li>
+                                <li><strong>15. Entrada de água destilada:</strong> Conexão principal de água</li>
+                                <li><strong>16. Porta de evacuação:</strong> Drenagem do tanque</li>
+                                <li><strong>17. Saída de água condensada:</strong> Descarte de condensado</li>
+                                <li><strong>18. Saída de fluidos residuais:</strong> Descarte principal</li>
+                                <li><strong>19. Entrada de água condensada:</strong> Retorno de condensado</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Instalação -->
+            <section id="installation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instalação do Equipamento</h1>
+                    <p class="section-subtitle">Requisitos e procedimentos para instalação correta e segura</p>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <strong>IMPORTANTE:</strong> A instalação deve ser realizada seguindo rigorosamente todos os requisitos de segurança elétrica e ambiental especificados.
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">⚡ Requisitos Elétricos</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Tensão:</strong> 220 VAC ±10% 50Hz</li>
+                                <li><strong>Potência:</strong> 2,2 kW nominal</li>
+                                <li><strong>Disjuntor de ar:</strong> Obrigatório</li>
+                                <li><strong>Disjuntor diferencial residual:</strong> Obrigatório</li>
+                                <li><strong>Fio terra confiável:</strong> Essencial para segurança</li>
+                                <li><strong>Interruptor independente:</strong> Dispositivo de segurança</li>
+                                <li><strong>Distância da tomada:</strong> Máximo 1 metro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">📍 Requisitos de Localização</h2>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Próximo à fonte de água:</strong> Para conexões hidráulicas</li>
+                                <li><strong>Próximo à pia:</strong> Para descarte de resíduos</li>
+                                <li><strong>Piso estável:</strong> Suportar peso de 100 kg</li>
+                                <li><strong>Distância da parede:</strong> Mínimo 20 cm atrás</li>
+                                <li><strong>Ventilação:</strong> Área bem ventilada</li>
+                                <li><strong>Longe de equipamentos de alta potência:</strong> Evitar interferências</li>
+                                <li><strong>Sem campo eletromagnético:</strong> Evitar interferências</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Posicionamento do Equipamento</div>
+                        <div class="step-content">
+                            <p>Posicione o equipamento de forma estável na bancada, garantindo que o piso suporte 100 kg. Mantenha pelo menos 20 cm de distância da parede na parte traseira para ventilação adequada.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Instalação Elétrica</div>
+                        <div class="step-content">
+                            <p>Instale disjuntor de ar e disjuntor diferencial residual dedicados. Conecte o fio terra confiável. A distância entre a tomada elétrica e o equipamento deve ser de no máximo 1 metro.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Conexões Hidráulicas</div>
+                        <div class="step-content">
+                            <p>Conecte a entrada de água destilada (item 15) à fonte de água. Configure as saídas de drenagem (itens 16, 17, 18) próximas à pia. Verifique todas as conexões para evitar vazamentos.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Verificação Final</div>
+                        <div class="step-content">
+                            <p>Verifique todas as conexões elétricas e hidráulicas. Certifique-se de que o equipamento está nivelado e estável. Teste o interruptor principal e o RCD antes da primeira operação.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Operação -->
+            <section id="operation" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Instruções de Operação</h1>
+                    <p class="section-subtitle">Procedimentos passo a passo para operação do equipamento</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">Sistema de Interface Touch Screen</h2>
+                    <p class="highlight-content">O F800 possui interface intuitiva com tela sensível ao toque, permitindo controle completo de todos os parâmetros e processos de análise.</p>
+                </div>
+
+                <h2 style="color: var(--primary-orange); margin: 40px 0 30px 0; font-size: 1.8rem;">5.1 Ligação e Inicialização</h2>
+                
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Inicialização do Sistema</div>
+                        <div class="step-content">
+                            <p>Ligue o equipamento através do interruptor principal. A interface de inicialização será exibida automaticamente.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem5.png" alt="Tela de inicialização">
+                                <p class="inline-image-caption">Interface inicial do equipamento após ligar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Pré-aquecimento Automático</div>
+                        <div class="step-content">
+                            <p>O equipamento entra automaticamente na interface de pré-aquecimento. O sistema aquece automaticamente o reagente e água destilada.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem6.png" alt="Interface de pré-aquecimento inicial">
+                                <p class="inline-image-caption">Tela mostrando estado inicial após startup</p>
+                            </div>
+                            
+                            <p style="margin-top: 20px;">A interface exibe quatro ícones de estado: 【Nível de água】【Temperatura】【Solução 1】【Solução 2】</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem7.png" alt="Interface durante pré-aquecimento">
+                                <p class="inline-image-caption">Tela durante processo de pré-aquecimento</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Conclusão do Pré-aquecimento</div>
+                        <div class="step-content">
+                            <p>Clique no botão 【Pré-aquecimento】 quando indicado. O sistema está pronto para iniciar os testes.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem8.png" alt="Interface pré-aquecimento concluído">
+                                <p class="inline-image-caption">Tela após completar o pré-aquecimento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="color: var(--primary-orange); margin: 40px 0 30px 0; font-size: 1.8rem;">5.2 Interface de Teste</h2>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-title" style="margin-left: 0;">Acesso ao Modo de Teste</div>
+                        <div class="step-content">
+                            <p>Clique em 【Teste】 na barra de menu para entrar na interface de teste principal.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem9.png" alt="Interface de teste">
+                                <p class="inline-image-caption">Tela principal de teste com opções de operação</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--secondary-black); margin: 30px 0 20px 0; font-size: 1.4rem;">5.2.1 Adição de Reagente</h3>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-content">
+                            <p>Escolha o recipiente de reagente I ou II e clique em 【Adicionar solução】.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem10.png" alt="Interface de adição de solução">
+                                <p class="inline-image-caption">Tela para seleção e adição de reagentes</p>
+                            </div>
+                            
+                            <p style="margin-top: 20px;"><strong>Procedimento:</strong></p>
+                            <ul>
+                                <li>Clique no número do cadinho para adicionar reagente</li>
+                                <li>Adicione 150 mL (limite: 120-170 mL)</li>
+                                <li>Clique novamente para parar ou selecione o próximo cadinho</li>
+                            </ul>
+                            <div class="inline-image">
+                                <img src="images/Imagem11.png" alt="Interface de seleção de cadinho">
+                                <p class="inline-image-caption">Tela mostrando numeração dos cadinhos para adição de reagente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--secondary-black); margin: 30px 0 20px 0; font-size: 1.4rem;">5.2.2 Processo de Aquecimento</h3>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-content">
+                            <p><strong>Controle de aquecimento:</strong></p>
+                            <ul>
+                                <li>Ajuste as configurações antes do aquecimento</li>
+                                <li>Clique em 【Aquecimento】 (o botão fica verde)</li>
+                                <li>Gire o botão de regulagem no sentido horário para potência máxima</li>
+                                <li>Ajuste para manter fervura leve após atingir a temperatura</li>
+                            </ul>
+                            <div class="inline-image">
+                                <img src="images/Imagem12.jpg" alt="Interface de aquecimento ativo">
+                                <p class="inline-image-caption">Tela durante processo de aquecimento com botão verde</p>
+                            </div>
+                            
+                            <p style="margin-top: 20px;">O equipamento para automaticamente e emite alarme ao atingir o tempo configurado.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem13.png" alt="Interface de aquecimento pausado">
+                                <p class="inline-image-caption">Tela mostrando opção de pausa durante aquecimento</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--secondary-black); margin: 30px 0 20px 0; font-size: 1.4rem;">5.2.3 Descarga de Resíduos</h3>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-content">
+                            <p>Clique em 【Drenagem】 e escolha o cadinho. O equipamento completa automaticamente a descarga.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem14.png" alt="Interface de drenagem">
+                                <p class="inline-image-caption">Tela para seleção de cadinhos para descarga de resíduos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--secondary-black); margin: 30px 0 20px 0; font-size: 1.4rem;">5.2.4 Retrolavagem</h3>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-content">
+                            <p>Use a retrolavagem para prevenir bloqueio do núcleo de areia. Clique em 【Retrolavagem】 e escolha o cadinho necessário.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem15.png" alt="Interface de retrolavagem">
+                                <p class="inline-image-caption">Tela para seleção de cadinhos para retrolavagem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--secondary-black); margin: 30px 0 20px 0; font-size: 1.4rem;">5.2.5 Lavagem</h3>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-content">
+                            <p>Clique em 【Adicionar Água】 e abra a válvula manual. Após adicionar água, feche a válvula e clique novamente em 【Adicionar Água】 para desligar a bomba.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem16.png" alt="Interface de adição de água">
+                                <p class="inline-image-caption">Tela com controles para adição de água e lavagem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="color: var(--primary-orange); margin: 40px 0 30px 0; font-size: 1.8rem;">5.3 Configurações do Sistema</h2>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-content">
+                            <p><strong>Parâmetros ajustáveis:</strong></p>
+                            <ul>
+                                <li>Tempo de descarga de resíduos</li>
+                                <li>Alarmes sonoros</li>
+                                <li>Modo de cronometragem de aquecimento</li>
+                                <li>Horário do equipamento</li>
+                            </ul>
+                            <div class="inline-image">
+                                <img src="images/Imagem17.png" alt="Interface de configurações">
+                                <p class="inline-image-caption">Tela de configurações do sistema</p>
+                            </div>
+                            
+                            <div class="inline-image" style="margin-top: 20px;">
+                                <img src="images/Imagem18.png" alt="Interface de configuração de tempo">
+                                <p class="inline-image-caption">Configuração de parâmetros de tempo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="color: var(--primary-orange); margin: 40px 0 30px 0; font-size: 1.8rem;">5.4 Sistema de Ajuda</h2>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-content">
+                            <p>Clique em 【Ajuda】 na barra de menu para acessar informações do sistema e instruções rápidas de operação.</p>
+                            <div class="inline-image">
+                                <img src="images/Imagem19.png" alt="Interface de ajuda">
+                                <p class="inline-image-caption">Tela de ajuda com informações do sistema</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Procedimentos -->
+            <section id="procedures" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Procedimentos Experimentais</h1>
+                    <p class="section-subtitle">Metodologia completa para análise de fibras</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🔬 Equipamentos e Ferramentas</h2>
+                        <div class="card-content">
+                            <ol>
+                                <li><strong>Triturador ou almofariz:</strong> Para preparação da amostra</li>
+                                <li><strong>Peneira:</strong> Abertura 0,45 mm (40 mesh)</li>
+                                <li><strong>Balança analítica:</strong> Sensibilidade 0,0001 g</li>
+                                <li><strong>Estufa de secagem:</strong> Controle a 130°C</li>
+                                <li><strong>Forno mufla:</strong> 200°C a 800°C ajustável</li>
+                                <li><strong>Dessecador:</strong> Com sílica gel</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">🧪 Reagentes Necessários</h2>
+                        <div class="card-content">
+                            <ol>
+                                <li><strong>Solução H₂SO₄:</strong> 0,127±0,005 mol/L</li>
+                                <li><strong>Solução NaOH:</strong> 0,313±0,005 mol/L</li>
+                                <li><strong>Álcool 95%:</strong> Para lavagem final</li>
+                                <li><strong>Acetona:</strong> Alternativa ao álcool</li>
+                                <li><strong>Octanol:</strong> Antiespumante</li>
+                                <li><strong>Papel de tornassol:</strong> Indicador de pH</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="steps-list">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Preparação da Amostra</div>
+                        <div class="step-content">
+                            <p>Tome 0,5-3g de amostra processada e coloque no cadinho previamente pesado e seco. Registre o peso inicial com precisão de 0,0001g.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Inicialização do Equipamento</div>
+                        <div class="step-content">
+                            <p>Ligue o equipamento e clique em 【Pré-aquecimento】 após entrar na interface de operação. Aguarde o sistema atingir a temperatura operacional.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Posicionamento das Amostras</div>
+                        <div class="step-content">
+                            <p>Coloque o cadinho com amostra no equipamento. Pressione lentamente a barra de elevação para que o conjunto pressione o cadinho firmemente. Abra o interruptor de água de resfriamento.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Primeira Digestão - Tratamento Ácido</div>
+                        <div class="step-content">
+                            <p><strong>Sequência de operações:</strong></p>
+                            <ul>
+                                <li>Adicionar solução 1 (H₂SO₄)</li>
+                                <li>Aquecimento por 30 minutos</li>
+                                <li>Drenagem do reagente</li>
+                                <li>Adicionar água para lavagem</li>
+                                <li>Drenagem da água de lavagem</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><em>Nota: Se a amostra estiver muito compacta durante filtração, fazer retrolavagem primeiro.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-title">Segunda Digestão - Tratamento Alcalino</div>
+                        <div class="step-content">
+                            <p><strong>Sequência de operações:</strong></p>
+                            <ul>
+                                <li>Adicionar reagente 2 (NaOH)</li>
+                                <li>Aquecimento por 30 minutos</li>
+                                <li>Drenagem do reagente</li>
+                                <li>Adicionar água para lavagem</li>
+                                <li>Drenagem da água de lavagem</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><em>Nota: Se a amostra estiver muito compacta durante filtração, fazer retrolavagem primeiro.</em></p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">6</div>
+                        <div class="step-title">Lavagem Final</div>
+                        <div class="step-content">
+                            <p>Adicionar álcool ou acetona e filtrar (processo de digestão fria). Esta etapa remove resíduos finais e prepara a amostra para secagem.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">7</div>
+                        <div class="step-title">Secagem e Pesagem</div>
+                        <div class="step-content">
+                            <p>Colocar na estufa a 130°C para secar até peso constante. Pesar e calcular o teor de fibra bruta.</p>
+                            <p style="margin-top: 15px;"><strong>Se houver resíduos insolúveis:</strong> Passar por calcinação no forno mufla a 500°C, pesar novamente e calcular.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">📊 Cálculo do Teor de Fibra</h2>
+                    <div class="highlight-content">
+                        <p><strong>Fórmula:</strong></p>
+                        <p>Fibra Bruta (%) = [(Peso do resíduo - Peso das cinzas) / Peso da amostra] × 100</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Cuidados -->
+            <section id="care" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Cuidados Importantes</h1>
+                    <p class="section-subtitle">Precauções essenciais para resultados precisos e seguros</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🔬 Cuidados com a Amostra</h2>
+                        <div class="card-content">
+                            <p><strong>1. Tamanho de partícula:</strong></p>
+                            <p>O tamanho da partícula influencia diretamente os resultados. Após trituração ou moagem, deve ser peneirada conforme padrões relacionados (geralmente 40 mesh).</p>
+                            
+                            <p style="margin-top: 20px;"><strong>2. Desengorduramento:</strong></p>
+                            <p>Se o teor de gordura da amostra for superior a 10%, primeiro desengordurar. Se não for totalmente desengordurado, o resultado analisado será maior que o real.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>3. Homogeneização:</strong></p>
+                            <p>A amostra deve ser completamente homogeneizada antes da análise para garantir representatividade.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">⚠️ Cuidados no Processo Operacional</h2>
+                        <div class="card-content">
+                            <p><strong>1. Temperatura dos reagentes:</strong></p>
+                            <p>No segundo procedimento e seguintes, o líquido deve estar quente para evitar quebra do tubo de digestão devido a choque térmico.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>2. Prevenção de aderência:</strong></p>
+                            <p>É proibido que a amostra permaneça na parede. A descarga deve ser lenta para evitar que a amostra flutuante grude na parede do tubo.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>3. Limpeza de resíduos:</strong></p>
+                            <p>Se a amostra grudar e não puder ser limpa com água, use escova de cerdas do fundo.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>4. Manuseio do cadinho:</strong></p>
+                            <p>O cadinho deve ser manuseado com cuidado, evitando choques, quebras ou esmagamento.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">🧪</div>
+                    <div class="warning-content">
+                        <strong>SEGURANÇA COM REAGENTES:</strong><br>
+                        • Sempre use EPIs completos: jaleco, óculos e luvas<br>
+                        • Consulte a FISPQ de cada reagente antes do uso<br>
+                        • Trabalhe em ambiente ventilado<br>
+                        • Tenha kit de emergência disponível<br>
+                        • Descarte reagentes conforme normas ambientais
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">🔥</div>
+                    <div class="warning-content">
+                        <strong>CUIDADO COM TEMPERATURAS ELEVADAS:</strong><br>
+                        • Reagentes aquecidos podem causar queimaduras graves<br>
+                        • Use pinças adequadas para manusear cadinhos quentes<br>
+                        • Aguarde resfriamento antes de manusear componentes<br>
+                        • Mantenha distância segura durante aquecimento
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção: Manutenção -->
+            <section id="maintenance" class="section">
+                <div class="section-header">
+                    <h1 class="section-title">Manutenção e Solução de Problemas</h1>
+                    <p class="section-subtitle">Procedimentos de manutenção e resolução de falhas comuns</p>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h2 class="card-title">🧹 Manutenção Diária</h2>
+                        <div class="card-content">
+                            <p><strong>1. Limpeza geral:</strong></p>
+                            <p>O equipamento deve ser limpo com água quente. Não use sabão em pó ou detergente. Se necessário, use pequena quantidade de solução apropriada.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>2. Manutenção do cadinho:</strong></p>
+                            <p>Se houver bloqueio após uso prolongado, seque e coloque no forno mufla a 500°C por 1-2 horas. Limpe após esfriar.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>3. Sistema de resfriamento:</strong></p>
+                            <p>Verifique diariamente o fluxo de água e limpe filtros semanalmente.</p>
+                            
+                            <p style="margin-top: 20px;"><strong>4. Componentes elétricos:</strong></p>
+                            <p>Mantenha secos e limpos. Verifique conexões mensalmente.</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <h2 class="card-title">📅 Cronograma de Manutenção</h2>
+                        <div class="card-content">
+                            <p><strong>Diário:</strong></p>
+                            <ul>
+                                <li>Limpeza externa</li>
+                                <li>Verificação de água</li>
+                                <li>Inspeção visual geral</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Semanal:</strong></p>
+                            <ul>
+                                <li>Limpeza dos cadinhos</li>
+                                <li>Verificação de conexões</li>
+                                <li>Teste de alarmes</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Mensal:</strong></p>
+                            <ul>
+                                <li>Calibração de temperatura</li>
+                                <li>Limpeza profunda do sistema</li>
+                                <li>Verificação de vedações</li>
+                            </ul>
+                            
+                            <p style="margin-top: 20px;"><strong>Trimestral:</strong></p>
+                            <ul>
+                                <li>Manutenção preventiva completa</li>
+                                <li>Substituição de peças desgastadas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="spec-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problema</th>
+                                <th>Possíveis Causas</th>
+                                <th>Soluções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Sem energia</strong></td>
+                                <td>• Desarme do protetor de vazamento<br>• Cabo de força mal conectado<br>• Fusível queimado<br>• Falha na fonte interna</td>
+                                <td>• Religar protetor<br>• Reconectar cabo<br>• Substituir fusível<br>• Contatar assistência técnica</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aquecedor não funciona</strong></td>
+                                <td>• Problema no circuito<br>• Aquecedor danificado</td>
+                                <td>• Verificar conexões<br>• Contatar assistência técnica</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperatura anormal</strong></td>
+                                <td>• Botão de controle com defeito<br>• Sensor descalibrado</td>
+                                <td>• Recalibrar sensor<br>• Contatar assistência técnica</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tela sem display</strong></td>
+                                <td>• Tela danificada<br>• Circuito interno com problema</td>
+                                <td>• Verificar conexões<br>• Contatar assistência técnica</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Válvula eletromagnética anormal</strong></td>
+                                <td>• Dano no programa<br>• Válvula com defeito</td>
+                                <td>• Desligar e religar equipamento<br>• Contatar assistência técnica</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vazamento de reagente</strong></td>
+                                <td>• Vedação danificada<br>• Conexão solta</td>
+                                <td>• Substituir vedação<br>• Apertar conexões</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Resultados inconsistentes</strong></td>
+                                <td>• Calibração incorreta<br>• Reagentes vencidos<br>• Amostra mal preparada</td>
+                                <td>• Recalibrar equipamento<br>• Substituir reagentes<br>• Revisar preparação</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    <h2 class="highlight-title">🛠️ Assistência Técnica EleveLab</h2>
+                    <div class="highlight-content">
+                        <p>Para problemas não listados ou que requerem assistência especializada:</p>
+                        <p style="margin-top: 15px;"><strong>EleveLab - Distribuidor Autorizado Hanon Lab</strong></p>
+                        <p>📞 +55 (51) 3010-6132</p>
+                        <p>📧 contato@elevelab.com.br | 🌐 www.elevelab.com.br</p>
+                        <p>📍 Rua Onze de Agosto, 19, Bairro São João - Porto Alegre/RS</p>
+                        <p style="margin-top: 10px;">Suporte técnico especializado com peças originais e garantia</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-icon">📋</div>
+                    <div class="warning-content">
+                        <strong>RECOMENDAÇÕES FINAIS:</strong><br>
+                        • Mantenha registro de todas as manutenções<br>
+                        • Use apenas peças originais Hanon Lab<br>
+                        • Treine adequadamente todos os operadores<br>
+                        • Mantenha manual sempre acessível<br>
+                        • Realize calibrações periódicas<br>
+                        • Documente todos os problemas e soluções
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <a href="tel:5130106132">📞 +55 (51) 3010-6132</a>
+                    <a href="mailto:contato@elevelab.com.br">✉️ contato@elevelab.com.br</a>
+                    <a href="https://www.elevelab.com.br">🌐 www.elevelab.com.br</a>
+                    <p>📍 Rua Onze de Agosto, 19, Bairro São João</p>
+                    <p>Porto Alegre - RS | CEP: 91020-050</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Produtos & Serviços</h3>
+                    <p>• Analisadores de Gordura</p>
+                    <p>• Analisadores de Fibras</p>
+                    <p>• Destiladores de Nitrogênio</p>
+                    <p>• Biorreatores</p>
+                    <p>• Assistência Técnica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suporte</h3>
+                    <p>• Instalação e Treinamento</p>
+                    <p>• Manutenção Preventiva</p>
+                    <p>• Calibração</p>
+                    <p>• Peças de Reposição</p>
+                    <p>• Garantia Estendida</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
+                <p style="margin-top: 10px;">Manual do Analisador de Fibras F800 | Versão 1.0 | Janeiro 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            
+            // Smooth scrolling para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+
+        // Função para mostrar seções
+        function showSection(sectionId, element) {
+            // Esconder todas as seções
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar seção selecionada
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // Atualizar navegação
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            if (element) {
+                element.classList.add('active');
+            }
+            
+            // Scroll suave para o topo
+            window.scrollTo({ 
+                top: 0, 
+                behavior: 'smooth' 
+            });
+
+            // Fechar menu mobile se aberto
+            const navContent = document.getElementById('navContent');
+            if (navContent && window.innerWidth <= 768) {
+                navContent.classList.remove('active');
+            }
+        }
+        
+        // Menu mobile
+        function toggleMobileMenu() {
+            const navContent = document.getElementById('navContent');
+            if (navContent) {
+                navContent.classList.toggle('active');
+            }
+        }
+        
+        // Fechar menu mobile ao redimensionar
+        window.addEventListener('resize', function() {
+            const navContent = document.getElementById('navContent');
+            if (navContent && window.innerWidth > 768) {
+                navContent.classList.remove('active');
+            }
+        });
+
+        // Lazy loading para imagens
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+            
+            // Observar todas as imagens lazy
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Detectar seção visível no scroll (para navegação ativa)
+        let isScrolling = false;
+        function handleScroll() {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    const sections = document.querySelectorAll('.section.active');
+                    // Lógica adicional de scroll se necessário
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        }
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        
+        // Debounce para resize
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+        
+        // Aplicar debounce ao resize
+        window.addEventListener('resize', debounce(function() {
+            const navContent = document.getElementById('navContent');
+            if (navContent && window.innerWidth > 768) {
+                navContent.classList.remove('active');
+            }
+        }, 250));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            // ESC para fechar menu mobile
+            if (e.key === 'Escape') {
+                const navContent = document.getElementById('navContent');
+                if (navContent && navContent.classList.contains('active')) {
+                    navContent.classList.remove('active');
+                }
+            }
+        });
+
+        // Acessibilidade: foco visível
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+        
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.warn('Manual F800: ', e.error);
+            // Não quebrar a experiência do usuário
+        });
+
+        // Otimização de imagens responsivas
+        function optimizeImages() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                if (!img.hasAttribute('loading')) {
+                    img.setAttribute('loading', 'lazy');
+                }
+            });
+        }
+
+        // Executar otimizações na inicialização
+        document.addEventListener('DOMContentLoaded', optimizeImages);
+
+        console.log('Manual F800 EleveLab - Carregado com sucesso!');
+    </script>
+</body>
+</html>
