@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+  <!-- Fundo branco -->
+  <rect width="800" height="1200" fill="white"/>
+  
+  <!-- Estilos -->
+  <style>
+    .box {
+      fill: white;
+      stroke: black;
+      stroke-width: 2;
+    }
+    .text {
+      font-family: Arial, sans-serif;
+      font-size: 28px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .arrow {
+      stroke: black;
+      stroke-width: 2;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+    .side-text {
+      font-family: Arial, sans-serif;
+      font-size: 26px;
+      text-anchor: start;
+    }
+  </style>
+  
+  <!-- Definição da seta -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="black"/>
+    </marker>
+  </defs>
+  
+  <!-- Inicialização -->
+  <rect x="100" y="20" width="280" height="80" class="box"/>
+  <text x="240" y="60" class="text">Inicialização</text>
+  <line x1="240" y1="100" x2="240" y2="140" class="arrow"/>
+  
+  <!-- Pré-aquecimento -->
+  <rect x="60" y="140" width="360" height="80" class="box"/>
+  <text x="240" y="180" class="text">Pré-aquecimento</text>
+  <line x1="240" y1="220" x2="240" y2="260" class="arrow"/>
+  
+  <!-- Acidificação -->
+  <rect x="60" y="260" width="360" height="80" class="box"/>
+  <text x="240" y="300" class="text">Acidificação</text>
+  <line x1="240" y1="340" x2="240" y2="380" class="arrow"/>
+  
+  <!-- Alcalinização -->
+  <rect x="60" y="380" width="360" height="80" class="box"/>
+  <text x="240" y="420" class="text">Alcalinização</text>
+  <line x1="240" y1="460" x2="240" y2="500" class="arrow"/>
+  
+  <!-- Adição de álcool ou éter -->
+  <rect x="20" y="500" width="440" height="80" class="box"/>
+  <text x="240" y="540" class="text">Adição de álcool ou éter</text>
+  <line x1="240" y1="580" x2="240" y2="620" class="arrow"/>
+  
+  <!-- Secagem -->
+  <rect x="100" y="620" width="280" height="80" class="box"/>
+  <text x="240" y="660" class="text">Secagem</text>
+  <line x1="240" y1="700" x2="240" y2="740" class="arrow"/>
+  
+  <!-- Pesagem e calcinação -->
+  <rect x="60" y="740" width="360" height="100" class="box"/>
+  <text x="240" y="780" class="text">Pesagem e</text>
+  <text x="240" y="810" class="text">calcinação</text>
+  
+  <!-- Caixa lateral - Processos -->
+  <rect x="500" y="260" width="260" height="280" class="box"/>
+  <text x="630" y="300" class="text">Aquecimento</text>
+  <text x="630" y="340" class="text" style="font-size: 24px;">Lavagem por</text>
+  <text x="630" y="370" class="text" style="font-size: 24px;">gotejamento</text>
+  <text x="630" y="410" class="text" style="font-size: 24px;">Lavagem</text>
+  <text x="630" y="440" class="text" style="font-size: 24px;">mecânica</text>
+  
+  <!-- Linha conectando processos -->
+  <line x1="420" y1="300" x2="500" y2="300" stroke="black" stroke-width="2"/>
+  <line x1="420" y1="420" x2="500" y2="420" stroke="black" stroke-width="2"/>
+  
+  <!-- Texto lateral - Este processo -->
+  <text x="520" y="580" class="side-text">Este processo</text>
+  <text x="520" y="610" class="side-text">deve ser feito</text>
+  <text x="520" y="640" class="side-text">por digestão</text>
+  <text x="520" y="670" class="side-text">a frio</text>
+  
+  <!-- Caixa lateral - Calcinação -->
+  <rect x="500" y="740" width="260" height="100" class="box"/>
+  <text x="630" y="770" class="text" style="font-size: 24px;">Calcinação em</text>
+  <text x="630" y="800" class="text" style="font-size: 24px;">alta</text>
+  <text x="630" y="830" class="text" style="font-size: 24px;">temperatura</text>
+  
+  <!-- Linha conectando calcinação -->
+  <line x1="380" y1="660" x2="450" y2="660" stroke="black" stroke-width="2"/>
+  <line x1="450" y1="660" x2="450" y2="790" stroke="black" stroke-width="2"/>
+  <line x1="450" y1="790" x2="500" y2="790" stroke="black" stroke-width="2"/>
+</svg>
