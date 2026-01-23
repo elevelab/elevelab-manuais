@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5DFXXG7T');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6J4Y347ZN1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6J4Y347ZN1');
+    </script>
+
+    <!-- ANTI-CACHE TAG-->
+    <meta http-equiv="pragma" content="no-cache">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Olá, mundo! – EleveLab</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/swiper/swiper.min.css" />
+    <link rel="stylesheet" href="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/lightgallery/lightgallery.min.css">
+    <link rel="stylesheet" href="https://elevelab.com.br/wp-content/themes/lions-teste/assets/css/style.css" />
+    <!-- Start cookieyes banner -->
+<script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/7eee77b0b06b8c503c78e927/script.js"></script>
+<!-- End cookieyes banner -->
+
+</head>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DFXXG7T"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <header class="header">
+        <div class="container px-lg-0 h-100">
+            <div class="d-flex h-100 justify-content-between align-items-center">
+                <a href="https://elevelab.com.br" class="header_logo">
+                    <img src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/imgs/logo-colorido.png" alt="Logo Eleve Lab" class="header_logo-img">
+                </a>
+                <div class="d-xl-none ms-auto d-flex">
+                    <a class="btn btn-outline-light" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">
+                        <i class="bi bi-list"></i>
+                    </a>
+                </div>
+
+                <div class="header_nav_wrapper d-lg-flex d-none align-items-center ">
+                    <nav class="header_nav d-xl-flex d-none">
+                                                                <a href="https://elevelab.com.br/sobre-a-yk/">
+                                            <button class="header_nav-link">
+                                                Sobre Nós                                            </button>
+                                        </a>
+                                                                            <button id="product-nav-btn" class="header_nav-link">
+                                            Produtos                                        </button>
+                                                                            <a href="https://elevelab.com.br/servicos/">
+                                            <button class="header_nav-link">
+                                                Serviços                                            </button>
+                                        </a>
+                                                                            <a href="https://elevelab.com.br/#novidades">
+                                            <button class="header_nav-link">
+                                                Novidades                                            </button>
+                                        </a>
+                                                                            <a href="https://elevelab.com.br/contato/">
+                                            <button class="header_nav-link">
+                                                Contato                                            </button>
+                                        </a>
+                                                        </nav>
+
+                    <form class="custom-input-search ms-3" role="search" method="get" action="https://elevelab.com.br/">
+                        <input id="busca-input" type="search" class="search-field" placeholder="Buscar por produtos, categoria ou código" name="s" />
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                        <input type="hidden" name="post_type" value="product" />
+                    </form>
+
+                    <a href="https://elevelab.com.br/cart/" class="budget-body" title="Ver seu orçamento">
+                        <i class="fa">&#xf07a;</i>
+                        <span class="budget badge badge-warning">0</span><br>
+                        Orçamento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="header-fixed-margin"></div>
+<aside class="aside offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <div class="header_logo">
+            <img src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/imgs/logo-branc.png" alt="" class="header_logo-img">
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <form class="custom-input-search mb-5" role="search" method="get" action="https://elevelab.com.br/">
+            <input id="busca-input" type="search" class="search-field" placeholder="Buscar por produtos, categoria ou código" name="s" />
+            <button type="submit"><i class="bi bi-search"></i></button>
+            <input type="hidden" name="post_type" value="product" />
+        </form>
+        <div class="header_nav_wrapper d-flex flex-column align-items-center ">
+            <nav class="header_nav flex-column">
+                                            <a href="https://elevelab.com.br/sobre-a-yk/">
+                                <button class="header_nav-link">
+                                    Sobre Nós                                </button>
+                            </a>
+                                                        <a href="https://elevelab.com.br/produtos/">
+                                <button class="header_nav-link">
+                                    Produtos                                </button>
+                            </a>
+                                                        <a href="https://elevelab.com.br/servicos/">
+                                <button class="header_nav-link">
+                                    Serviços                                </button>
+                            </a>
+                                                        <a href="https://elevelab.com.br/#novidades">
+                                <button class="header_nav-link">
+                                    Novidades                                </button>
+                            </a>
+                                                        <a href="https://elevelab.com.br/contato/">
+                                <button class="header_nav-link">
+                                    Contato                                </button>
+                            </a>
+                                        </nav>
+        </div>
+    </div>
+</aside>
+<section style="display: none;" id="nav-produtos-header" class="nav-produtos">
+    <div class="container">
+        <nav class="d-flex">
+            <div class="nav-produtos-guia">
+                                        <button data-nav-produtos="#analisadores-elementares" class="nav-produtos-guia-item">
+                            Analisadores Elementares                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#biorreatores" class="nav-produtos-guia-item">
+                            Biorreatores                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#chapas-de-aquecimento" class="nav-produtos-guia-item">
+                            Chapas de Aquecimento                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#destiladores-de-nitrogenio" class="nav-produtos-guia-item">
+                            Destiladores de Nitrogênio                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#determinadores-de-fibra" class="nav-produtos-guia-item">
+                            Determinadores de Fibra                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#determinadores-de-gordura" class="nav-produtos-guia-item">
+                            Determinadores de Gordura                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#envasadoras" class="nav-produtos-guia-item">
+                            Envasadoras                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#equipamentos" class="nav-produtos-guia-item">
+                            Equipamentos                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#filtros-biologicos" class="nav-produtos-guia-item">
+                            Filtros Biológicos                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#fotometros" class="nav-produtos-guia-item">
+                            Fotômetros                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#luminometros" class="nav-produtos-guia-item">
+                            Luminômetros                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#moinhos" class="nav-produtos-guia-item">
+                            Moinhos                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#ultrassom" class="nav-produtos-guia-item">
+                            Ultrassom                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                                <button data-nav-produtos="#viscosimetros" class="nav-produtos-guia-item">
+                            Viscosímetros                            <i class="fa fa-chevron-right"></i>
+                        </button>
+                                        <button data-nav-produtos="#segmentos" class="nav-produtos-guia-item">
+                    Segmentos
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+                <a href="https://elevelab.com.br/?s" class="nav-produtos-guia-item">
+                    Ver todos
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+                                <div id="analisadores-elementares" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/analisador-de-nitrogenio-proteina-dumas/">
+                                            ANALISADOR DE NITROGÊNIO/PROTEÍNA DUMAS                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="biorreatores" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/biorreator-autoclavavel-de-bancada/">
+                                            BIORREATOR AUTOCLAVÁVEL DE BANCADA                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/fotobiorreator-autoclavavel-de-bancada/">
+                                            FOTOBIORREATOR AUTOCLAVÁVEL DE BANCADA                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="chapas-de-aquecimento" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/chapa-aquecedora-vitroceramica-com-estrutura-em-inox-e-painel-integrado-ate-500c/">
+                                            CHAPA AQUECEDORA VITROCERÂMICA COM ESTRUTURA EM INOX E PAINEL INTEGRADO – ATÉ 500°C                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="destiladores-de-nitrogenio" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/destilador-de-nitrogenio-automatizado/">
+                                            DESTILADOR DE NITROGÊNIO AUTOMATIZADO                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="determinadores-de-fibra" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/analisador-de-fibras-automatizado/">
+                                            ANALISADOR DE FIBRAS AUTOMATIZADO                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="determinadores-de-gordura" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/determinador-de-gordura-automatizado/">
+                                            DETERMINADOR DE GORDURA AUTOMATIZADO                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="envasadoras" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/envasadora-asseptica-bag-in-box/">
+                                            ENVASADORA ASSÉPTICA BAG IN BOX                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="equipamentos" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/luminometro-para-deteccao-rapida-de-atp/">
+                                            LUMINÔMETRO PARA DETECÇÃO RÁPIDA DE ATP                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/homogeneizador-ultrassonico-sonicador/">
+                                            HOMOGENEIZADOR ULTRASSÔNICO (SONICADOR)                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/viscosimetro-digital-el-visc-8t/">
+                                            VISCOSÍMETRO DIGITAL EL-VISC-8T                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/filtro-biologico-com-microalgas-para-biogas/">
+                                            FILTRO BIOLÓGICO  COM MICROALGAS PARA BIOGÁS                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/envasadora-asseptica-bag-in-box/">
+                                            ENVASADORA ASSÉPTICA BAG IN BOX                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/analisador-de-nitrogenio-proteina-dumas/">
+                                            ANALISADOR DE NITROGÊNIO/PROTEÍNA DUMAS                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/chapa-aquecedora-vitroceramica-com-estrutura-em-inox-e-painel-integrado-ate-500c/">
+                                            CHAPA AQUECEDORA VITROCERÂMICA COM ESTRUTURA EM INOX E PAINEL INTEGRADO – ATÉ 500°C                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/determinador-de-gordura-automatizado/">
+                                            DETERMINADOR DE GORDURA AUTOMATIZADO                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/lavadora-ultrassonica-multifrequencia-40-80-120khz-com-aquecimento/">
+                                            LAVADORA ULTRASSÔNICA MULTIFREQUÊNCIA (40/80/120KHz) COM AQUECIMENTO                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/analisador-de-fibras-automatizado/">
+                                            ANALISADOR DE FIBRAS AUTOMATIZADO                                        </a>
+                                    </div>
+                                    </div><div class="col-lg-3">                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/destilador-de-nitrogenio-automatizado/">
+                                            DESTILADOR DE NITROGÊNIO AUTOMATIZADO                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/fotometro-de-chama/">
+                                            FOTÔMETRO DE CHAMA                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/biorreator-autoclavavel-de-bancada/">
+                                            BIORREATOR AUTOCLAVÁVEL DE BANCADA                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/fotobiorreator-autoclavavel-de-bancada/">
+                                            FOTOBIORREATOR AUTOCLAVÁVEL DE BANCADA                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/moinho-de-discos-para-pereciveis/">
+                                            MOINHO DE DISCOS PARA PERECÍVEIS                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/moinho-universal-automatizado/">
+                                            MOINHO UNIVERSAL AUTOMATIZADO                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="filtros-biologicos" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/filtro-biologico-com-microalgas-para-biogas/">
+                                            FILTRO BIOLÓGICO  COM MICROALGAS PARA BIOGÁS                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="fotometros" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/fotometro-de-chama/">
+                                            FOTÔMETRO DE CHAMA                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="luminometros" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/luminometro-para-deteccao-rapida-de-atp/">
+                                            LUMINÔMETRO PARA DETECÇÃO RÁPIDA DE ATP                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="moinhos" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/moinho-de-discos-para-pereciveis/">
+                                            MOINHO DE DISCOS PARA PERECÍVEIS                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/moinho-universal-automatizado/">
+                                            MOINHO UNIVERSAL AUTOMATIZADO                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="ultrassom" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/homogeneizador-ultrassonico-sonicador/">
+                                            HOMOGENEIZADOR ULTRASSÔNICO (SONICADOR)                                        </a>
+                                    </div>
+                                                                        <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/lavadora-ultrassonica-multifrequencia-40-80-120khz-com-aquecimento/">
+                                            LAVADORA ULTRASSÔNICA MULTIFREQUÊNCIA (40/80/120KHz) COM AQUECIMENTO                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                                        <div id="viscosimetros" class="nav-produtos-lista d-none w-100 ms-3">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                                                    <div class="d-flex flex-column">
+                                        <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/produto/viscosimetro-digital-el-visc-8t/">
+                                            VISCOSÍMETRO DIGITAL EL-VISC-8T                                        </a>
+                                    </div>
+                                                                </div>
+                        </div>
+                    </div>
+                    
+            <div id="segmentos" class="nav-produtos-lista d-none w-100 ms-3">
+                <div class="row">
+                    <div class="col-lg-3">
+                                                    <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=alimentos-bebidas&#038;s">
+                                    ALIMENTOS &amp; BEBIDAS                                </a>
+                            </div>
+                                                        <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=ambiental-aguas-efluentes&#038;s">
+                                    AMBIENTAL, ÁGUAS &amp; EFLUENTES                                </a>
+                            </div>
+                                                        <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=automacao-processos&#038;s">
+                                    AUTOMAÇÃO &amp; PROCESSOS                                </a>
+                            </div>
+                                                        <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=farmaceuticas-nutraceuticas-cosmeticos&#038;s">
+                                    FARMACÊUTICAS, NUTRACÊUTICAS &amp; COSMÉTICOS                                </a>
+                            </div>
+                                                        <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=fertilizantes-solos-nutricao-vegetal&#038;s">
+                                    FERTILIZANTES, SOLOS &amp; NUTRIÇÃO VEGETAL                                </a>
+                            </div>
+                                                        <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=graos-oleos-nutricao-animal&#038;s">
+                                    GRÃOS, ÓLEOS &amp; NUTRIÇÃO ANIMAL                                </a>
+                            </div>
+                                                        <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=microbiologia-biotecnologia&#038;s">
+                                    MICROBIOLOGIA &amp; BIOTECNOLOGIA                                </a>
+                            </div>
+                                                        <div class="d-flex flex-column">
+                                <a class="nav-produto-lista-item no-wrap-text" href="https://elevelab.com.br/?custom_prod_cat=quimica-petroquimica-bioenergia&#038;s">
+                                    QUÍMICA, PETROQUÍMICA &amp; BIOENERGIA                                </a>
+                            </div>
+                                                </div>
+                </div>
+            </div>
+                    </nav>
+    </div>
+</section>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/lions-teste/assets/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+</body>
+</html>
+
+
+<section style="display:none" class="alert-message       ">
+    <div class="container">
+            </div>
+</section>
+
+<!-- HOME BANNER -->
+<div class="container-fluid px-0">
+    <div class="swiper-container banner-swiper">
+        <div class="swiper-wrapper">
+    <div class="swiper-slide">
+        <div class="slide-image" style="background-image: url('https://elevelab.com.br/wp-content/uploads/2023/08/Banner-3_ELEV.png');"></div>
+    </div>
+    <div class="swiper-slide">
+        <div class="slide-image" style="background-image: url('https://elevelab.com.br/wp-content/uploads/2023/08/Banner-2_ELEV.png');"></div>
+    </div>
+    <div class="swiper-slide">
+        <div class="slide-image" style="background-image: url('https://elevelab.com.br/wp-content/uploads/2023/08/Banner-1_ELEV.png');"></div>
+    </div>
+</div>
+        <div class="swiper-custom-controls">
+            <div class="d-flex justify-content-center align-items-center">
+                <div id="banner-swiper-prev" class="swiper-btn-prev"><i class="fa-solid fa-circle-chevron-left"></i></div>
+                <div class="custom-swiper-pagination"></div>
+                <div id="banner-swiper-next" class="swiper-btn-next"><i class="fa-solid fa-circle-chevron-right"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!--
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="slide-image" style="background-image: url('/imgs/banner-1.png');"></div>
+                    <div class="slide-content">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-image" style="background-image: url('/imgs/banner-2.png');"></div>
+                    <div class="slide-content">
+                    </div>
+                </div>
+            </div>
+            -->
+        <!-- Dots do Swiper -->
+    </div>
+</div>
+
+<!-- WELCOME HOME -->
+<div class="container-fluid px-0">
+    <section class="welcome-section" style="
+    background-image: url(https://elevelab.com.br/wp-content/uploads/2025/04/Conheca-nossos-equipamentos-1920-x-700-mm-3.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1920 / 700;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+">
+    </section>
+</div>
+
+<!-- LANÇAMENTOS HOME -->
+<div id="novidades" class="container-fluid px-0">
+    <section class="latest-section">
+        <div class="container px-lg-0">
+            <div class="ecp-1">
+                <div class="d-flex flex-column w-100">
+                    <h3 class="latest-section-title">DESTAQUES</h3>
+                    <p class="latest-section-subtitle">Conheça nossos produtos em destaque</p>
+                </div>
+            </div>
+
+            <div class="swiper-container custom-swiper position-relative">
+                <div class="swiper-wrapper">
+
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/luminometro-para-deteccao-rapida-de-atp/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2025/04/EL-ATP.png" alt="LUMINÔMETRO PARA DETECÇÃO RÁPIDA DE ATP" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">LUMINÔMETRO PARA DETECÇÃO RÁPIDA DE ATP</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/homogeneizador-ultrassonico-sonicador/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2025/04/Sonicador-EL-HX1000E-01.png" alt="HOMOGENEIZADOR ULTRASSÔNICO (SONICADOR)" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">HOMOGENEIZADOR ULTRASSÔNICO (SONICADOR)</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/viscosimetro-digital-el-visc-8t/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2025/03/Viscosimetro-Foto-2.png" alt="VISCOSÍMETRO DIGITAL EL-VISC-8T" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">VISCOSÍMETRO DIGITAL EL-VISC-8T</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/filtro-biologico-com-microalgas-para-biogas/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2025/03/fb-50.png" alt="FILTRO BIOLÓGICO  COM MICROALGAS PARA BIOGÁS" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">FILTRO BIOLÓGICO  COM MICROALGAS PARA BIOGÁS</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/envasadora-asseptica-bag-in-box/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2025/03/envasadora-bag-in-box-uzeb-21.png" alt="ENVASADORA ASSÉPTICA BAG IN BOX" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">ENVASADORA ASSÉPTICA BAG IN BOX</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/analisador-de-nitrogenio-proteina-dumas/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/09/DUMAS-PC.png" alt="ANALISADOR DE NITROGÊNIO/PROTEÍNA DUMAS" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">ANALISADOR DE NITROGÊNIO/PROTEÍNA DUMAS</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/chapa-aquecedora-vitroceramica-com-estrutura-em-inox-e-painel-integrado-ate-500c/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/09/Design-sem-nome-3-1.png" alt="CHAPA AQUECEDORA VITROCERÂMICA COM ESTRUTURA EM INOX E PAINEL INTEGRADO – ATÉ 500°C" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">CHAPA AQUECEDORA VITROCERÂMICA COM ESTRUTURA EM INOX E PAINEL INTEGRADO – ATÉ 500°C</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/determinador-de-gordura-automatizado/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/09/1927423358337589248_9456063955442c545238837c551c6a71.webp" alt="DETERMINADOR DE GORDURA AUTOMATIZADO" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">DETERMINADOR DE GORDURA AUTOMATIZADO</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/lavadora-ultrassonica-multifrequencia-40-80-120khz-com-aquecimento/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/09/Design-sem-nome-3.png" alt="LAVADORA ULTRASSÔNICA MULTIFREQUÊNCIA (40/80/120KHz) COM AQUECIMENTO" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">LAVADORA ULTRASSÔNICA MULTIFREQUÊNCIA (40/80/120KHz) COM AQUECIMENTO</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/analisador-de-fibras-automatizado/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/09/Imagem1.png" alt="ANALISADOR DE FIBRAS AUTOMATIZADO" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">ANALISADOR DE FIBRAS AUTOMATIZADO</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/destilador-de-nitrogenio-automatizado/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/09/1927423358337589248_36720c7ed4d3d7e997cd7a7300a6b3d4.webp" alt="DESTILADOR DE NITROGÊNIO AUTOMATIZADO" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">DESTILADOR DE NITROGÊNIO AUTOMATIZADO</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/fotometro-de-chama/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/07/Design-sem-nome-2.png" alt="FOTÔMETRO DE CHAMA" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">FOTÔMETRO DE CHAMA</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/biorreator-autoclavavel-de-bancada/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/07/biorreator-dross-10.png" alt="BIORREATOR AUTOCLAVÁVEL DE BANCADA" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">BIORREATOR AUTOCLAVÁVEL DE BANCADA</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/fotobiorreator-autoclavavel-de-bancada/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/07/Fotobiorreator-Bancada.png" alt="FOTOBIORREATOR AUTOCLAVÁVEL DE BANCADA" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">FOTOBIORREATOR AUTOCLAVÁVEL DE BANCADA</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/moinho-de-discos-para-pereciveis/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/07/YK-DISK-MILL-PLUS-Photoroom.png" alt="MOINHO DE DISCOS PARA PERECÍVEIS" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">MOINHO DE DISCOS PARA PERECÍVEIS</p>
+        </div>
+    </div>
+    <div class="swiper-slide">
+        <div class="latest-product">
+            <a href="https://elevelab.com.br/produto/moinho-universal-automatizado/">
+                <div class="latest-product-img">
+    <img src="https://elevelab.com.br/wp-content/uploads/2024/07/Moinho_auto_sem_fundo-removebg-preview-Photoroom.png" alt="MOINHO UNIVERSAL AUTOMATIZADO" style="max-width: 100%; max-height: 180px; object-fit: contain;" />
+</div>
+            </a>
+        </div>
+        <div class="latest-product-info">
+            <p class="latest-product-title">MOINHO UNIVERSAL AUTOMATIZADO</p>
+        </div>
+    </div>
+
+                </div>
+                <div class="latest-swiper-controls">
+                    <div id="latest-swiper-prev" class="swiper-btn-prev"><i class="fa-solid fa-circle-chevron-left"></i></div>
+                    <div id="latest-swiper-next" class="swiper-btn-next"><i class="fa-solid fa-circle-chevron-right"></i></div>
+                </div>
+                <!-- Setas de navegação -->
+            </div>
+
+
+        </div>
+    </section>
+</div>
+<!-- FIM WELCOME MAIS HOME -->
+
+<!-- NEWSLETTER HOME -->
+<div class="container-fluid px-0">
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="ecp-2">
+                <div class="newsletter-box">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="newsletter-title">RECEBA NOSSA <br /> <span>NEWS LETTER</span></p>
+                        </div>
+                        <div class="col-md-8">
+                            <form class="d-flex" method="post" action="">
+                                <div class="d-flex flex-column">
+                                    <input type="hidden" name="newsletter" value="newsletter">
+                                    <input type="email" name="email" placeholder="DIGITE SEU EMAIL" class="input-newsletter" autocomplete="email">
+                                    <p class="newsletter-terms">Ao se cadastrar, você concorda com nossos termos de <a href="https://elevelab.com.br/politica-de-privacidade-e-cookies/">Política de Privacidade</a> </p>                                </div>
+                                <button type="submit" class="btn-newsletter">Cadastrar</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+</div>
+</section>
+</div>
+<!-- FIM NEWSLETTER HOME -->
+
+
+
+
+
+    <!-- footer HOME -->
+    <footer class="footer">
+        <div class="container">
+            <div class="d-flex flex-lg-row flex-column-reverse justify-content-lg-between justify-content-center align-items-center">
+                <div class="footer_social-list">
+
+
+                <a target="_blank" href="https://facebook.com.br" class="social-list-item"><i class="bi bi-facebook"></i></a><a target="_blank" href="https://www.instagram.com/elevelab?igsh=MWl5NXh5dzZwajFldg==" class="social-list-item"><i class="bi bi-instagram"></i></a><a target="_blank" href="https://youtube.com.br" class="social-list-item"><i class="bi bi-youtube"></i></a><a target="_blank" href="https://www.linkedin.com/company/elevelab/" class="social-list-item"><i class="bi bi-linkedin"></i></a>
+                    <!--
+
+                    <a href="" class="social-list-item">
+                        <i class="bi bi-facebook"></i>         
+                    </a>
+                    <a href="" class="social-list-item">
+                        <i class="bi bi-instagram"></i>         
+                    </a>
+                    <a href="" class="social-list-item">
+                        <i class="bi bi-youtube"></i>         
+                    </a>
+                    <a href="" class="social-list-item">
+                        <i class="bi bi-linkedin"></i>         
+                    </a>
+                    -->
+    
+                </div>
+                <a href="https://elevelab.com.br">
+                    <img class="footer_logo mb-lg-0 mb-4" src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/imgs/logo-colorido.png" alt="logo">
+                </a>
+            </div>
+
+            <nav class="footer_nav d-flex flex-md-row flex-column justify-content-center align-items-center">
+
+                
+                            <a class="footer_link" href="https://elevelab.com.br/sobre-a-yk/">
+                                    Sobre Nós                            </a>
+
+                            
+                            <a class="footer_link" href="https://elevelab.com.br/produtos/">
+                                    Produtos                            </a>
+
+                            
+                            <a class="footer_link" href="https://elevelab.com.br/servicos/">
+                                    Serviços                            </a>
+
+                            
+                            <a class="footer_link" href="https://elevelab.com.br/#novidades">
+                                    Novidades                            </a>
+
+                            
+                            <a class="footer_link" href="https://elevelab.com.br/contato/">
+                                    Contato                            </a>
+
+                                        </nav>
+
+            <section class=" footer_info d-flex flex-column justify-content-center align-items-center">
+                <div class="footer_separator"></div>
+                    <p class="mb-0">Rua Onze de Agosto, 19, Bairro São João | Porto Alegre - Rio Grande do Sul. CEP: 91020-050 | +55 (51) 2165-9980 | <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="086b67667c697c67486d646d7e6d64696a266b6765266a7a">[email&#160;protected]</a> | elevelab.com.br</p>
+                <div class="footer_separator"></div>
+            </section>
+        </div>
+    </footer>
+    <!-- footer HOME -->
+
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/lions-teste/assets/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+
+    <script src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/jquery/jquery.min.js"></script>
+    <script src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/jquery/jquery.mask.min.js"></script>
+    <script src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/swiper/swiper.min.js"></script>
+
+    <script src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/lightgallery/lightgallery.min.js"></script>
+    <script src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/libs/lightgallery/lightgalleryzoom.min.js"></script>
+
+    <script src="https://elevelab.com.br/wp-content/themes/lions-teste/assets/js/script.js"></script>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper('.banner-swiper', {
+      loop: true,
+      autoplay: {
+        delay: 5000, // troca de slide a cada 5 segundos
+        disableOnInteraction: false, // continua mesmo após clique manual
+        pauseOnMouseEnter: true // pausa ao passar o mouse (opcional)
+      },
+      pagination: {
+        el: '.custom-swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '#banner-swiper-next',
+        prevEl: '#banner-swiper-prev',
+      },
+    });
+  });
+</script>
+</body>
+
+</html>
