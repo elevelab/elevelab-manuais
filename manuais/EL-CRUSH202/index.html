@@ -49,7 +49,7 @@
         /* ========== HEADER ========== */
         .header {
             background: var(--white);
-            padding: 12px 0;
+            padding: 8px 0;
             box-shadow: 0 2px 20px rgba(0,0,0,0.08);
             position: fixed;
             top: 0;
@@ -63,9 +63,21 @@
             justify-content: space-between;
         }
 
+        /* Truque: PNG do logo tem whitespace transparente top/bottom.
+           Container de 64px + overflow hidden + img 160px com margins negativas
+           recortam o whitespace sem precisar editar o asset. */
+        .logo {
+            height: 64px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
         .logo img {
-            height: 50px;
+            height: 160px;
             width: auto;
+            margin-top: -48px;
+            margin-bottom: -48px;
         }
 
         .header-actions {
@@ -130,7 +142,7 @@
             background: var(--secondary-black);
             padding: 0;
             position: fixed;
-            top: 74px;
+            top: 80px;
             width: 100%;
             z-index: 999;
         }
@@ -186,7 +198,7 @@
 
         /* ========== MAIN CONTENT ========== */
         .main {
-            margin-top: 130px;
+            margin-top: 136px;
             padding: 40px 0 80px;
         }
 
@@ -582,34 +594,48 @@
         /* Footer */
         .footer {
             background: var(--secondary-black);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: 60px;
         }
 
-        .footer-logo {
-            height: 40px;
-            margin-bottom: 20px;
-            filter: brightness(0) invert(1);
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
-        .footer p {
-            opacity: 0.8;
-            font-size: 14px;
-        }
-
-        .footer-links {
-            margin-top: 20px;
-        }
-
-        .footer-links a {
+        .footer-section h3 {
             color: var(--primary-orange);
-            text-decoration: none;
-            margin: 0 15px;
+            margin-bottom: 18px;
+            font-size: 1.05rem;
         }
 
-        .footer-links a:hover {
-            text-decoration: underline;
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            margin-bottom: 10px;
+            display: block;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 6px;
         }
 
         /* MELHORIA: Barra de progresso de leitura */
@@ -624,37 +650,378 @@
             transition: width 0.1s;
         }
 
-        /* ========== PRINT STYLES ========== */
+        /* ========== PRINT STYLES (A4) ========== */
         @media print {
-            .header, .nav, .print-button, .search-box,
-            .mobile-menu-toggle, .reading-progress, .lightbox {
+            /* Garantir cores e fundos na impressão */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                box-sizing: border-box;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+
+            /* Configuração da pagina */
+            @page {
+                size: A4 portrait;
+                margin: 1.5cm 1.2cm;
+            }
+
+            /* Esconder elementos interativos */
+            .header,
+            .nav,
+            .nav-content,
+            .nav-item,
+            .mobile-menu-toggle,
+            .print-button,
+            .search-box,
+            .reading-progress,
+            .lightbox {
                 display: none !important;
             }
 
-            .main {
-                margin-top: 0;
-                padding: 0;
+            /* Reset de layout */
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white !important;
+                font-size: 10.5pt;
+                line-height: 1.45;
+                color: #000;
             }
 
+            .main {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .container {
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Mostrar todas as seções */
             .section {
                 display: block !important;
                 page-break-before: always;
+                margin: 0 !important;
+                padding: 0 !important;
             }
 
-            .section:first-child {
+            .section.active,
+            .section:first-of-type {
                 page-break-before: avoid;
             }
 
+            /* Cabecalho da seção - compacto e sem decoração circular */
+            .section-header {
+                background: var(--primary-orange) !important;
+                color: white !important;
+                padding: 14pt 18pt !important;
+                margin: 0 0 12pt 0 !important;
+                border-radius: 6pt !important;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+                overflow: hidden;
+            }
+
+            .section-header::before {
+                display: none !important;
+            }
+
+            .section-title {
+                font-size: 18pt !important;
+                margin-bottom: 4pt !important;
+                color: white !important;
+            }
+
+            .section-subtitle {
+                font-size: 10pt !important;
+                max-width: 100% !important;
+                color: white !important;
+                opacity: 0.95;
+            }
+
+            /* Cards */
             .content-card {
-                box-shadow: none;
-                border: 1px solid #ddd;
+                background: white !important;
+                border: 1pt solid #bbb !important;
+                border-radius: 4pt !important;
+                padding: 10pt 12pt !important;
+                margin: 0 0 10pt 0 !important;
                 page-break-inside: avoid;
             }
 
-            .section-header {
+            .card-title {
+                font-size: 13pt !important;
+                margin-bottom: 8pt !important;
+                page-break-after: avoid;
+                gap: 8pt !important;
+            }
+
+            .card-title .icon {
                 background: var(--primary-orange) !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+                width: 22pt !important;
+                height: 22pt !important;
+                font-size: 11pt !important;
+                border-radius: 4pt !important;
+            }
+
+            /* Avisos de seguranca */
+            .safety-warning {
+                background: #ee5a24 !important;
+                color: white !important;
+                padding: 10pt 12pt !important;
+                margin: 0 0 10pt 0 !important;
+                border-radius: 4pt !important;
+                page-break-inside: avoid;
+            }
+
+            .safety-warning h3 {
+                font-size: 12pt !important;
+                margin-bottom: 8pt !important;
+            }
+
+            .warning-item {
+                background: rgba(255,255,255,0.18) !important;
+                color: white !important;
+                padding: 6pt 10pt !important;
+                margin-bottom: 5pt !important;
+                border-radius: 3pt !important;
+                page-break-inside: avoid;
+            }
+
+            /* Info box */
+            .info-box {
+                background: #5d6cd1 !important;
+                color: white !important;
+                padding: 10pt 12pt !important;
+                margin: 10pt 0 !important;
+                border-radius: 4pt !important;
+                page-break-inside: avoid;
+            }
+
+            .info-box h4 {
+                font-size: 11pt !important;
+                margin-bottom: 5pt !important;
+            }
+
+            /* Tabelas de especificação */
+            .spec-table {
+                width: 100% !important;
+                font-size: 9.5pt;
+                margin: 6pt 0 !important;
+                border-collapse: collapse;
+            }
+
+            .spec-table th,
+            .spec-table td {
+                padding: 5pt 8pt !important;
+                border-bottom: 0.75pt solid #ccc !important;
+                vertical-align: top;
+            }
+
+            .spec-table th {
+                background: #f0f0f0 !important;
+                font-weight: 600;
+                color: #000 !important;
+                width: 38%;
+            }
+
+            .spec-table tr {
+                page-break-inside: avoid;
+            }
+
+            /* Grids de cards / interface — 2 colunas fixas em A4 */
+            .feature-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 6pt !important;
+                margin: 8pt 0 !important;
+            }
+
+            .feature-item {
+                background: #f5f5f5 !important;
+                padding: 8pt 10pt !important;
+                border-radius: 3pt !important;
+                page-break-inside: avoid;
+            }
+
+            .feature-item h4 {
+                color: var(--primary-orange) !important;
+                font-size: 10.5pt !important;
+                margin-bottom: 3pt !important;
+            }
+
+            .feature-item p {
+                font-size: 9.5pt;
+            }
+
+            .interface-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 6pt !important;
+                margin: 10pt 0 !important;
+            }
+
+            .interface-card {
+                border: 0.75pt solid #ccc !important;
+                border-radius: 3pt !important;
+                background: white !important;
+                page-break-inside: avoid;
+                overflow: visible !important;
+            }
+
+            .interface-image-container {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: 70mm !important;
+                background: white !important;
+                padding: 4pt !important;
+                overflow: visible !important;
+            }
+
+            .interface-image-container::after {
+                display: none !important;
+            }
+
+            .interface-image {
+                max-width: 100% !important;
+                max-height: 65mm !important;
+                width: auto !important;
+                height: auto !important;
+                object-fit: contain !important;
+            }
+
+            .interface-caption {
+                padding: 5pt 8pt !important;
+                font-size: 9pt !important;
+                background: white !important;
+            }
+
+            /* Imagem grande do equipamento */
+            .equipment-showcase {
+                margin: 10pt 0 !important;
+                page-break-inside: avoid;
+                text-align: center;
+            }
+
+            .equipment-image {
+                max-width: 100% !important;
+                max-height: 110mm !important;
+                width: auto !important;
+                height: auto !important;
+                border-radius: 4pt !important;
+            }
+
+            /* Procedimentos passo-a-passo */
+            .procedure-list {
+                margin: 6pt 0;
+            }
+
+            .procedure-step {
+                background: #f5f5f5 !important;
+                padding: 8pt 10pt !important;
+                margin-bottom: 6pt !important;
+                border-radius: 3pt !important;
+                gap: 10pt !important;
+                page-break-inside: avoid;
+            }
+
+            .step-number {
+                background: var(--primary-orange) !important;
+                color: white !important;
+                width: 26pt !important;
+                height: 26pt !important;
+                font-size: 11pt !important;
+                flex-shrink: 0;
+            }
+
+            .step-content h4 {
+                font-size: 10.5pt !important;
+                margin-bottom: 3pt !important;
+            }
+
+            .step-content p {
+                font-size: 9.5pt;
+                color: #333 !important;
+            }
+
+            /* Troubleshooting */
+            .trouble-item {
+                background: #f5f5f5 !important;
+                border-left: 3pt solid var(--primary-orange) !important;
+                padding: 8pt 12pt !important;
+                margin-bottom: 6pt !important;
+                page-break-inside: avoid;
+            }
+
+            .trouble-item h4 {
+                color: var(--primary-orange) !important;
+                font-size: 10.5pt !important;
+                margin-bottom: 4pt !important;
+            }
+
+            .trouble-item .cause,
+            .trouble-item .solution {
+                font-size: 9.5pt;
+            }
+
+            /* Footer compacto */
+            .footer {
+                background: white !important;
+                color: #000 !important;
+                border-top: 1pt solid #ccc;
+                padding: 12pt 0 !important;
+                margin-top: 12pt;
+                page-break-inside: avoid;
+            }
+
+            .footer-content {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr 1fr !important;
+                gap: 12pt !important;
+                margin-bottom: 10pt !important;
+            }
+
+            .footer-section h3 {
+                color: var(--primary-orange) !important;
+                font-size: 10.5pt !important;
+                margin-bottom: 4pt !important;
+            }
+
+            .footer-section p,
+            .footer-section a {
+                color: #333 !important;
+                font-size: 8.5pt !important;
+                margin-bottom: 2pt !important;
+            }
+
+            .footer-bottom {
+                border-top: 0.5pt solid #ccc !important;
+                padding-top: 8pt !important;
+                font-size: 8pt !important;
+                color: #555 !important;
+            }
+
+            /* Tipografia: evitar orfaos e quebras ruins */
+            h1, h2, h3, h4, h5 {
+                page-break-after: avoid;
+                orphans: 3;
+                widows: 3;
+            }
+
+            p, li {
+                orphans: 3;
+                widows: 3;
+            }
+
+            /* Forcar carregamento eager via CSS (compl. ao JS) */
+            img {
+                page-break-inside: avoid;
             }
         }
 
@@ -741,14 +1108,14 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/logo-elevelab.png" alt="Eleve Lab">
+                    <img src="images/logo-elevelab.png" alt="Eleve Lab">
                 </div>
                 <div class="header-actions">
                     <div class="search-box">
                         <input type="text" class="search-input" id="searchInput" placeholder="Buscar no manual...">
                         <span class="search-icon">🔍</span>
                     </div>
-                    <button class="print-button" onclick="window.print()">
+                    <button class="print-button" onclick="imprimirManual()">
                         <span>🖨️</span> Imprimir
                     </button>
                     <button class="mobile-menu-toggle" onclick="toggleMenu()">
@@ -765,13 +1132,13 @@
     <nav class="nav">
         <div class="container">
             <div class="nav-content" id="navContent">
-                <a class="nav-item active" onclick="showSection('visao-geral')">Visao Geral</a>
-                <a class="nav-item" onclick="showSection('especificacoes')">Especificacoes</a>
+                <a class="nav-item active" onclick="showSection('visao-geral')">Visão Geral</a>
+                <a class="nav-item" onclick="showSection('especificacoes')">Especificações</a>
                 <a class="nav-item" onclick="showSection('componentes')">Componentes</a>
-                <a class="nav-item" onclick="showSection('instalacao')">Instalacao</a>
-                <a class="nav-item" onclick="showSection('operacao')">Operacao</a>
+                <a class="nav-item" onclick="showSection('instalacao')">Instalação</a>
+                <a class="nav-item" onclick="showSection('operacao')">Operação</a>
                 <a class="nav-item" onclick="showSection('interface')">Interface</a>
-                <a class="nav-item" onclick="showSection('manutencao')">Manutencao</a>
+                <a class="nav-item" onclick="showSection('manutencao')">Manutenção</a>
                 <a class="nav-item" onclick="showSection('problemas')">Problemas</a>
             </div>
         </div>
@@ -784,12 +1151,12 @@
             <section class="section active" id="visao-geral">
                 <div class="section-header">
                     <h1 class="section-title">EL-CRUSH202</h1>
-                    <p class="section-subtitle">Prensa de Compressao Multi-Teste para ensaios ECT, RCT, PAT e FCT em papelao ondulado conforme NBR 6737:2024</p>
+                    <p class="section-subtitle">Prensa de Compressão Multi-Teste para ensaios ECT, RCT, PAT e FCT em papelao ondulado conforme NBR 6737:2024</p>
                 </div>
 
                 <div class="equipment-showcase">
-                    <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/equipamento-completo.jpeg"
-                         alt="EL-CRUSH202 - Prensa de Compressao Multi-Teste"
+                    <img src="images/equipment/equipamento-completo.webp"
+                         alt="EL-CRUSH202 - Prensa de Compressão Multi-Teste"
                          class="equipment-image"
                          loading="lazy"
                          onclick="openLightbox(this.src)">
@@ -800,9 +1167,9 @@
                         <span class="icon">📋</span>
                         Sobre o Equipamento
                     </h3>
-                    <p>O <strong>EL-CRUSH202</strong> e uma prensa de compressao multi-teste projetada para determinar a resistencia a compressao de borda (ECT) de papelao ondulado e outros materiais de embalagem, em conformidade com a norma <strong>NBR 6737:2024</strong>.</p>
+                    <p>O <strong>EL-CRUSH202</strong> e uma prensa de compressão multi-teste projetada para determinar a resistência a compressão de borda (ECT) de papelao ondulado e outros materiais de embalagem, em conformidade com a norma <strong>NBR 6737:2024</strong>.</p>
                     <br>
-                    <p>Equipado com interface touchscreen colorida, sistema de medicao de alta precisao e impressora termica integrada, o equipamento oferece uma solucao completa para laboratorios de controle de qualidade.</p>
+                    <p>Equipado com interface touchscreen colorida, sistema de medição de alta precisão e impressora térmica integrada, o equipamento oferece uma solução completa para laboratorios de controle de qualidade.</p>
 
                     <div class="feature-grid">
                         <div class="feature-item">
@@ -810,57 +1177,57 @@
                             <p>Realiza ensaios ECT, RCT, PAT e FCT em um unico equipamento</p>
                         </div>
                         <div class="feature-item">
-                            <h4>📊 Alta Precisao</h4>
-                            <p>Celula de carga de 2000N com resolucao de 0,01N</p>
+                            <h4>📊 Alta Precisão</h4>
+                            <p>Célula de carga de 2000N com resolução de 0,01N</p>
                         </div>
                         <div class="feature-item">
                             <h4>🖥️ Touchscreen</h4>
-                            <p>Interface intuitiva com graficos em tempo real</p>
+                            <p>Interface intuitiva com gráficos em tempo real</p>
                         </div>
                         <div class="feature-item">
                             <h4>🖨️ Impressora Integrada</h4>
-                            <p>Impressao termica de laudos e estatisticas</p>
+                            <p>Impressão térmica de laudos e estatísticas</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="info-box">
-                    <h4>ℹ️ Norma de Referencia</h4>
-                    <p><strong>NBR 6737:2024</strong> - Papelao ondulado - Determinacao da resistencia a compressao de coluna (ECT). Esta norma especifica o metodo para determinar a resistencia a compressao de borda de corpos de prova de papelao ondulado, com as ondas perpendiculares as superficies das placas.</p>
+                    <h4>ℹ️ Norma de Referência</h4>
+                    <p><strong>NBR 6737:2024</strong> - Papelao ondulado - Determinação da resistência a compressão de coluna (ECT). Esta norma especifica o metodo para determinar a resistência a compressão de borda de corpos de prova de papelao ondulado, com as ondas perpendiculares as superficies das placas.</p>
                 </div>
             </section>
 
             <!-- ESPECIFICACOES -->
             <section class="section" id="especificacoes">
                 <div class="section-header">
-                    <h1 class="section-title">Especificacoes Tecnicas</h1>
-                    <p class="section-subtitle">Parametros tecnicos e caracteristicas do equipamento</p>
+                    <h1 class="section-title">Especificações Técnicas</h1>
+                    <p class="section-subtitle">Parâmetros tecnicos e características do equipamento</p>
                 </div>
 
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">⚙️</span>
-                        Caracteristicas do Equipamento
+                        Características do Equipamento
                     </h3>
                     <table class="spec-table">
                         <tr>
-                            <th>Capacidade Maxima</th>
+                            <th>Capacidade Máxima</th>
                             <td>2000 N (aproximadamente 200 kgf)</td>
                         </tr>
                         <tr>
-                            <th>Resolucao de Forca</th>
+                            <th>Resolução de Forca</th>
                             <td>0,01 N</td>
                         </tr>
                         <tr>
-                            <th>Precisao</th>
+                            <th>Precisão</th>
                             <td>±0,5% do valor indicado</td>
                         </tr>
                         <tr>
                             <th>Velocidade de Ensaio</th>
-                            <td>12,5 ± 2,5 mm/min (ajustavel)</td>
+                            <td>12,5 ± 2,5 mm/min (ajustável)</td>
                         </tr>
                         <tr>
-                            <th>Curso Maximo</th>
+                            <th>Curso Máximo</th>
                             <td>70 mm</td>
                         </tr>
                         <tr>
@@ -869,14 +1236,14 @@
                         </tr>
                         <tr>
                             <th>Impressora</th>
-                            <td>Termica integrada (papel 57mm)</td>
+                            <td>Térmica integrada (papel 57mm)</td>
                         </tr>
                         <tr>
-                            <th>Alimentacao</th>
+                            <th>Alimentação</th>
                             <td>220V / 50-60Hz</td>
                         </tr>
                         <tr>
-                            <th>Dimensoes</th>
+                            <th>Dimensões</th>
                             <td>350 x 400 x 650 mm (L x P x A)</td>
                         </tr>
                         <tr>
@@ -889,23 +1256,23 @@
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">📐</span>
-                        Parametros NBR 6737:2024
+                        Parâmetros NBR 6737:2024
                     </h3>
                     <table class="spec-table">
                         <tr>
-                            <th>Dimensao do Corpo de Prova</th>
+                            <th>Dimensão do Corpo de Prova</th>
                             <td>100 mm x 63 mm (±0,5 mm)</td>
                         </tr>
                         <tr>
-                            <th>Profundidade de Fixacao</th>
+                            <th>Profundidade de Fixação</th>
                             <td>21 mm em cada garra</td>
                         </tr>
                         <tr>
                             <th>Altura Livre</th>
-                            <td>21 mm (100 - 2×21 - 37 espessura tipica)</td>
+                            <td>21 mm (100 - 2×21 - 37 espessura típica)</td>
                         </tr>
                         <tr>
-                            <th>Minimo de Ensaios Validos</th>
+                            <th>Mínimo de Ensaios Validos</th>
                             <td>10 corpos de prova</td>
                         </tr>
                         <tr>
@@ -922,24 +1289,24 @@
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">🧪</span>
-                        Tipos de Ensaio Disponiveis
+                        Tipos de Ensaio Disponíveis
                     </h3>
                     <div class="feature-grid">
                         <div class="feature-item">
                             <h4>ECT - Edge Crush Test</h4>
-                            <p>Resistencia a compressao de borda. Ensaio principal para papelao ondulado conforme NBR 6737.</p>
+                            <p>Resistência a compressão de borda. Ensaio principal para papelao ondulado conforme NBR 6737.</p>
                         </div>
                         <div class="feature-item">
                             <h4>RCT - Ring Crush Test</h4>
-                            <p>Resistencia a compressao de anel. Utilizado para papel e cartao.</p>
+                            <p>Resistência a compressão de anel. Utilizado para papel e cartao.</p>
                         </div>
                         <div class="feature-item">
                             <h4>PAT - Pin Adhesion Test</h4>
-                            <p>Teste de adesao por pino. Avalia a colagem entre camadas.</p>
+                            <p>Teste de adesão por pino. Avalia a colagem entre camadas.</p>
                         </div>
                         <div class="feature-item">
                             <h4>FCT - Flat Crush Test</h4>
-                            <p>Resistencia ao esmagamento plano. Teste de compressao perpendicular.</p>
+                            <p>Resistência ao esmagamento plano. Teste de compressão perpendicular.</p>
                         </div>
                     </div>
                 </div>
@@ -960,8 +1327,8 @@
 
                     <div class="interface-grid">
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/equipamento-completo.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/equipamento-completo.jpeg"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/equipamento-completo.webp')">
+                                <img src="images/equipment/equipamento-completo.webp"
                                      alt="Vista geral do equipamento"
                                      class="interface-image"
                                      loading="lazy">
@@ -969,31 +1336,31 @@
                             <div class="interface-caption">Vista Geral do Equipamento</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/fixacao-corpo-prova-1.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/fixacao-corpo-prova-1.jpeg"
-                                     alt="Sistema de fixacao do corpo de prova"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/fixação-corpo-prova-1.webp')">
+                                <img src="images/equipment/fixação-corpo-prova-1.webp"
+                                     alt="Sistema de fixação do corpo de prova"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Sistema de Fixacao - Garras</div>
+                            <div class="interface-caption">Sistema de Fixação - Garras</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/fixacao-corpo-prova-2.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/fixacao-corpo-prova-2.jpeg"
-                                     alt="Detalhe da fixacao com corpo de prova"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/fixação-corpo-prova-2.webp')">
+                                <img src="images/equipment/fixação-corpo-prova-2.webp"
+                                     alt="Detalhe da fixação com corpo de prova"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Fixacao com Corpo de Prova</div>
+                            <div class="interface-caption">Fixação com Corpo de Prova</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/impressora-termica.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/impressora-termica.jpeg"
-                                     alt="Impressora termica integrada"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/impressora-térmica.webp')">
+                                <img src="images/equipment/impressora-térmica.webp"
+                                     alt="Impressora térmica integrada"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Impressora Termica Integrada</div>
+                            <div class="interface-caption">Impressora Térmica Integrada</div>
                         </div>
                     </div>
                 </div>
@@ -1001,23 +1368,23 @@
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">📦</span>
-                        Descricao dos Componentes
+                        Descrição dos Componentes
                     </h3>
                     <table class="spec-table">
                         <tr>
                             <th>Display Touchscreen</th>
-                            <td>Tela colorida de 7" para operacao e visualizacao de resultados em tempo real</td>
+                            <td>Tela colorida de 7" para operacao e visualização de resultados em tempo real</td>
                         </tr>
                         <tr>
-                            <th>Celula de Carga</th>
-                            <td>Sensor de forca de alta precisao com capacidade de 2000N</td>
+                            <th>Célula de Carga</th>
+                            <td>Sensor de forca de alta precisão com capacidade de 2000N</td>
                         </tr>
                         <tr>
-                            <th>Garras de Fixacao</th>
+                            <th>Garras de Fixação</th>
                             <td>Sistema de garras paralelas com superficie rugosa para evitar deslizamento</td>
                         </tr>
                         <tr>
-                            <th>Placas de Compressao</th>
+                            <th>Placas de Compressão</th>
                             <td>Placas planas conforme NBR 6737:2024 (base brasileira)</td>
                         </tr>
                         <tr>
@@ -1025,8 +1392,8 @@
                             <td>Motor de passo com controle preciso de velocidade</td>
                         </tr>
                         <tr>
-                            <th>Impressora Termica</th>
-                            <td>Impressao de laudos em papel termico de 57mm</td>
+                            <th>Impressora Térmica</th>
+                            <td>Impressão de laudos em papel térmico de 57mm</td>
                         </tr>
                         <tr>
                             <th>Guias Lineares</th>
@@ -1039,19 +1406,19 @@
             <!-- INSTALACAO -->
             <section class="section" id="instalacao">
                 <div class="section-header">
-                    <h1 class="section-title">Instalacao</h1>
-                    <p class="section-subtitle">Procedimentos para instalacao e configuracao inicial</p>
+                    <h1 class="section-title">Instalação</h1>
+                    <p class="section-subtitle">Procedimentos para instalacao e configuração inicial</p>
                 </div>
 
                 <div class="safety-warning">
                     <h3>⚠️ Avisos de Seguranca</h3>
                     <div class="warning-item">
-                        <strong>Alimentacao Eletrica</strong>
-                        Certifique-se de que a tomada possui aterramento adequado e tensao de 220V.
+                        <strong>Alimentação Elétrica</strong>
+                        Certifique-se de que a tomada possui aterramento adequado e tensão de 220V.
                     </div>
                     <div class="warning-item">
                         <strong>Peso do Equipamento</strong>
-                        O equipamento pesa aproximadamente 45kg. Utilize pelo menos duas pessoas para movimentacao.
+                        O equipamento pesa aproximadamente 45kg. Utilize pelo menos duas pessoas para movimentação.
                     </div>
                     <div class="warning-item">
                         <strong>Superficie de Apoio</strong>
@@ -1074,12 +1441,12 @@
                             <p>Umidade relativa entre 50% e 65% conforme norma</p>
                         </div>
                         <div class="feature-item">
-                            <h4>🔌 Eletrica</h4>
+                            <h4>🔌 Elétrica</h4>
                             <p>Tomada 220V com aterramento e estabilizador recomendado</p>
                         </div>
                         <div class="feature-item">
                             <h4>📏 Espaco</h4>
-                            <p>Area minima de 60x60cm com acesso frontal livre</p>
+                            <p>Área mínima de 60x60cm com acesso frontal livre</p>
                         </div>
                     </div>
                 </div>
@@ -1087,21 +1454,21 @@
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">📝</span>
-                        Procedimento de Instalacao
+                        Procedimento de Instalação
                     </h3>
                     <div class="procedure-list">
                         <div class="procedure-step">
                             <div class="step-number">1</div>
                             <div class="step-content">
                                 <h4>Desembalar o Equipamento</h4>
-                                <p>Remova cuidadosamente todas as protecoes de transporte. Verifique se todos os componentes estao presentes conforme lista de embalagem.</p>
+                                <p>Remova cuidadosamente todas as proteções de transporte. Verifique se todos os componentes estao presentes conforme lista de embalagem.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">2</div>
                             <div class="step-content">
                                 <h4>Posicionar o Equipamento</h4>
-                                <p>Coloque o equipamento na bancada definitiva. Utilize um nivel para garantir que esta perfeitamente nivelado.</p>
+                                <p>Coloque o equipamento na bancada definitiva. Utilize um nível para garantir que esta perfeitamente nivelado.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
@@ -1114,15 +1481,15 @@
                         <div class="procedure-step">
                             <div class="step-number">4</div>
                             <div class="step-content">
-                                <h4>Configuracao Inicial</h4>
-                                <p>Na primeira inicializacao, selecione o idioma Portugues e configure data/hora no menu de configuracoes.</p>
+                                <h4>Configuração Inicial</h4>
+                                <p>Na primeira inicialização, selecione o idioma Português e configure data/hora no menu de configurações.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">5</div>
                             <div class="step-content">
                                 <h4>Instalar Papel da Impressora</h4>
-                                <p>Abra a tampa da impressora, insira o rolo de papel termico 57mm e feche a tampa.</p>
+                                <p>Abra a tampa da impressora, insira o rolo de papel térmico 57mm e feche a tampa.</p>
                             </div>
                         </div>
                     </div>
@@ -1132,35 +1499,35 @@
             <!-- OPERACAO -->
             <section class="section" id="operacao">
                 <div class="section-header">
-                    <h1 class="section-title">Operacao</h1>
+                    <h1 class="section-title">Operação</h1>
                     <p class="section-subtitle">Como realizar ensaios no equipamento</p>
                 </div>
 
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">✂️</span>
-                        Preparacao dos Corpos de Prova (NBR 6737)
+                        Preparação dos Corpos de Prova (NBR 6737)
                     </h3>
                     <div class="procedure-list">
                         <div class="procedure-step">
                             <div class="step-number">1</div>
                             <div class="step-content">
-                                <h4>Dimensoes do Corpo de Prova</h4>
-                                <p>Corte os corpos de prova com dimensoes de <strong>100 mm x 63 mm</strong> (±0,5 mm). As ondas devem ficar perpendiculares as superficies das placas de compressao.</p>
+                                <h4>Dimensões do Corpo de Prova</h4>
+                                <p>Corte os corpos de prova com dimensões de <strong>100 mm x 63 mm</strong> (±0,5 mm). As ondas devem ficar perpendiculares as superficies das placas de compressão.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <h4>Quantidade Minima</h4>
-                                <p>Prepare no minimo <strong>10 corpos de prova</strong> para obter resultados estatisticamente validos conforme a norma.</p>
+                                <h4>Quantidade Mínima</h4>
+                                <p>Prepare no mínimo <strong>10 corpos de prova</strong> para obter resultados estatisticamente validos conforme a norma.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">3</div>
                             <div class="step-content">
                                 <h4>Condicionamento</h4>
-                                <p>Condicione os corpos de prova em ambiente com temperatura de 23°C ± 1°C e umidade de 50% ± 2% por no minimo 24 horas.</p>
+                                <p>Condicione os corpos de prova em ambiente com temperatura de 23°C ± 1°C e umidade de 50% ± 2% por no mínimo 24 horas.</p>
                             </div>
                         </div>
                     </div>
@@ -1171,21 +1538,21 @@
                         <span class="icon">📐</span>
                         Preparo da Amostra com Suporte de Corte
                     </h3>
-                    <p>Utilize o suporte de corte com gabarito metalico para preparar os corpos de prova com as dimensoes corretas (100 x 63 mm). Siga os passos abaixo:</p>
+                    <p>Utilize o suporte de corte com gabarito metálico para preparar os corpos de prova com as dimensões corretas (100 x 63 mm). Siga os passos abaixo:</p>
 
                     <div class="interface-grid">
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-01-suporte-gabarito.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-01-suporte-gabarito.jpeg"
-                                     alt="Suporte com gabarito metalico interno"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/preparo-01-suporte-gabarito.webp')">
+                                <img src="images/equipment/preparo-01-suporte-gabarito.webp"
+                                     alt="Suporte com gabarito metálico interno"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">1. Suporte com Gabarito Metalico</div>
+                            <div class="interface-caption">1. Suporte com Gabarito Metálico</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-02-suporte-aberto.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-02-suporte-aberto.jpeg"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/preparo-02-suporte-aberto.webp')">
+                                <img src="images/equipment/preparo-02-suporte-aberto.webp"
                                      alt="Suporte aberto"
                                      class="interface-image"
                                      loading="lazy">
@@ -1193,8 +1560,8 @@
                             <div class="interface-caption">2. Suporte Aberto</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-03-amostra-encaixada.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-03-amostra-encaixada.jpeg"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/preparo-03-amostra-encaixada.webp')">
+                                <img src="images/equipment/preparo-03-amostra-encaixada.webp"
                                      alt="Amostra de papelao encaixada no suporte"
                                      class="interface-image"
                                      loading="lazy">
@@ -1202,8 +1569,8 @@
                             <div class="interface-caption">3. Amostra Encaixada</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-04-suporte-fechado.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/equipment/preparo-04-suporte-fechado.jpeg"
+                            <div class="interface-image-container" onclick="openLightbox('images/equipment/preparo-04-suporte-fechado.webp')">
+                                <img src="images/equipment/preparo-04-suporte-fechado.webp"
                                      alt="Suporte fechado pronto para o ensaio"
                                      class="interface-image"
                                      loading="lazy">
@@ -1217,28 +1584,28 @@
                             <div class="step-number">1</div>
                             <div class="step-content">
                                 <h4>Posicione o Papelao</h4>
-                                <p>Coloque a folha de papelao ondulado sobre o suporte aberto, alinhando com o gabarito metalico interno.</p>
+                                <p>Coloque a folha de papelao ondulado sobre o suporte aberto, alinhando com o gabarito metálico interno.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">2</div>
                             <div class="step-content">
                                 <h4>Corte com Estilete</h4>
-                                <p>Utilize um estilete afiado para cortar o papelao seguindo as bordas do gabarito metalico. O gabarito garante as dimensoes corretas de 100 x 63 mm.</p>
+                                <p>Utilize um estilete afiado para cortar o papelao seguindo as bordas do gabarito metálico. O gabarito garante as dimensões corretas de 100 x 63 mm.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">3</div>
                             <div class="step-content">
                                 <h4>Feche o Suporte</h4>
-                                <p>Apos o corte, feche o suporte para manter a amostra fixada e protegida ate o momento do ensaio.</p>
+                                <p>Após o corte, feche o suporte para manter a amostra fixada e protegida até o momento do ensaio.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">4</div>
                             <div class="step-content">
                                 <h4>Transfira para o Equipamento</h4>
-                                <p>Remova a amostra do suporte e posicione-a entre as garras da prensa, garantindo a profundidade de fixacao de 21 mm em cada lado.</p>
+                                <p>Remova a amostra do suporte e posicione-a entre as garras da prensa, garantindo a profundidade de fixação de 21 mm em cada lado.</p>
                             </div>
                         </div>
                     </div>
@@ -1254,13 +1621,13 @@
                             <div class="step-number">1</div>
                             <div class="step-content">
                                 <h4>Selecionar o Metodo</h4>
-                                <p>No menu principal, toque em <strong>"ECT"</strong> para selecionar o ensaio de compressao de borda.</p>
+                                <p>No menu principal, toque em <strong>"ECT"</strong> para selecionar o ensaio de compressão de borda.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <h4>Configurar Parametros</h4>
+                                <h4>Configurar Parâmetros</h4>
                                 <p>Verifique se a velocidade esta em 12,5 mm/min e o comprimento da amostra em 100 mm.</p>
                             </div>
                         </div>
@@ -1268,28 +1635,28 @@
                             <div class="step-number">3</div>
                             <div class="step-content">
                                 <h4>Posicionar o Corpo de Prova</h4>
-                                <p>Insira o corpo de prova entre as garras, garantindo que fique centralizado e com profundidade de fixacao de 21 mm em cada lado.</p>
+                                <p>Insira o corpo de prova entre as garras, garantindo que fique centralizado e com profundidade de fixação de 21 mm em cada lado.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">4</div>
                             <div class="step-content">
                                 <h4>Iniciar o Ensaio</h4>
-                                <p>Pressione o botao <strong>"START"</strong>. O equipamento aplicara a forca ate a ruptura do corpo de prova.</p>
+                                <p>Pressione o botao <strong>"START"</strong>. O equipamento aplicara a forca até a ruptura do corpo de prova.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">5</div>
                             <div class="step-content">
                                 <h4>Registrar Resultado</h4>
-                                <p>Apos a ruptura, o valor de forca maxima sera exibido. Repita para todos os corpos de prova.</p>
+                                <p>Após a ruptura, o valor de forca máxima sera exibido. Repita para todos os corpos de prova.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">6</div>
                             <div class="step-content">
-                                <h4>Imprimir Relatorio</h4>
-                                <p>Apos completar os ensaios, acesse a tela de resultados e pressione <strong>"PRINT"</strong> para imprimir o laudo com estatisticas.</p>
+                                <h4>Imprimir Relatório</h4>
+                                <p>Após completar os ensaios, acesse a tela de resultados e pressione <strong>"PRINT"</strong> para imprimir o laudo com estatísticas.</p>
                             </div>
                         </div>
                     </div>
@@ -1297,7 +1664,7 @@
 
                 <div class="info-box">
                     <h4>💡 Dica Importante</h4>
-                    <p>Para resultados confiaveis, descarte corpos de prova que apresentem defeitos visiveis como amassados, rasgos ou delaminacao. A norma permite descartar resultados que desviem mais de 20% da media.</p>
+                    <p>Para resultados confiáveis, descarte corpos de prova que apresentem defeitos visíveis como amassados, rasgos ou delaminação. A norma permite descartar resultados que desviem mais de 20% da media.</p>
                 </div>
             </section>
 
@@ -1305,7 +1672,7 @@
             <section class="section" id="interface">
                 <div class="section-header">
                     <h1 class="section-title">Interface do Sistema</h1>
-                    <p class="section-subtitle">Conheca as telas e funcoes do software</p>
+                    <p class="section-subtitle">Conheca as telas e funções do software</p>
                 </div>
 
                 <div class="content-card">
@@ -1315,26 +1682,26 @@
                     </h3>
                     <div class="interface-grid">
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/01-tela-inicial-idioma.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/01-tela-inicial-idioma.jpeg"
-                                     alt="Tela inicial com selecao de idioma"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/01-tela-inicial-idioma.webp')">
+                                <img src="images/interface/01-tela-inicial-idioma.webp"
+                                     alt="Tela inicial com seleção de idioma"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Tela Inicial - Selecao de Idioma</div>
+                            <div class="interface-caption">Tela Inicial - Seleção de Idioma</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/02-menu-selecao-testes.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/02-menu-selecao-testes.jpeg"
-                                     alt="Menu de selecao de testes"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/02-menu-seleção-testes.webp')">
+                                <img src="images/interface/02-menu-seleção-testes.webp"
+                                     alt="Menu de seleção de testes"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Menu de Selecao de Testes</div>
+                            <div class="interface-caption">Menu de Seleção de Testes</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/03-tela-teste-principal.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/03-tela-teste-principal.jpeg"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/03-tela-teste-principal.webp')">
+                                <img src="images/interface/03-tela-teste-principal.webp"
                                      alt="Tela principal de teste"
                                      class="interface-image"
                                      loading="lazy">
@@ -1342,22 +1709,22 @@
                             <div class="interface-caption">Tela Principal de Teste</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/04-tela-teste-execucao.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/04-tela-teste-execucao.jpeg"
-                                     alt="Teste em execucao com curva"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/04-tela-teste-execução.webp')">
+                                <img src="images/interface/04-tela-teste-execução.webp"
+                                     alt="Teste em execução com curva"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Teste em Execucao com Curva</div>
+                            <div class="interface-caption">Teste em Execução com Curva</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/05-tela-resultados.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/05-tela-resultados.jpeg"
-                                     alt="Tela de resultados e estatisticas"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/05-tela-resultados.webp')">
+                                <img src="images/interface/05-tela-resultados.webp"
+                                     alt="Tela de resultados e estatísticas"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Resultados e Estatisticas</div>
+                            <div class="interface-caption">Resultados e Estatísticas</div>
                         </div>
                     </div>
                 </div>
@@ -1365,53 +1732,53 @@
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">⚙️</span>
-                        Telas de Configuracao
+                        Telas de Configuração
                     </h3>
                     <div class="interface-grid">
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/06-config-metodo-60.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/06-config-metodo-60.jpeg"
-                                     alt="Configuracao de metodo 60%"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/06-config-metodo-60.webp')">
+                                <img src="images/interface/06-config-metodo-60.webp"
+                                     alt="Configuração de metodo 60%"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Configuracao de Metodo (60%)</div>
+                            <div class="interface-caption">Configuração de Metodo (60%)</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/07-config-metodo-90.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/07-config-metodo-90.jpeg"
-                                     alt="Configuracao de metodo 90%"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/07-config-metodo-90.webp')">
+                                <img src="images/interface/07-config-metodo-90.webp"
+                                     alt="Configuração de metodo 90%"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Configuracao de Metodo (90%)</div>
+                            <div class="interface-caption">Configuração de Metodo (90%)</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/08-config-calibracao.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/08-config-calibracao.jpeg"
-                                     alt="Configuracao de calibracao"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/08-config-calibração.webp')">
+                                <img src="images/interface/08-config-calibração.webp"
+                                     alt="Configuração de calibração"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Configuracao do Sistema</div>
+                            <div class="interface-caption">Configuração do Sistema</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/09-config-display.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/09-config-display.jpeg"
-                                     alt="Configuracao de display"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/09-config-display.webp')">
+                                <img src="images/interface/09-config-display.webp"
+                                     alt="Configuração de display"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Configuracao de Display</div>
+                            <div class="interface-caption">Configuração de Display</div>
                         </div>
                         <div class="interface-card">
-                            <div class="interface-image-container" onclick="openLightbox('https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/11-config-amostra.jpeg')">
-                                <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/interface/11-config-amostra.jpeg"
-                                     alt="Configuracao de amostra"
+                            <div class="interface-image-container" onclick="openLightbox('images/interface/11-config-amostra.webp')">
+                                <img src="images/interface/11-config-amostra.webp"
+                                     alt="Configuração de amostra"
                                      class="interface-image"
                                      loading="lazy">
                             </div>
-                            <div class="interface-caption">Configuracao de Amostra</div>
+                            <div class="interface-caption">Configuração de Amostra</div>
                         </div>
                     </div>
                 </div>
@@ -1420,31 +1787,31 @@
             <!-- MANUTENCAO -->
             <section class="section" id="manutencao">
                 <div class="section-header">
-                    <h1 class="section-title">Manutencao</h1>
+                    <h1 class="section-title">Manutenção</h1>
                     <p class="section-subtitle">Cuidados para manter seu equipamento em perfeito funcionamento</p>
                 </div>
 
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">📅</span>
-                        Manutencao Preventiva
+                        Manutenção Preventiva
                     </h3>
                     <table class="spec-table">
                         <tr>
                             <th>Diariamente</th>
-                            <td>Limpar as placas de compressao com pano seco. Verificar se nao ha residuos de papel nas garras.</td>
+                            <td>Limpar as placas de compressão com pano seco. Verificar se não ha residuos de papel nas garras.</td>
                         </tr>
                         <tr>
                             <th>Semanalmente</th>
-                            <td>Verificar nivel de papel da impressora. Limpar a tela touchscreen com pano de microfibra.</td>
+                            <td>Verificar nível de papel da impressora. Limpar a tela touchscreen com pano de microfibra.</td>
                         </tr>
                         <tr>
                             <th>Mensalmente</th>
-                            <td>Verificar o alinhamento das placas. Inspecionar cabos e conexoes.</td>
+                            <td>Verificar o alinhamento das placas. Inspecionar cabos e conexões.</td>
                         </tr>
                         <tr>
                             <th>Anualmente</th>
-                            <td>Calibracao por laboratorio acreditado. Verificacao completa por assistencia tecnica.</td>
+                            <td>Calibração por laboratório acreditado. Verificação completa por assistência técnica.</td>
                         </tr>
                     </table>
                 </div>
@@ -1453,15 +1820,15 @@
                     <h3>⚠️ Cuidados Importantes</h3>
                     <div class="warning-item">
                         <strong>Nunca utilize solventes</strong>
-                        Limpe apenas com pano seco ou levemente umedecido com agua.
+                        Limpe apenas com pano seco ou levemente umedecido com água.
                     </div>
                     <div class="warning-item">
-                        <strong>Calibracao</strong>
-                        A calibracao deve ser realizada anualmente ou sempre que o equipamento sofrer impactos ou quedas.
+                        <strong>Calibração</strong>
+                        A calibração deve ser realizada anualmente ou sempre que o equipamento sofrer impactos ou quedas.
                     </div>
                     <div class="warning-item">
-                        <strong>Assistencia Tecnica</strong>
-                        Nao abra o equipamento. Reparos devem ser realizados apenas por tecnicos autorizados Eleve Lab.
+                        <strong>Assistência Técnica</strong>
+                        Não abra o equipamento. Reparos devem ser realizados apenas por tecnicos autorizados Eleve Lab.
                     </div>
                 </div>
 
@@ -1475,7 +1842,7 @@
                             <div class="step-number">1</div>
                             <div class="step-content">
                                 <h4>Abrir a Tampa</h4>
-                                <p>Puxe a alavanca de liberacao localizada na lateral da impressora para abrir a tampa.</p>
+                                <p>Puxe a alavanca de liberação localizada na lateral da impressora para abrir a tampa.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
@@ -1489,14 +1856,14 @@
                             <div class="step-number">3</div>
                             <div class="step-content">
                                 <h4>Inserir Novo Rolo</h4>
-                                <p>Insira o novo rolo de papel termico 57mm com a face termica voltada para cima.</p>
+                                <p>Insira o novo rolo de papel térmico 57mm com a face térmica voltada para cima.</p>
                             </div>
                         </div>
                         <div class="procedure-step">
                             <div class="step-number">4</div>
                             <div class="step-content">
                                 <h4>Fechar a Tampa</h4>
-                                <p>Feche a tampa pressionando ate ouvir o clique de travamento.</p>
+                                <p>Feche a tampa pressionando até ouvir o clique de travamento.</p>
                             </div>
                         </div>
                     </div>
@@ -1506,8 +1873,8 @@
             <!-- PROBLEMAS -->
             <section class="section" id="problemas">
                 <div class="section-header">
-                    <h1 class="section-title">Solucao de Problemas</h1>
-                    <p class="section-subtitle">Diagnostico e solucao de problemas comuns</p>
+                    <h1 class="section-title">Solução de Problemas</h1>
+                    <p class="section-subtitle">Diagnóstico e solução de problemas comuns</p>
                 </div>
 
                 <div class="content-card">
@@ -1517,48 +1884,48 @@
                     </h3>
 
                     <div class="trouble-item">
-                        <h4>Equipamento nao liga</h4>
+                        <h4>Equipamento não liga</h4>
                         <p class="cause"><strong>Causa:</strong> Falta de energia ou cabo desconectado</p>
-                        <p class="solution"><strong>Solucao:</strong> Verifique se o cabo esta conectado e se ha energia na tomada. Verifique o interruptor traseiro.</p>
+                        <p class="solution"><strong>Solução:</strong> Verifique se o cabo esta conectado e se ha energia na tomada. Verifique o interruptor traseiro.</p>
                     </div>
 
                     <div class="trouble-item">
-                        <h4>Tela touchscreen nao responde</h4>
-                        <p class="cause"><strong>Causa:</strong> Tela suja ou calibracao incorreta</p>
-                        <p class="solution"><strong>Solucao:</strong> Limpe a tela com pano de microfibra. Se persistir, acesse Config > Display para recalibrar o touch.</p>
+                        <h4>Tela touchscreen não responde</h4>
+                        <p class="cause"><strong>Causa:</strong> Tela suja ou calibração incorreta</p>
+                        <p class="solution"><strong>Solução:</strong> Limpe a tela com pano de microfibra. Se persistir, acesse Config > Display para recalibrar o touch.</p>
                     </div>
 
                     <div class="trouble-item">
-                        <h4>Impressora nao imprime</h4>
+                        <h4>Impressora não imprime</h4>
                         <p class="cause"><strong>Causa:</strong> Papel acabou, papel inserido incorretamente ou cabecote sujo</p>
-                        <p class="solution"><strong>Solucao:</strong> Verifique o papel e sua orientacao. Limpe o cabecote com cotonete levemente umedecido com alcool isopropilico.</p>
+                        <p class="solution"><strong>Solução:</strong> Verifique o papel e sua orientação. Limpe o cabecote com cotonete levemente umedecido com alcool isopropilico.</p>
                     </div>
 
                     <div class="trouble-item">
                         <h4>Valores de forca inconsistentes</h4>
-                        <p class="cause"><strong>Causa:</strong> Celula de carga descalibrada ou corpos de prova fora do padrao</p>
-                        <p class="solution"><strong>Solucao:</strong> Verifique as dimensoes dos corpos de prova. Se corretas, solicite calibracao do equipamento.</p>
+                        <p class="cause"><strong>Causa:</strong> Célula de carga descalibrada ou corpos de prova fora do padrão</p>
+                        <p class="solution"><strong>Solução:</strong> Verifique as dimensões dos corpos de prova. Se corretas, solicite calibração do equipamento.</p>
                     </div>
 
                     <div class="trouble-item">
                         <h4>Corpo de prova escorrega das garras</h4>
-                        <p class="cause"><strong>Causa:</strong> Garras desgastadas ou profundidade de fixacao incorreta</p>
-                        <p class="solution"><strong>Solucao:</strong> Verifique se a profundidade de fixacao e de 21mm. Se as garras estiverem lisas, contate a assistencia tecnica.</p>
+                        <p class="cause"><strong>Causa:</strong> Garras desgastadas ou profundidade de fixação incorreta</p>
+                        <p class="solution"><strong>Solução:</strong> Verifique se a profundidade de fixação e de 21mm. Se as garras estiverem lisas, contate a assistência técnica.</p>
                     </div>
 
                     <div class="trouble-item">
                         <h4>Motor faz ruido anormal</h4>
-                        <p class="cause"><strong>Causa:</strong> Obstrucao mecanica ou falta de lubrificacao</p>
-                        <p class="solution"><strong>Solucao:</strong> Desligue o equipamento e verifique se ha obstrucoes. Contate a assistencia tecnica para lubrificacao.</p>
+                        <p class="cause"><strong>Causa:</strong> Obstrução mecanica ou falta de lubrificação</p>
+                        <p class="solution"><strong>Solução:</strong> Desligue o equipamento e verifique se ha obstruções. Contate a assistência técnica para lubrificação.</p>
                     </div>
                 </div>
 
                 <div class="content-card">
                     <h3 class="card-title">
                         <span class="icon">📞</span>
-                        Suporte Tecnico
+                        Suporte Técnico
                     </h3>
-                    <p>Se o problema persistir apos seguir as orientacoes acima, entre em contato com nossa equipe de suporte:</p>
+                    <p>Se o problema persistir após seguir as orientações acima, entre em contato com nossa equipe de suporte:</p>
                     <br>
                     <div class="feature-grid">
                         <div class="feature-item">
@@ -1574,7 +1941,7 @@
                             <p>elevelab.com.br</p>
                         </div>
                         <div class="feature-item">
-                            <h4>⏰ Horario</h4>
+                            <h4>⏰ Horário</h4>
                             <p>Seg a Sex, 8h as 18h</p>
                         </div>
                     </div>
@@ -1586,12 +1953,36 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <img src="https://cdn.jsdelivr.net/gh/elevelab/elevelab-manuais@main/manuais/EL-CRUSH202/images/logo-elevelab.png" alt="Eleve Lab" class="footer-logo">
-            <p>EL-CRUSH202 - Manual do Usuario</p>
-            <p>© 2024 Eleve Lab Equipamentos Cientificos. Todos os direitos reservados.</p>
-            <div class="footer-links">
-                <a href="https://elevelab.com.br">Site Oficial</a>
-                <a href="mailto:contato@elevelab.com.br">Contato</a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <a href="tel:5121659980">📞 +55 (51) 2165-9980</a>
+                    <a href="mailto:contato@elevelab.com.br">✉️ contato@elevelab.com.br</a>
+                    <a href="https://www.elevelab.com.br">🌐 www.elevelab.com.br</a>
+                    <p>📍 Rua Onze de Agosto, 19, Bairro São João</p>
+                    <p>Porto Alegre - RS | CEP: 91020-050</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Produtos &amp; Serviços</h3>
+                    <p>• Prensas de Compressão</p>
+                    <p>• Analisadores de Gordura</p>
+                    <p>• Analisadores de Fibras</p>
+                    <p>• Destiladores de Nitrogênio</p>
+                    <p>• Biorreatores</p>
+                    <p>• Assistência Técnica</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Suporte</h3>
+                    <p>• Instalação e Treinamento</p>
+                    <p>• Manutenção Preventiva</p>
+                    <p>• Calibração</p>
+                    <p>• Peças de Reposição</p>
+                    <p>• Garantia Estendida</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 EleveLab - Equipamentos Científicos. Todos os direitos reservados.</p>
+                <p>Manual da Prensa de Compressão Multi-Teste EL-CRUSH202 | Conforme NBR 6737:2024</p>
             </div>
         </div>
     </footer>
@@ -1599,12 +1990,12 @@
     <script>
         // ========== NAVEGACAO ==========
         function showSection(sectionId) {
-            // Esconde todas as secoes
+            // Esconde todas as seções
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            // Mostra a secao selecionada
+            // Mostra a seção selecionada
             document.getElementById(sectionId).classList.add('active');
 
-            // Atualiza navegacao
+            // Atualiza navegação
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
             event.target.classList.add('active');
 
@@ -1641,18 +2032,18 @@
             const termo = e.target.value.toLowerCase().trim();
 
             if (termo.length < 2) {
-                // Reset - mostra secao ativa atual
+                // Reset - mostra seção ativa atual
                 return;
             }
 
-            // Busca em todas as secoes
+            // Busca em todas as seções
             const sections = document.querySelectorAll('.section');
             let found = false;
 
             sections.forEach(section => {
                 const content = section.textContent.toLowerCase();
                 if (content.includes(termo) && !found) {
-                    // Mostra primeira secao encontrada
+                    // Mostra primeira seção encontrada
                     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
                     section.classList.add('active');
 
@@ -1675,6 +2066,69 @@
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
             document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // ========== IMPRESSAO ==========
+        // Pre-carrega todas as imagens (remove lazy) e ativa todas as seções
+        // antes de abrir o dialogo de impressão. Evita paginas em branco
+        // causadas por imagens não carregadas e seções ocultas.
+        async function imprimirManual() {
+            const sections = document.querySelectorAll('.section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            // Snapshot do estado atual para restaurar depois
+            const activeSectionIndex = Array.from(sections).findIndex(s => s.classList.contains('active'));
+            const activeNavIndex = Array.from(navItems).findIndex(n => n.classList.contains('active'));
+
+            // Ativa todas as seções
+            sections.forEach(s => s.classList.add('active'));
+
+            // Remove lazy loading e forca carregamento sincrono das imagens
+            const imgs = Array.from(document.querySelectorAll('img'));
+            imgs.forEach(img => {
+                img.loading = 'eager';
+                if (img.decoding) img.decoding = 'sync';
+            });
+
+            // Aguarda todas as imagens carregarem (com timeout de seguranca)
+            await Promise.race([
+                Promise.all(imgs.map(img =>
+                    img.complete && img.naturalWidth > 0
+                        ? Promise.resolve()
+                        : new Promise(resolve => {
+                            img.addEventListener('load', resolve, { once: true });
+                            img.addEventListener('error', resolve, { once: true });
+                        })
+                )),
+                new Promise(resolve => setTimeout(resolve, 5000))
+            ]);
+
+            // Pequeno delay para o layout reflowir com imagens carregadas
+            await new Promise(resolve => setTimeout(resolve, 200));
+
+            window.print();
+
+            // Restaura estado original após o dialogo fechar
+            setTimeout(() => {
+                sections.forEach((s, i) => {
+                    if (i === activeSectionIndex) s.classList.add('active');
+                    else s.classList.remove('active');
+                });
+                if (activeNavIndex >= 0) {
+                    navItems.forEach((n, i) => {
+                        if (i === activeNavIndex) n.classList.add('active');
+                        else n.classList.remove('active');
+                    });
+                }
+            }, 500);
+        }
+
+        // Tambem trata Ctrl+P / Cmd+P para usar nossa função
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                imprimirManual();
+            }
         });
     </script>
 </body>
